@@ -30,7 +30,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    "~/plugins/mirage",
+    '~/plugins/mirage'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -46,8 +46,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    //'@nuxtjs/auth'
+    '@nuxtjs/pwa'
+    // '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
@@ -63,7 +63,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -89,5 +89,5 @@ export default {
   },
   server: {
     port: 8000
-  },
+  }
 }

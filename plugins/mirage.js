@@ -36,7 +36,7 @@ new Server({
         }
       }
     }),
-    video: BaseSerializer.extend({
+    contact: BaseSerializer.extend({
       include: ['tags'],
       normalize (json) {
         return {
