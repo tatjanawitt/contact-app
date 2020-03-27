@@ -9,7 +9,7 @@
     <v-card-actions>
       <span v-for="tag_id in contact.tag_ids" :key="`${contact.id}-${tag_id}`">
         <v-btn
-          color="orange lighten-4"
+          color="orange lighten-3"
           class="mr-2"
           small
         >{{ getTag(tag_id).name }}</v-btn>
