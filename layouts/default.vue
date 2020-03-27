@@ -89,7 +89,9 @@
 </template>
 
 <script>
+
 export default {
+  middleware: 'load-contacts',
   data () {
     return {
       clipped: false,

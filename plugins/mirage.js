@@ -1,3 +1,5 @@
+'use strict'
+
 import { Server, Model, JSONAPISerializer, hasMany } from 'miragejs'
 import _ from 'lodash'
 import contactsJSON from '@/data/contacts.json'

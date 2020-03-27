@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Videos</h1>
+    <h1>Kontakte</h1>
     <div v-for="contact in contacts" :key="contact.id">
       <p>{{ contact.fName }} {{ contact.lName }}</p>
       <img :src="contact.img" alt="">
@@ -9,17 +9,13 @@
 </template>
 
 <script>
+'use strict'
+import { mapState } from 'vuex'
 export default {
-  async asyncData ({ $axios }) {
-    const response = await $axios.get('/contacts')
-    let contacts = response.data.data.map(c => c.attributes)
-    contacts = response.data.data.map((c) => {
-      return { ...c.attributes, id: c.id }
+  computed: {
+    ...mapState({
+      contacts: state => state.contacts.contacts
     })
-
-    return {
-      contacts
-    }
   }
 }
 </script>
