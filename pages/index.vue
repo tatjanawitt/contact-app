@@ -1,3 +1,3 @@
 <template>
-  <h1>Start</h1>
+  <h1>Start Geburtstage anzeigen Suchen</h1>
 </template>

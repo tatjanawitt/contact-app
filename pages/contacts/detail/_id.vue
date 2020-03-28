@@ -7,7 +7,7 @@
             {{ contact.fName }} {{ contact.lName }}
           </span>
           <v-spacer />
-          <span>Herzchen</span>
+          <ContactDetailRating />
         </v-card-title>
         <v-list>
           <ContactDetail icon="mdi-phone" :content="contact.fon" />
@@ -29,6 +29,7 @@
                 <v-chip
                   v-for="tag_id in contact.tag_ids" :key="tag_id"
                   color="orange lighten-3"
+                  :to="`/contacts/tags/${tag_id}`"
                   class="mr-1"
                 >
                   {{ getTag(tag_id).name }}
@@ -47,10 +48,12 @@
 'use strict'
 import { mapState } from 'vuex'
 import ContactDetail from '@/components/contact-detail'
+import ContactDetailRating from '@/components/contact-detail-rating'
 
 export default {
   components: {
-    ContactDetail
+    ContactDetail,
+    ContactDetailRating
   },
   computed: {
     ...mapState({

@@ -12,6 +12,8 @@
           color="orange lighten-3"
           class="mr-2"
           small
+          :to="`/contacts/tags/${tag_id}`"
+          @mousedown.stop
         >{{ getTag(tag_id).name }}</v-btn>
       </span>
     </v-card-actions>
@@ -20,12 +22,17 @@
 
 <script>
 'use strict'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'ContactItem',
+  name: 'ContactListItem',
   props: {
-    contact: { type: Object, required: true },
-    tags: { type: Array, required: true }
+    contact: { type: Object, required: true }
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tags.tags
+    })
   },
   methods: {
     getTag (tagId) {
