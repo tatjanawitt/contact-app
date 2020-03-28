@@ -7,7 +7,6 @@
     empty-icon="mdi-heart-outline"
     full-icon="mdi-heart"
     hover
-    @click="updateRating()"
   />
 </template>
 
@@ -21,27 +20,14 @@ export default {
   }),
   computed: {
     newRating: {
-      // eslint-disable-next-line object-shorthand
-      get: function () {
-        return this.rating
-      },
-      // eslint-disable-next-line object-shorthand
-      set: function (newValue) {
-        console.log(newValue)
-        this.$store.dispatch('contacts/patchRating', { id: this.$route.params.id, rating: this.rating })
-        return newValue
+      get () { return this.rating },
+      set (newValue) {
+        this.$store.dispatch('contacts/patchNewRating', {
+          id: this.$route.params.id,
+          rating: newValue
+        })
       }
-    }
-  },
-  methods: {
-    updateRating () {
-      console.log('click', this.newRating)
-      this.$store.dispatch('contacts/patchRating', { id: this.$route.params.id, rating: this.rating })
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

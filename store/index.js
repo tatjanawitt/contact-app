@@ -1,6 +1,6 @@
 'use strict'
 
-export const strict = false
+export const strict = true
 
 export const state = () => ({
   isLoaded: false

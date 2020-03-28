@@ -16,16 +16,18 @@ export const mutations = {
     state.contacts = contacts
   },
   DELETE (state, contactId) {
-    const contacts = state.contacts.filter(v => v.id !== contactId)
+    const contacts = state.contacts.filter(c => c.id !== contactId)
     state.contacts = contacts
   },
   EDIT (state, newContact) {
-    const vIndex = state.contacts.findIndex(v => v.id === newContact.id)
-    Vue.set(state.contacts, vIndex, newContact)
+    const cIndex = state.contacts.findIndex(c => c.id === newContact.id)
+    Vue.set(state.contacts, cIndex, newContact)
   },
-  PATCH_RATING (state, newContact) {
-    const vIndex = state.contacts.findIndex(v => v.id === newContact.id)
-    Vue.set(state.contacts, vIndex, newContact)
+  PATCH_RATING (state, { id, rating }) {
+    const cIndex = state.contacts.findIndex(c => c.id === id)
+    const cToUpdate = state.contacts[cIndex]
+    cToUpdate.rating = rating
+    Vue.set(state.contacts, cIndex, cToUpdate)
   }
 }
 
@@ -56,18 +58,16 @@ export const actions = {
     commit('EDIT', newContact.attributes)
     return newContact.attributes
   },
-  async patchRating ({ commit }, data) {
-    const response = await this.$axios.patch(`/contacts/${data.id}/rating`, data.rating)
-    console.log('response', response)
-    const newContact = response.data.data
-    deserializeContacts([newContact])
-    commit('PATCH_RATING', newContact.attributes)
-    return newContact.attribute
+  async patchNewRating ({ commit }, { id, rating }) {
+    const response = await this.$axios.patch(`/contacts/${id}/rating`, { rating })
+    if (response.status === 200 || response.status === 201) {
+      commit('PATCH_RATING', { id, rating })
+    }
   }
 }
 
 export const getters = {
   get: state => (id) => {
-    return state.contacts.find(v => v.id === id) || {}
+    return state.contacts.find(c => c.id === id) || {}
   }
 }
