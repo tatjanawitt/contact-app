@@ -22,6 +22,10 @@ export const mutations = {
   EDIT (state, newContact) {
     const vIndex = state.contacts.findIndex(v => v.id === newContact.id)
     Vue.set(state.contacts, vIndex, newContact)
+  },
+  PATCH_RATING (state, newContact) {
+    const vIndex = state.contacts.findIndex(v => v.id === newContact.id)
+    Vue.set(state.contacts, vIndex, newContact)
   }
 }
 
@@ -51,6 +55,14 @@ export const actions = {
     deserializeContacts([newContact])
     commit('EDIT', newContact.attributes)
     return newContact.attributes
+  },
+  async patchRating ({ commit }, data) {
+    const response = await this.$axios.patch(`/contacts/${data.id}/rating`, data.rating)
+    console.log('response', response)
+    const newContact = response.data.data
+    deserializeContacts([newContact])
+    commit('PATCH_RATING', newContact.attributes)
+    return newContact.attribute
   }
 }
 

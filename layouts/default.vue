@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="orange lighten-3">
+    <v-app-bar app>
       <v-btn text to="/contacts">
         Kontakte
       </v-btn>

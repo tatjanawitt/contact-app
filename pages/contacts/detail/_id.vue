@@ -7,7 +7,7 @@
             {{ contact.fName }} {{ contact.lName }}
           </span>
           <v-spacer />
-          <ContactDetailRating />
+          <ContactDetailRating :rating="contact.rating" />
         </v-card-title>
         <v-list>
           <ContactDetail icon="mdi-phone" :content="contact.fon" />

@@ -67,6 +67,9 @@ new Server({
     this.post('/contacts')
     this.put('/contacts/:id')
     this.delete('/contacts/:id')
+    this.patch('/contacts/:id/rating', (schema, request) => {
+      return new Response(201)
+    })
 
     this.get('/tags')
     this.post('/tags')
