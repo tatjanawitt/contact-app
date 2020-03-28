@@ -7,7 +7,7 @@
             {{ contact.fName }} {{ contact.lName }}
           </span>
           <v-spacer />
-          <ContactDetailRating :rating="contact.rating" />
+          <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
         </v-card-title>
         <v-list>
           <ContactDetail icon="mdi-phone" :content="contact.fon" />
@@ -48,12 +48,12 @@
 'use strict'
 import { mapState } from 'vuex'
 import ContactDetail from '@/components/contact-detail'
-import ContactDetailRating from '@/components/contact-detail-rating'
+import ContactRating from '@/components/contact-rating'
 
 export default {
   components: {
     ContactDetail,
-    ContactDetailRating
+    ContactRating
   },
   computed: {
     ...mapState({

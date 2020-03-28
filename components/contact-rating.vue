@@ -3,9 +3,11 @@
     v-model="newRating"
     :readonly="readonly"
     color="red darken-2"
-    background-color="white"
+    background-color="pink lighten-5"
     empty-icon="mdi-heart-outline"
     full-icon="mdi-heart"
+    :large="large"
+    :small="small"
     hover
   />
 </template>
@@ -13,11 +15,10 @@
 <script>
 export default {
   props: {
-    rating: { type: Number, required: true }
+    rating: { type: Number, required: true },
+    readonly: { type: Boolean, required: true },
+    large: { type: Boolean, required: true }
   },
-  data: () => ({
-    readonly: false
-  }),
   computed: {
     newRating: {
       get () { return this.rating },
@@ -27,6 +28,9 @@ export default {
           rating: newValue
         })
       }
+    },
+    small () {
+      return !this.large
     }
   }
 }

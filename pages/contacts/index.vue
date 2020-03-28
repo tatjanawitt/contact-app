@@ -3,7 +3,6 @@
     <div class="display-4 ma-4 d-flex justify-center">
       Alle Kontakte
     </div>
-    <p>Alphabetisch sortieren Nachname Sortiermenge</p>
     <ContactList :contacts="contacts" />
   </v-container>
 </template>
