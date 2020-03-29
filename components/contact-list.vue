@@ -5,6 +5,8 @@
       prepend-icon="mdi-account-search"
       label="Name oder Ort suchen"
       clearable
+      class="mb-3"
+      hide-details
     />
     <v-sheet
       v-if="contactList && contactList.length"
