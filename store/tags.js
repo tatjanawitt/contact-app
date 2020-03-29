@@ -10,7 +10,7 @@ export const mutations = {
     state.tags = tags
   },
   CREATE_TAG (state, { tag }) {
-    state.tags = state.tags.concat(tag)
+    state.tags = state.tags.push(tag)
   },
   UPDATE_TAG_NAME (state, { tag }) {
     const tagToUpdate = state.tags.find(t => t.id === tag.id)

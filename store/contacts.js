@@ -1,7 +1,7 @@
 'use strict'
 
 import Vue from 'vue'
-import { getData, deserializeContacts } from '@/utils/store-utils'
+import { getData, deserializeContacts, sortByRatingDesk } from '@/utils/store-utils'
 
 export const state = () => ({
   contacts: []
@@ -9,26 +9,28 @@ export const state = () => ({
 
 export const mutations = {
   SET (state, contacts) {
-    contacts.sort((a, b) => b.rating - a.rating)
     state.contacts = contacts
+    sortByRatingDesk(state.contacts)
   },
   ADD (state, contact) {
-    const contacts = state.contacts.concat(contact)
-    state.contacts = contacts
+    state.contacts.push(contact)
+    sortByRatingDesk(state.contacts)
   },
   DELETE (state, contactId) {
-    const contacts = state.contacts.filter(c => c.id !== contactId)
-    state.contacts = contacts
+    state.contacts = state.contacts.filter(c => c.id !== contactId)
+    sortByRatingDesk(state.contacts)
   },
   EDIT (state, newContact) {
     const cIndex = state.contacts.findIndex(c => c.id === newContact.id)
     Vue.set(state.contacts, cIndex, newContact)
+    sortByRatingDesk(state.contacts)
   },
   PATCH_RATING (state, { id, rating }) {
     const cIndex = state.contacts.findIndex(c => c.id === id)
     const cToUpdate = state.contacts[cIndex]
     cToUpdate.rating = rating
     Vue.set(state.contacts, cIndex, cToUpdate)
+    sortByRatingDesk(state.contacts)
   }
 }
 

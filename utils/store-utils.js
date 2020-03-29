@@ -26,3 +26,7 @@ export const deserializeTags = (tags) => {
     t.attributes.contact_ids = t.relationships.contacts.data.map(c => c.id)
   })
 }
+
+export const sortByRatingDesk = (contacts) => {
+  contacts.sort((a, b) => b.rating - a.rating)
+}
