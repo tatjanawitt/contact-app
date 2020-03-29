@@ -1,16 +1,39 @@
 <template>
-  <v-sheet class="mx-auto" elevation="8" max-width="1100">
-    <v-slide-group
-      v-model="model"
-      class="pa-4"
-      active-class="success"
-      show-arrows
+  <div>
+    <v-text-field
+      v-model="search"
+      prepend-icon="mdi-account-search"
+      label="Name oder Ort suchen"
+      clearable
+    />
+    <v-sheet
+      v-if="contactList && contactList.length"
+      class="mx-auto"
+      elevation="8"
+      max-width="1100"
     >
-      <v-slide-item v-for="c in contacts" :key="c.id">
-        <ContactListItem :contact="c" />
-      </v-slide-item>
-    </v-slide-group>
-  </v-sheet>
+      <v-slide-group
+        v-model="model"
+        class="pa-4"
+        active-class="success"
+        show-arrows
+      >
+        <v-slide-item v-for="c in contactList" :key="c.id">
+          <ContactListItem :contact="c" />
+        </v-slide-item>
+      </v-slide-group>
+    </v-sheet>
+    <v-alert
+      v-else
+      color="indigo lighten-2"
+      dark
+      border="top"
+      icon="mdi-database-search"
+      transition="scale-transition"
+    >
+      Keine Kontakte gefunden!
+    </v-alert>
+  </div>
 </template>
 
 <script>
@@ -25,6 +48,22 @@ export default {
   props: {
     contacts: { type: Array, required: true }
   },
-  data: () => ({ model: null })
+  data: () => ({
+    model: null,
+    search: null
+  }),
+  computed: {
+    contactList () {
+      if (this.search && this.search.length > 2) {
+        return this.contacts.filter(c =>
+          c.lName.toLowerCase().includes(this.search.toLowerCase()) ||
+          c.fName.toLowerCase().includes(this.search.toLowerCase()) ||
+          c.place.toLowerCase().includes(this.search.toLowerCase())
+        )
+      } else {
+        return this.contacts
+      }
+    }
+  }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="display-4 ma-4 d-flex justify-center">
+    <div class="display-2 ma-4 d-flex justify-center">
       {{ tag.name }}
     </div>
     <ContactList :contacts="contactsOnTag" />

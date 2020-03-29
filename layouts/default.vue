@@ -4,9 +4,6 @@
       <v-btn text to="/contacts">
         Kontakte
       </v-btn>
-      <v-chip class="ml-4">
-        Suchen Sortiermenge
-      </v-chip>
       <v-spacer />
       <div>
         <v-btn text>
