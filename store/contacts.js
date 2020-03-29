@@ -9,6 +9,7 @@ export const state = () => ({
 
 export const mutations = {
   SET (state, contacts) {
+    contacts.sort((a, b) => b.rating - a.rating)
     state.contacts = contacts
   },
   ADD (state, contact) {
