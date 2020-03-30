@@ -26,14 +26,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <v-chip
-                  v-for="tag_id in contact.tag_ids" :key="tag_id"
-                  color="orange lighten-3"
-                  :to="`/contacts/tags/${tag_id}`"
-                  class="mr-1"
-                >
-                  {{ getTag(tag_id).name }}
-                </v-chip>
+                <TagsBar :contact="contact" />
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -49,15 +42,16 @@
 import { mapState } from 'vuex'
 import ContactDetail from '@/components/contact-detail'
 import ContactRating from '@/components/contact-rating'
+import TagsBar from '@/components/tags-bar'
 
 export default {
   components: {
     ContactDetail,
-    ContactRating
+    ContactRating,
+    TagsBar
   },
   computed: {
     ...mapState({
-      tags: state => state.tags.tags,
       contacts: state => state.contacts.contacts
     }),
     contact () {
@@ -67,16 +61,12 @@ export default {
       return `${this.contact.street}, ${this.contact.zip} ${this.contact.place}`
     },
     birthday () {
-      return new Date(this.contact.born).toLocaleDateString('de-DE', {
+      if (!this.contact.born) { return '' }
+      return this.contact.born.toLocaleDateString('de-DE', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
       })
-    }
-  },
-  methods: {
-    getTag (tagId) {
-      return this.tags.find(t => t.id === tagId)
     }
   }
 }
