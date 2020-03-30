@@ -1,8 +1,14 @@
 <template>
   <v-app>
     <v-app-bar app>
+      <v-btn text to="/">
+        Home
+      </v-btn>
       <v-btn text to="/contacts">
         Kontakte
+      </v-btn>
+      <v-btn text to="/admin/contacts">
+        Admin
       </v-btn>
       <v-spacer />
       <div>
