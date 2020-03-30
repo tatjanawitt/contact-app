@@ -2,7 +2,7 @@
   <div>
     <v-text-field
       v-model="search"
-      prepend-icon="mdi-account-search"
+      append-icon="mdi-account-search"
       label="Name oder Ort suchen"
       clearable
       class="mb-3"

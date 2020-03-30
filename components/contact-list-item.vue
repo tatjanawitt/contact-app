@@ -12,8 +12,8 @@
       </v-img>
 
       <v-card-subtitle>
-        <ContactDetail icon="mdi-cellphone-wireless" :content="contact.mobil" />
-        <ContactDetail icon="mdi-email" :content="contact.email" />
+        <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
+        <ContactDetailItem icon="mdi-email" :content="contact.email" />
       </v-card-subtitle>
       <v-divider class="mx-4" />
 
@@ -38,14 +38,14 @@
 <script>
 'use strict'
 import ContactRating from '@/components/contact-rating'
-import ContactDetail from '@/components/contact-detail'
+import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
 
 export default {
   name: 'ContactListItem',
   components: {
     ContactRating,
-    ContactDetail,
+    ContactDetailItem,
     TagsBar
   },
   props: {

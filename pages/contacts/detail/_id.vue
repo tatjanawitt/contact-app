@@ -9,29 +9,8 @@
           <v-spacer />
           <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
         </v-card-title>
-        <v-list>
-          <ContactDetail icon="mdi-phone" :content="contact.fon" />
-          <v-divider inset />
-          <ContactDetail icon="mdi-cellphone-wireless" :content="contact.mobil" />
-          <v-divider inset />
-          <ContactDetail icon="mdi-email" :content="contact.email" />
-          <v-divider inset />
-          <ContactDetail icon="mdi-map-marker" :content="address" />
-          <v-divider inset />
-          <ContactDetail icon="mdi-cake-variant" :content="birthday" />
-          <v-divider inset />
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>mdi-tag-multiple</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                <TagsBar :contact="contact" />
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-img :src="contact.img" max-height="500px" />
-        </v-list>
+
+        <ContactDetail :contact="contact" :show-footer="true" :show-header="false" />
       </v-card>
     </v-col>
   </v-row>
@@ -39,34 +18,21 @@
 
 <script>
 'use strict'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import ContactDetail from '@/components/contact-detail'
 import ContactRating from '@/components/contact-rating'
-import TagsBar from '@/components/tags-bar'
 
 export default {
   components: {
     ContactDetail,
-    ContactRating,
-    TagsBar
+    ContactRating
   },
   computed: {
-    ...mapState({
-      contacts: state => state.contacts.contacts
+    ...mapGetters({
+      getContact: 'contacts/get'
     }),
     contact () {
-      return this.contacts.find(c => c.id === this.$route.params.id)
-    },
-    address () {
-      return `${this.contact.street}, ${this.contact.zip} ${this.contact.place}`
-    },
-    birthday () {
-      if (!this.contact.born) { return '' }
-      return this.contact.born.toLocaleDateString('de-DE', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
+      return this.getContact(this.$route.params.id)
     }
   }
 }

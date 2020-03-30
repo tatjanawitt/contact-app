@@ -3,15 +3,11 @@
     <v-row class="ma-2">
       <h1>Kontakte</h1>
       <v-spacer />
-      <v-btn color="indigo lighten-4" to="/admin/contacts/new">
+      <v-btn color="indigo lighten-2" dark to="/admin/contacts/new">
         Add Contact
       </v-btn>
     </v-row>
-    <ContactTable
-      :contacts="contacts"
-      :headers="headers"
-      :custom-click-action="goToVideoShow"
-    />
+    <ContactTable :contacts="contacts" :headers="headers" />
   </v-container>
 </template>
 
@@ -35,11 +31,6 @@ export default {
         { text: 'Tags', value: 'tags', sortable: false },
         { text: 'Actions', value: 'actions', sortable: false, width: '300px' }
       ]
-    }
-  },
-  methods: {
-    goToVideoShow (contact) {
-      this.$router.push(`/admin/contacts/${contact.id}`)
     }
   }
 }
