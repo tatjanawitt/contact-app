@@ -22,7 +22,7 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-img :src="contact.img" max-height="500px" />
+      <v-img v-if="contact.img" :src="contact.img" max-height="500px" />
     </span>
   </v-list>
 </template>

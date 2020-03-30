@@ -1,7 +1,7 @@
 <template>
   <v-card width="300px" hover class="ma-2">
     <nuxt-link :to="{ path: `/contacts/detail/${contact.id}`}">
-      <v-img :src="contact.img || avatar" height="200px" class="white--text align-end">
+      <v-img :src="contact.img || imgPlaceholder" height="200px" class="white--text align-end">
         <v-card-title class="justify-center">
           <v-badge :value="birthday" color="red darken-2" :content="age" overlap>
             <v-btn text dark>
@@ -52,7 +52,7 @@ export default {
     contact: { type: Object, required: true }
   },
   computed: {
-    avatar () {
+    imgPlaceholder () {
       return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461__340.png'
     },
     birthday () {

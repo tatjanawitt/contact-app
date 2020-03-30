@@ -36,7 +36,7 @@
               {{ contact.fName }} {{ contact.lName }}
             </span>
             <v-spacer />
-            <v-avatar size="70px">
+            <v-avatar v-if="contact.img" size="70px">
               <v-img :src="contact.img" />
             </v-avatar>
           </v-card-title>
