@@ -3,13 +3,13 @@
     <v-row class="ma-2">
       <h1>Tag List</h1>
       <v-spacer />
-      <v-btn :color="btnColor" class="mt-4" @click="startNewTag=!startNewTag">
+      <v-btn :color="btnColor" dark class="mt-4" @click="startNewTag=!startNewTag">
         Add Tag
       </v-btn>
     </v-row>
     <v-text-field
       v-model="search"
-      label="Search"
+      label="Tags suchen"
       class="mb-3"
       clearable
       append-icon="mdi-magnify"
@@ -34,9 +34,9 @@
       </template>
 
       <template #item.name="{item}">
-        <div v-if="tagEditingId == item.id">
+        <div v-if="updateTag.id == item.id">
           <v-text-field
-            v-model="editTagName"
+            v-model="updateTag.name"
             label="Edit"
             autofocus
             single-line
@@ -51,9 +51,17 @@
       </template>
 
       <template #item.contact_ids.length="{item}">
-        <router-link v-if="item.contact_ids.length" :to="`/contacts/tags/${item.id}`">
-          {{ item.contact_ids.length }} Kontakte
-        </router-link>
+        <v-chip
+          v-if="item.contact_ids.length"
+          :to="`/contacts/tags/${item.id}`"
+          :color="btnColor"
+          small dark label
+        >
+          <v-icon left>
+            mdi-account-multiple
+          </v-icon>
+          {{ item.contact_ids.length }} - {{ item.name }}
+        </v-chip>
       </template>
 
       <template #item.actions="{ item }">
@@ -81,9 +89,8 @@ export default {
     return {
       startNewTag: false,
       newTagName: '',
-      tagEditingId: '',
-      editTagName: '',
-      btnColor: 'indigo lighten-4',
+      updateTag: { id: '', name: '' },
+      btnColor: 'indigo lighten-2',
       search: ''
     }
   },
@@ -101,13 +108,14 @@ export default {
   },
   methods: {
     setToEditing (tag) {
-      this.tagEditingId = tag.id
-      this.editTagName = tag.name
+      this.updateTag = { ...tag }
     },
     updateTagName (tag) {
-      const editTag = { ...tag, name: this.editTagName }
-      this.$store.dispatch('tags/update', { editTag })
-      this.tagEditingId = ''
+      if (this.updateTag.name.length > 0) {
+        const editTag = { ...tag, name: this.updateTag.name }
+        this.$store.dispatch('tags/update', { editTag })
+      }
+      this.updateTag.id = ''
     },
     deleteTag (tag) {
       if (confirm(`Wollen Sie den Tag "${tag.name}" wirklich löschen?`)) {
