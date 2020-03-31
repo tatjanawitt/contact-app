@@ -3,8 +3,8 @@
     <v-card-title class="display-1 d-flex justify-center">
       Tags auswählen
     </v-card-title>
-    <v-row>
-      <v-col cols="12" sm="8" md="10">
+    <v-row justify="center">
+      <v-col cols="12" sm="7" md="8">
         <v-combobox
           v-model="contactTags"
           :items="tags"
@@ -17,7 +17,7 @@
           return-object
         />
       </v-col>
-      <v-col cols="12" sm="4" md="2">
+      <v-col cols="12" sm="3" md="2">
         <div class="mt-4 d-flex justify-end">
           <v-btn :color="btnColor" :to="`/contacts/detail/${contact.id}`" class="mr-2">
             Watch
@@ -29,7 +29,7 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" sm="8">
+      <v-col cols="12" sm="10">
         <v-card>
           <v-card-title class="indigo lighten-2">
             <span class="headline white--text">

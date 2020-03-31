@@ -12,7 +12,6 @@
       v-if="contactList && contactList.length"
       class="mx-auto"
       elevation="8"
-      max-width="1100"
     >
       <v-slide-group
         v-model="model"

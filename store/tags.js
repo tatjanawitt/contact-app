@@ -1,4 +1,6 @@
 'use strict'
+
+import Vue from 'vue'
 import { getData, deserializeTags } from '@/utils/store-utils'
 
 export const state = () => ({
@@ -12,9 +14,9 @@ export const mutations = {
   CREATE (state, { tag }) {
     state.tags = state.tags.concat(tag)
   },
-  UPDATE (state, { tag }) {
-    const tagToUpdate = state.tags.find(t => t.id === tag.id)
-    tagToUpdate.name = tag.name
+  UPDATE (state, { editTag }) {
+    const tIndex = state.tags.findIndex(t => t.id === editTag.id)
+    Vue.set(state.tags, tIndex, editTag)
   },
   DELETE (state, { tag }) {
     state.tags = state.tags.filter(t => t.id !== tag.id)
@@ -57,9 +59,9 @@ export const actions = {
     commit('CREATE', { tag: createdTag })
     return createdTag
   },
-  async update ({ commit }, { tag }) {
-    await this.$axios.put(`/tags/${tag.id}`, tag)
-    commit('UPDATE', { tag })
+  async update ({ commit }, { editTag }) {
+    await this.$axios.put(`/tags/${editTag.id}`, editTag)
+    commit('UPDATE', { editTag })
   },
   delete ({ commit }, { tag }) {
     this.$axios.delete(`/tags/${tag.id}`)
