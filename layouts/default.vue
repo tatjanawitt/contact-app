@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app>
       <v-btn text to="/">
-        Home
+        Geburtstag
       </v-btn>
       <v-btn text to="/contacts">
         Kontakte
