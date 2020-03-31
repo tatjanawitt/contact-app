@@ -3,7 +3,7 @@
     <v-row class="ma-2">
       <h1>Tag List</h1>
       <v-spacer />
-      <v-btn :color="btnColor" class="mt-4" @click="startNewTag()">
+      <v-btn :color="btnColor" class="mt-4" @click="startNewTag=!startNewTag">
         Add Tag
       </v-btn>
     </v-row>
@@ -17,7 +17,7 @@
       hide-details
     />
     <v-data-table :items="tags" :headers="headers" :search="search">
-      <template v-if="isEditingNewTag" #body.prepend="{}">
+      <template v-if="startNewTag" #body.prepend="{}">
         <tr>
           <td>
             <v-text-field
@@ -41,8 +41,8 @@
             autofocus
             single-line
             counter
-            @blur="updateTagName(item, editTagName)"
-            @keydown.enter="updateTagName(item, editTagName)"
+            @blur="updateTagName(item)"
+            @keydown.enter="updateTagName(item)"
           />
         </div>
         <div v-else @click="setToEditing(item)">
@@ -60,7 +60,12 @@
         <v-btn x-small :color="btnColor" @click="setToEditing(item)">
           Edit
         </v-btn>
-        <v-btn x-small :color="btnColor" :disabled="disabled(item)" @click="deleteTag(item)">
+        <v-btn
+          x-small
+          :color="btnColor"
+          :disabled="item.contact_ids.length > 0"
+          @click="deleteTag(item)"
+        >
           Delete
         </v-btn>
       </template>
@@ -74,9 +79,9 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      tagEditingId: '',
-      isEditingNewTag: false,
+      startNewTag: false,
       newTagName: '',
+      tagEditingId: '',
       editTagName: '',
       btnColor: 'indigo lighten-4',
       search: ''
@@ -95,9 +100,6 @@ export default {
     }
   },
   methods: {
-    disabled (tag) {
-      return tag.contact_ids.length > 0
-    },
     setToEditing (tag) {
       this.tagEditingId = tag.id
       this.editTagName = tag.name
@@ -106,25 +108,18 @@ export default {
       const editTag = { ...tag, name: this.editTagName }
       this.$store.dispatch('tags/update', { editTag })
       this.tagEditingId = ''
-      this.editTagName = ''
     },
     deleteTag (tag) {
-      const confirmed = confirm(
-        `Are you sure you want to delete tag ${tag.name}?`
-      )
-      if (confirmed) {
+      if (confirm(`Wollen Sie den Tag "${tag.name}" wirklich löschen?`)) {
         this.$store.dispatch('tags/delete', { tag })
       }
-    },
-    startNewTag () {
-      this.isEditingNewTag = true
     },
     createTag () {
       if (this.newTagName.length > 0) {
         this.$store.dispatch('tags/create', { name: this.newTagName })
         this.newTagName = ''
       }
-      this.isEditingNewTag = false
+      this.startNewTag = false
     }
   }
 }
