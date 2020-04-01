@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title class="indigo lighten-2">
           <span class="headline white--text">
-            {{ contact.fName }} {{ contact.lName }}
+            {{ fullName }}
           </span>
           <v-spacer />
           <ContactRating
@@ -32,10 +32,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getContact: 'contacts/get'
+      getContact: 'contacts/get',
+      getFullName: 'contacts/getFullName'
     }),
     contact () {
       return this.getContact(this.$route.params.id)
+    },
+    fullName () {
+      return this.getFullName(this.contact.id)
     }
   }
 }
