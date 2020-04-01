@@ -32,8 +32,8 @@ export default {
     }),
     birthdays () {
       const contacts = this.addContactsToBirthMonth
-      const result = contacts.splice(new Date().getMonth())
-      return result.concat(contacts).filter(b => b.contacts.length > 0)
+      const removed = contacts.splice(new Date().getMonth())
+      return removed.concat(contacts).filter(b => b.contacts.length > 0)
     },
     addContactsToBirthMonth () {
       return this.monthList.map(item => ({

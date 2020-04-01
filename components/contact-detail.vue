@@ -29,6 +29,7 @@
 
 <script>
 'use strict'
+import { mapGetters } from 'vuex'
 import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
 
@@ -40,20 +41,18 @@ export default {
   },
   props: {
     contact: { type: Object, required: true },
-    showHeader: { type: Boolean, required: true },
     showFooter: { type: Boolean, required: true }
   },
   computed: {
+    ...mapGetters({
+      getAddress: 'contacts/getAddress',
+      getDateFormat: 'contacts/getDateFormat'
+    }),
     address () {
-      return `${this.contact.street}, ${this.contact.zip} ${this.contact.place}`
+      return this.getAddress(this.contact)
     },
     birthday () {
-      if (!this.contact.born) { return '' }
-      return this.contact.born.toLocaleDateString('default', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
+      return this.getDateFormat(this.contact)
     }
   }
 }

@@ -81,5 +81,33 @@ export const getters = {
       age = Math.abs(ageDate.getUTCFullYear() - 1970)
     }
     return age
+  },
+  getBirthdate: state => (bornDate) => {
+    let birthday = false
+    if (bornDate) {
+      birthday =
+        bornDate.getDate() === new Date().getDate() &&
+        bornDate.getMonth() === new Date().getMonth()
+    }
+    return birthday
+  },
+  getFullName: (state, getters) => (id) => {
+    const c = getters.get(id)
+    return `${c.fName} ${c.lName}`
+  },
+  getAddress: (state, getters) => (contact) => {
+    const c = getters.get(contact.id)
+    return `${c.street}, ${c.zip} ${c.place}`
+  },
+  getDateFormat: state => (contact) => {
+    if (!contact.born) { return '' }
+    return contact.born.toLocaleDateString('default', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  },
+  getImgagePlaceholder: state => () => {
+    return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461__340.png'
   }
 }

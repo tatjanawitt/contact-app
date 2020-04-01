@@ -7,10 +7,14 @@
             {{ contact.fName }} {{ contact.lName }}
           </span>
           <v-spacer />
-          <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
+          <ContactRating
+            :rating="contact.rating"
+            :readonly="false"
+            :large="true"
+          />
         </v-card-title>
 
-        <ContactDetail :contact="contact" :show-footer="true" :show-header="false" />
+        <ContactDetail :contact="contact" :show-footer="true" />
       </v-card>
     </v-col>
   </v-row>

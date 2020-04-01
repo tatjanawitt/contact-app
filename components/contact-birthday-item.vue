@@ -7,7 +7,7 @@
       <v-list-item-title v-html="textContent" />
     </v-list-item-content>
     <v-list-item-icon>
-      <v-icon color="grey">
+      <v-icon :color="birthdayToday ? 'red darken-2':'grey'">
         mdi-cake-variant
       </v-icon>
     </v-list-item-icon>
@@ -25,9 +25,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getAge: 'contacts/getAge'
+      getAge: 'contacts/getAge',
+      getBirthdate: 'contacts/getBirthdate'
     }),
-    age () { return this.getAge(this.contact.born) },
+    age () {
+      return this.getAge(this.contact.born)
+    },
+    birthdayToday () {
+      return this.getBirthdate(this.contact.born)
+    },
     textContent () {
       return `Am ${this.contact.born.toLocaleDateString('default', {
           month: 'long',

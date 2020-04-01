@@ -5,7 +5,7 @@
         <v-card-title class="justify-center">
           <v-badge :value="birthday" color="red darken-2" :content="age" overlap>
             <v-btn text dark>
-              {{ contact.fName }} {{ contact.lName }}
+              {{ fullName }}
             </v-btn>
           </v-badge>
         </v-card-title>
@@ -54,18 +54,19 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getAge: 'contacts/getAge'
+      getFullName: 'contacts/getFullName',
+      getAge: 'contacts/getAge',
+      getBirthdate: 'contacts/getBirthdate',
+      getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
+    fullName () {
+      return this.getFullName(this.contact.id)
+    },
     imgPlaceholder () {
-      return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461__340.png'
+      return this.getImagePlaceholder()
     },
     birthday () {
-      let bornDay = false
-      if (this.contact.born) {
-        bornDay = this.contact.born.getDate() === new Date().getDate() &&
-          this.contact.born.getMonth() === new Date().getMonth()
-      }
-      return bornDay
+      return this.getBirthdate(this.contact.born)
     },
     age () {
       return this.getAge(this.contact.born)

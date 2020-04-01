@@ -41,7 +41,7 @@
             </v-avatar>
           </v-card-title>
 
-          <ContactDetail :contact="contact" :show-footer="false" :show-header="false" />
+          <ContactDetail :contact="contact" :show-footer="false" />
         </v-card>
       </v-col>
     </v-row>
