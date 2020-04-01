@@ -1,9 +1,10 @@
 <template>
   <v-list-item>
     <v-list-item-action>
-      <v-icon>{{ icon }}</v-icon>
+      <v-icon :color="color">
+        {{ icon }}
+      </v-icon>
     </v-list-item-action>
-
     <v-list-item-content>
       <v-list-item-title>{{ content }}</v-list-item-title>
     </v-list-item-content>
@@ -15,8 +16,8 @@ export default {
   name: 'ContactDetailItem',
   props: {
     icon: { type: String, required: true },
-    content: { type: String, required: true }
+    content: { type: String, required: true },
+    color: { type: String, default: 'grey' }
   }
-
 }
 </script>

@@ -13,7 +13,6 @@
             :large="true"
           />
         </v-card-title>
-
         <ContactDetail :contact="contact" :show-footer="true" />
       </v-card>
     </v-col>

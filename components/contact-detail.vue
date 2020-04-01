@@ -8,7 +8,7 @@
     <v-divider inset />
     <ContactDetailItem icon="mdi-map-marker" :content="address" />
     <v-divider inset />
-    <ContactDetailItem icon="mdi-cake-variant" :content="birthday" />
+    <ContactDetailItem icon="mdi-cake-variant" :content="birthday" :color="color" />
 
     <span v-if="showFooter">
       <v-divider inset />
@@ -46,13 +46,17 @@ export default {
   computed: {
     ...mapGetters({
       getAddress: 'contacts/getAddress',
-      getDateFormat: 'contacts/getDateFormat'
+      getDateFormat: 'contacts/getDateFormat',
+      getBirthdayToday: 'contacts/getBirthdayToday'
     }),
     address () {
       return this.getAddress(this.contact.id)
     },
     birthday () {
       return this.getDateFormat(this.contact.id)
+    },
+    color () {
+      return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'
     }
   }
 }

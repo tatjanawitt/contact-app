@@ -75,8 +75,9 @@ export default {
       this.$router.push(`/contacts/detail/${contact.id}`)
     },
     deleteContact (contact) {
-      const response = confirm(`Are you sure you want to delete ${contact.lName}`)
-      if (response) {
+      if (confirm(
+        `Are you sure you want to delete ${contact.lName}`
+      )) {
         this.$store.dispatch('contacts/delete', contact)
         // this.$store.dispatch('snackbar/create', {
         //   text: `You have successfully deleted your video, ${contact.lName}.`

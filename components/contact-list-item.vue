@@ -1,9 +1,18 @@
 <template>
   <v-card width="300px" hover class="ma-2">
     <nuxt-link :to="{ path: `/contacts/detail/${contact.id}`}">
-      <v-img :src="contact.img || imgPlaceholder" height="200px" class="white--text align-end">
+      <v-img
+        :src="contact.img || imgPlaceholder"
+        height="200px"
+        class="white--text align-end"
+      >
         <v-card-title class="justify-center">
-          <v-badge :value="birthday" color="red darken-2" :content="age" overlap>
+          <v-badge
+            :value="birthday"
+            color="red darken-2"
+            :content="age"
+            overlap
+          >
             <v-btn text dark>
               {{ fullName }}
             </v-btn>
@@ -19,10 +28,17 @@
 
       <v-card-text class="py-0">
         <v-row>
-          <ContactRating :rating="contact.rating" :readonly="true" :large="false" />
+          <ContactRating
+            :rating="contact.rating"
+            :readonly="true"
+            :large="false"
+          />
           <v-spacer />
-          <v-icon :color="birthday ? 'red darken-2' : 'pink lighten-5'" class="mr-3">
-            mdi-cake
+          <v-icon
+            :color="birthday ? 'red darken-2' : 'pink lighten-5'"
+            class="mr-3"
+          >
+            mdi-cake-variant
           </v-icon>
         </v-row>
       </v-card-text>
