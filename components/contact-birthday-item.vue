@@ -5,6 +5,7 @@
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title v-html="textContent" />
+      <ContactRating :rating="contact.rating" :readonly="true" :lang="false" /> tag-bar rechts
     </v-list-item-content>
     <v-list-item-icon>
       <v-icon :color="birthdayToday ? 'red darken-2':'grey'">
@@ -17,9 +18,13 @@
 <script>
 'use strict'
 import { mapGetters } from 'vuex'
+import ContactRating from '@/components/contact-rating'
 
 export default {
   name: 'ContactBirthdayItem',
+  components: {
+    ContactRating
+  },
   props: {
     contact: { type: Object, required: true }
   },

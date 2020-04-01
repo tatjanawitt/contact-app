@@ -3,7 +3,8 @@
     <v-expansion-panels>
       <v-expansion-panel v-for="(b,i) in birthdayPerMonth" :key="i">
         <v-expansion-panel-header>
-          {{ b.month }} ( {{ b.contacts.length }} )
+          {{ b.month }} - {{ b.contacts.length }}
+          {{ b.contacts.length > 1 ? ' - Geburtstage' : ' - Geburtstag' }}
         </v-expansion-panel-header>
         <v-expansion-panel-content
           v-for="contact in b.contacts"
