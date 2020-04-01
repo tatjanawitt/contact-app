@@ -62,12 +62,7 @@ export default {
       getTag: 'tags/get'
     }),
     mungedContacts () {
-      return this.contacts.map((c) => {
-        return {
-          ...c,
-          sortable: c.lName
-        }
-      })
+      return this.contacts.map(c => ({ ...c, sortable: c.lName }))
     }
   },
   methods: {
