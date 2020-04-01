@@ -26,13 +26,13 @@ export default {
   computed: {
     ...mapGetters({
       getAge: 'contacts/getAge',
-      getBirthdate: 'contacts/getBirthdate'
+      getBirthdayToday: 'contacts/getBirthdayToday'
     }),
     age () {
-      return this.getAge(this.contact.born)
+      return this.getAge(this.contact.id)
     },
     birthdayToday () {
-      return this.getBirthdate(this.contact.born)
+      return this.getBirthdayToday(this.contact.id)
     },
     textContent () {
       return `Am ${this.contact.born.toLocaleDateString('default', {

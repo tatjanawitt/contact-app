@@ -49,10 +49,10 @@ export default {
       getDateFormat: 'contacts/getDateFormat'
     }),
     address () {
-      return this.getAddress(this.contact)
+      return this.getAddress(this.contact.id)
     },
     birthday () {
-      return this.getDateFormat(this.contact)
+      return this.getDateFormat(this.contact.id)
     }
   }
 }

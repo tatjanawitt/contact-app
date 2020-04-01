@@ -56,7 +56,7 @@ export default {
     ...mapGetters({
       getFullName: 'contacts/getFullName',
       getAge: 'contacts/getAge',
-      getBirthdate: 'contacts/getBirthdate',
+      getBirthdayToday: 'contacts/getBirthdayToday',
       getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
     fullName () {
@@ -66,10 +66,10 @@ export default {
       return this.getImagePlaceholder()
     },
     birthday () {
-      return this.getBirthdate(this.contact.born)
+      return this.getBirthdayToday(this.contact.id)
     },
     age () {
-      return this.getAge(this.contact.born)
+      return this.getAge(this.contact.id)
     }
   }
 }

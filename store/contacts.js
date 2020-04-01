@@ -73,39 +73,40 @@ export const getters = {
   get: state => (id) => {
     return state.contacts.find(c => c.id === id) || {}
   },
-  getAge: state => (bornDate) => {
+  getAge: (state, getters) => (id) => {
+    const c = getters.get(id)
     let age = null
-    if (bornDate) {
-      const ageDifMs = Date.now() - bornDate.getTime()
+    if (c.born) {
+      const ageDifMs = Date.now() - c.born.getTime()
       const ageDate = new Date(ageDifMs)
       age = Math.abs(ageDate.getUTCFullYear() - 1970)
     }
     return age
   },
-  getBirthdate: state => (bornDate) => {
-    let birthday = false
-    if (bornDate) {
-      birthday =
-        bornDate.getDate() === new Date().getDate() &&
-        bornDate.getMonth() === new Date().getMonth()
-    }
-    return birthday
+  getBirthdayToday: (state, getters) => (id) => {
+    const c = getters.get(id)
+    return !c.born ? false : (
+      c.born.getDate() === new Date().getDate() &&
+      c.born.getMonth() === new Date().getMonth()
+    )
   },
   getFullName: (state, getters) => (id) => {
     const c = getters.get(id)
     return `${c.fName} ${c.lName}`
   },
-  getAddress: (state, getters) => (contact) => {
-    const c = getters.get(contact.id)
+  getAddress: (state, getters) => (id) => {
+    const c = getters.get(id)
     return `${c.street}, ${c.zip} ${c.place}`
   },
-  getDateFormat: state => (contact) => {
-    if (!contact.born) { return '' }
-    return contact.born.toLocaleDateString('default', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+  getDateFormat: (state, getters) => (id) => {
+    const c = getters.get(id)
+    return !c.born ? '' : (
+      c.born.toLocaleDateString('default', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    )
   },
   getImgagePlaceholder: state => () => {
     return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461__340.png'
