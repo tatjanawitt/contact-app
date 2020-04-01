@@ -72,5 +72,14 @@ export const actions = {
 export const getters = {
   get: state => (id) => {
     return state.contacts.find(c => c.id === id) || {}
+  },
+  getAge: state => (bornDate) => {
+    let age = null
+    if (bornDate) {
+      const ageDifMs = Date.now() - bornDate.getTime()
+      const ageDate = new Date(ageDifMs)
+      age = Math.abs(ageDate.getUTCFullYear() - 1970)
+    }
+    return age
   }
 }

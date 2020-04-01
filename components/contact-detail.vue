@@ -49,7 +49,7 @@ export default {
     },
     birthday () {
       if (!this.contact.born) { return '' }
-      return this.contact.born.toLocaleDateString('de-DE', {
+      return this.contact.born.toLocaleDateString('default', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

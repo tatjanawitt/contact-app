@@ -37,6 +37,7 @@
 
 <script>
 'use strict'
+import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
@@ -52,6 +53,9 @@ export default {
     contact: { type: Object, required: true }
   },
   computed: {
+    ...mapGetters({
+      getAge: 'contacts/getAge'
+    }),
     imgPlaceholder () {
       return 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461__340.png'
     },
@@ -64,13 +68,7 @@ export default {
       return bornDay
     },
     age () {
-      let age = null
-      if (this.contact.born) {
-        const ageDifMs = Date.now() - this.contact.born.getTime()
-        const ageDate = new Date(ageDifMs)
-        age = Math.abs(ageDate.getUTCFullYear() - 1970)
-      }
-      return age
+      return this.getAge(this.contact.born)
     }
   }
 }
