@@ -17,7 +17,7 @@
           <v-icon>mdi-tag-multiple</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>
+          <v-list-item-title class="text-wrap">
             <TagsBar :contact="contact" />
           </v-list-item-title>
         </v-list-item-content>
