@@ -3,9 +3,11 @@
     <v-col cols="12" sm="8">
       <v-card>
         <v-card-title class="indigo lighten-2">
-          <span class="headline white--text">
-            {{ fullName }}
-          </span>
+          <v-badge :value="birthday" color="red darken-2" :content="age">
+            <span class="headline white--text">
+              {{ fullName }}
+            </span>
+          </v-badge>
           <v-spacer />
           <ContactRating
             :rating="contact.rating"
@@ -33,13 +35,21 @@ export default {
   computed: {
     ...mapGetters({
       getContact: 'contacts/get',
-      getFullName: 'contacts/getFullName'
+      getFullName: 'contacts/getFullName',
+      getAge: 'contacts/getAge',
+      getBirthdayToday: 'contacts/getBirthdayToday'
     }),
     contact () {
       return this.getContact(this.$route.params.id)
     },
     fullName () {
       return this.getFullName(this.contact.id)
+    },
+    birthday () {
+      return this.getBirthdayToday(this.contact.id)
+    },
+    age () {
+      return this.getAge(this.contact.id)
     }
   }
 }

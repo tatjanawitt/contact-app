@@ -15,7 +15,7 @@
       </v-row>
     </v-list-item-content>
     <v-list-item-icon>
-      <v-icon :color="birthdayToday ? 'red darken-2':'grey'">
+      <v-icon :color="birthdayToday ? 'red darken-2':'grey lighten-1'">
         mdi-cake-variant
       </v-icon>
     </v-list-item-icon>

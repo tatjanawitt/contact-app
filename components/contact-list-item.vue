@@ -35,7 +35,7 @@
           />
           <v-spacer />
           <v-icon
-            :color="birthday ? 'red darken-2' : 'pink lighten-5'"
+            :color="birthday ? 'red darken-2' : 'grey lighten-1'"
             class="mr-3"
           >
             mdi-cake-variant

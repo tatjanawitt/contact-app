@@ -3,7 +3,7 @@
     v-model="newRating"
     :readonly="readonly"
     color="red darken-2"
-    background-color="pink lighten-5"
+    :background-color="small ? 'red lighten-2' : 'red lighten-4'"
     empty-icon="mdi-heart-outline"
     full-icon="mdi-heart"
     :large="large"
@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  name: 'ContactRating',
   props: {
     rating: { type: Number, required: true },
     readonly: { type: Boolean, required: true },
