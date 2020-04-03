@@ -5,7 +5,8 @@
         <v-expansion-panel-header class="title">
           {{ b.month }}:&nbsp;
           <span class="subtitle-1 grey--text">
-            {{ b.contacts.length }} {{ b.contacts.length > 1 ? ' Geburtstage' : ' Geburtstag' }}
+            {{ b.contacts.length }}
+            {{ b.contacts.length > 1 ? ' Geburtstage' : ' Geburtstag' }}
           </span>
         </v-expansion-panel-header>
         <v-expansion-panel-content
@@ -40,13 +41,16 @@ export default {
       return removed.concat(contacts).filter(b => b.contacts.length > 0)
     },
     addContactsToBirthMonth () {
+      const yearNow = new Date().getFullYear()
       return this.monthList.map(item => ({
         month: item,
         contacts: this.contacts.filter(c =>
           item === new Date(c.born).toLocaleString('default', { month: 'long' })
-        ).sort((a, b) =>
-          a.born.toLocaleDateString('default') > b.born.toLocaleDateString('default')
-        )
+        ).sort((a, b) => {
+          const aBorn = new Date(yearNow, a.born.getMonth(), a.born.getDate())
+          const bBorn = new Date(yearNow, b.born.getMonth(), b.born.getDate())
+          return aBorn - bBorn
+        })
       }))
     },
     monthList () {
