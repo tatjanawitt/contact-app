@@ -1,18 +1,19 @@
 <template>
   <v-text-field
-    v-model="cItem.name"
+    v-model="fieldItem"
     :label="label"
     :maxlength="maxlength"
     :counter="maxlength"
+    :prepend-icon="icon"
     clearable
-
-    :hint="hint"
+    :hint="defaultHint"
     @change="changeValue"
   />
 </template>
 
 <script>
 import validations from '@/utils/validations'
+import formFieldConfig from '@/utils/form-field-config'
 
 export default {
   name: 'ContactFormTextfield',
@@ -22,31 +23,35 @@ export default {
   },
   data () {
     return {
+      defaultMaxlength: 255,
+      defaultHint: 'eingefügte Zeichen',
+      fieldItem: this.obj[this.fieldname] || '',
       ...validations,
-      cItem: { name: this.obj[this.fieldname] || '' },
-      cAttr: [
-        { text: 'Vorname', value: 'fName', max: '30', min: '3' },
-        { text: 'Nachname', value: 'lName', max: '30', min: '3' },
-        { text: 'Email', value: 'email', max: '50', min: '7' },
-        { text: 'Telefon', value: 'fon', max: '30' },
-        { text: 'Mobil', value: 'mobil', max: '30' },
-        { text: 'Strasse', value: 'street', max: '50' },
-        { text: 'Postleitzahl', value: 'zip', max: '5' },
-        { text: 'Ort', value: 'place', max: '50' }
-      ]
+      fieldConfig: [...formFieldConfig.contactForm]
     }
   },
   computed: {
-    label () { return this.cAttr.find(i => i.value === this.fieldname).text },
-    maxlength () { return this.cAttr.find(i => i.value === this.fieldname).max },
-    hint () { return 'eingefügte Zeichen' }
+    label () {
+      return this.fieldConfig.find(i =>
+        i.value === this.fieldname).text
+    },
+    icon () {
+      return this.fieldConfig.find(i =>
+        i.value === this.fieldname).icon
+    },
+    maxlength () {
+      return this.fieldConfig.find(i =>
+        i.value === this.fieldname).max || this.defaultMaxlength
+    }
     // rules () {
-    //   return this.cAttr.find(i => i.value === this.fieldname).min
-    //     ? this.minLength(this.cAttr.find(i => i.value === this.fieldname).min) : []
+    //   return this.fieldConfig.find(i => i.value === this.fieldname).min
+    //     ? this.minLength(this.fieldConfig.find(i => i.value === this.fieldname).min) : this.noRule()
     // }
   },
   methods: {
-    changeValue () { this.obj[this.fieldname] = this.cItem.name }
+    changeValue () {
+      this.obj[this.fieldname] = this.fieldItem
+    }
   }
 }
 </script>

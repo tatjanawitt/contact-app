@@ -20,7 +20,6 @@ export default {
   methods: {
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
-      console.log(contact.fname)
       // this.$store.dispatch("snackbar/create", {
       //   text: `You have successfully created a new video, ${video.name}.`
       // });

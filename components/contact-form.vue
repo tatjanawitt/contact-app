@@ -14,27 +14,7 @@
           <ContactFormTextfield :obj="contactData" fieldname="email" />
         </v-col>
         <v-col cols="12" sm="5">
-          <v-menu
-            v-model="menu"
-            :close-on-content-click="false"
-            transition="scale-transition"
-            offset-y max-width="290px" min-width="290px"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                v-model="computedDateFormatted"
-                label="Geburtsdatum"
-                append-icon="mdi-calendar-search"
-                readonly
-                v-on="on"
-              />
-            </template>
-            <v-date-picker
-              v-model="contactData.born"
-              no-title
-              @input="menu = false"
-            />
-          </v-menu>
+          <Datepicker :obj="contactData" fieldname="born" />
         </v-col>
       </v-row>
       <v-row>
@@ -58,6 +38,14 @@
           <ContactFormTextfield :obj="contactData" fieldname="mobil" />
         </v-col>
       </v-row>
+      <v-row>
+        <v-col cols="12" sm="4">
+          <ContactFormTextfield :obj="contactData" fieldname="rating" />
+        </v-col>
+        <v-col cols="12" sm="8">
+          <ContactFormTextfield :obj="contactData" fieldname="img" />
+        </v-col>
+      </v-row>
       <small>* Plichtfelder</small>
     </v-container>
     <v-btn @click="cancel">
@@ -71,11 +59,13 @@
 
 <script>
 import ContactFormTextfield from '@/components/contact-form-textfield'
+import Datepicker from '@/components/datepicker'
 
 export default {
   name: 'ContactForm',
   components: {
-    ContactFormTextfield
+    ContactFormTextfield,
+    Datepicker
   },
   props: {
     contact: { type: Object, required: true },
@@ -85,18 +75,7 @@ export default {
   data () {
     return {
       valid: false,
-      contactData: { ...this.contact },
-      menu: false
-    }
-  },
-  computed: {
-    computedDateFormatted () {
-      return this.formatDate(this.date)
-    }
-  },
-  watch: {
-    date (val) {
-      this.dateFormatted = this.formatDate(this.date)
+      contactData: { ...this.contact }
     }
   },
   methods: {
@@ -104,17 +83,10 @@ export default {
       this.cancelAction()
     },
     save () {
-      this.saveContact(this.contactData)
-    },
-    formatDate (date) {
-      if (!date) { return null }
-      const [year, month, day] = date.split('-')
-      return `${day}.${month}.${year}`
-    },
-    parseDate (date) {
-      if (!date) { return null }
-      const [day, month, year] = date.split('.')
-      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+      this.saveContact({
+        ...this.contactData,
+        rating: parseInt(this.contactData.rating) || 0
+      })
     }
   }
 }
