@@ -33,8 +33,10 @@ export default {
   },
   data () {
     return {
-      date: this.obj[this.fieldname],
-      dateFormatted: this.formatDate(this.obj[this.fieldname]),
+      date: this.obj[this.fieldname]
+        ? this.obj[this.fieldname].toISOString().substr(0, 10)
+        : null,
+      dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10)),
       menu: false
     }
   },
