@@ -24,14 +24,11 @@
       <template #item.actions="{item}">
         <td class="non-clickable" @click.stop>
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}`">
-            <v-icon left>
-              mdi-link-variant-plus
-            </v-icon>
-            Tag
+            <v-icon>mdi-tag-plus</v-icon>
           </v-btn>
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
             <v-icon>
-              mdi-account-edit
+              mdi-pencil
             </v-icon>
           </v-btn>
           <v-btn small class="primary" @click="deleteContact(item)">

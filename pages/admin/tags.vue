@@ -68,16 +68,16 @@
       </template>
 
       <template #item.actions="{ item }">
-        <v-btn x-small class="primary" @click="setToEditing(item)">
-          Edit
+        <v-btn small class="primary" @click="setToEditing(item)">
+          <v-icon>mdi-pencil</v-icon>
         </v-btn>
         <v-btn
-          x-small
+          small
           class="primary"
           :disabled="item.contact_ids.length > 0"
           @click="deleteTag(item)"
         >
-          Delete
+          <v-icon>mdi-delete-alert</v-icon>
         </v-btn>
       </template>
     </v-data-table>
