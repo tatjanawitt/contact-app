@@ -2,9 +2,15 @@
   <v-container>
     <v-tabs>
       <v-tab to="/admin/contacts">
-        Videos
+        <v-icon left>
+          mdi-account-multiple
+        </v-icon>
+        Kontakte
       </v-tab>
       <v-tab to="/admin/tags">
+        <v-icon left>
+          mdi-tag-multiple
+        </v-icon>
         Tags
       </v-tab>
     </v-tabs>

@@ -56,7 +56,7 @@ const contactForm = [
     icon: 'mdi-file-image-outline'
   },
   {
-    text: 'Bewertung',
+    text: 'Bewertung (1-5)',
     value: 'rating',
     icon: 'mdi-heart',
     max: '1'

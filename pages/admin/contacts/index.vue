@@ -3,8 +3,11 @@
     <v-row class="ma-2">
       <h1>Kontakte</h1>
       <v-spacer />
-      <v-btn color="indigo lighten-2" dark to="/admin/contacts/new">
-        Add Contact
+      <v-btn class="primary" to="/admin/contacts/new">
+        <v-icon left>
+          mdi-account-plus
+        </v-icon>
+        Neu
       </v-btn>
     </v-row>
     <ContactTable :contacts="contacts" :headers="headers" />

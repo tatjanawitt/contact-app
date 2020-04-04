@@ -73,6 +73,12 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          primary: '#e88700',
+          secondary: colors.indigo.lighten2,
+          anchor: '#e88700',
+          accent: '#e88700'
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <v-list-item @click="goToContact(contact)">
     <v-list-item-avatar size="50px">
-      <v-img :src="contact.img" />
+      <v-img :src="contact.img || imgPlaceholder" />
     </v-list-item-avatar>
     <v-list-item-content>
       <v-row>
@@ -40,13 +40,17 @@ export default {
   computed: {
     ...mapGetters({
       getAge: 'contacts/getAge',
-      getBirthdayToday: 'contacts/getBirthdayToday'
+      getBirthdayToday: 'contacts/getBirthdayToday',
+      getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
     age () {
       return this.getAge(this.contact.id)
     },
     birthdayToday () {
       return this.getBirthdayToday(this.contact.id)
+    },
+    imgPlaceholder () {
+      return this.getImagePlaceholder()
     },
     textContent () {
       return `Am ${this.contact.born.toLocaleDateString('default', {

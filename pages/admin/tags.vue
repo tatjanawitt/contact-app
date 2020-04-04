@@ -3,8 +3,11 @@
     <v-row class="ma-2">
       <h1>Tag List</h1>
       <v-spacer />
-      <v-btn :color="btnColor" dark class="mt-4" @click="startNewTag=!startNewTag">
-        Add Tag
+      <v-btn class="primary mt-4" @click="startNewTag=!startNewTag">
+        <v-icon left>
+          mdi-tag-plus
+        </v-icon>
+        Neu
       </v-btn>
     </v-row>
     <v-text-field
@@ -65,12 +68,12 @@
       </template>
 
       <template #item.actions="{ item }">
-        <v-btn x-small :color="btnColor" @click="setToEditing(item)">
+        <v-btn x-small class="primary" @click="setToEditing(item)">
           Edit
         </v-btn>
         <v-btn
           x-small
-          :color="btnColor"
+          class="primary"
           :disabled="item.contact_ids.length > 0"
           @click="deleteTag(item)"
         >

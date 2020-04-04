@@ -2,9 +2,8 @@
   <div>
     <v-chip
       v-for="tag_id in contact.tag_ids" :key="`${contact.id}-${tag_id}`"
-      color="indigo lighten-2"
       :to="`/contacts/tags/${tag_id}`"
-      class="mr-1 my-1"
+      class="mr-1 my-1 secondary"
       small
       dark
       label

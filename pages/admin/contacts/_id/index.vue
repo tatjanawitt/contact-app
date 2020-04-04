@@ -19,10 +19,10 @@
       </v-col>
       <v-col cols="12" sm="3" md="2">
         <div class="mt-4 d-flex justify-end">
-          <v-btn :color="btnColor" :to="`/contacts/detail/${contact.id}`" class="mr-2">
+          <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
             Watch
           </v-btn>
-          <v-btn :color="btnColor" :to="`/admin/contacts/${contact.id}/edit`">
+          <v-btn class="primary" :to="`/admin/contacts/${contact.id}/edit`">
             Edit
           </v-btn>
         </div>
@@ -56,11 +56,6 @@ import ContactDetail from '@/components/contact-detail'
 export default {
   components: {
     ContactDetail
-  },
-  data () {
-    return {
-      btnColor: 'indigo lighten-2'
-    }
   },
   computed: {
     ...mapState({

@@ -23,14 +23,21 @@
       </template>
       <template #item.actions="{item}">
         <td class="non-clickable" @click.stop>
-          <v-btn x-small :to="`/admin/contacts/${item.id}`">
-            Tags
+          <v-btn small class="primary" :to="`/admin/contacts/${item.id}`">
+            <v-icon left>
+              mdi-link-variant-plus
+            </v-icon>
+            Tag
           </v-btn>
-          <v-btn x-small :to="`/admin/contacts/${item.id}/edit`">
-            Edit
+          <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
+            <v-icon>
+              mdi-account-edit
+            </v-icon>
           </v-btn>
-          <v-btn x-small @click="deleteContact(item)">
-            Delete
+          <v-btn small class="primary" @click="deleteContact(item)">
+            <v-icon>
+              mdi-delete-alert
+            </v-icon>
           </v-btn>
         </td>
       </template>
@@ -89,5 +96,6 @@ export default {
 }
 ::v-deep tbody tr td.non-clickable {
   cursor: auto;
+  border-bottom: none !important;
 }
 </style>
