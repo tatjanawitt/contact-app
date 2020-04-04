@@ -12,6 +12,7 @@
     <v-data-table
       :items="mungedContacts"
       :headers="headers"
+      show-expand
       sort-by="sortable"
       :search="search"
       @click:row="goToContact"
@@ -38,6 +39,11 @@
           </v-btn>
         </td>
       </template>
+      <template #expanded-item="{item}">
+        <td :colspan="headers.length+1" class="non-clickable" @click.stop>
+          <ContactTableExpandItem :contact="item" />
+        </td>
+      </template>
     </v-data-table>
   </div>
 </template>
@@ -47,11 +53,12 @@ import { mapGetters } from 'vuex'
 import TagsBar from '@/components/tags-bar'
 // import DurationDisplay from '@/components/duration-display'
 // import DateDisplay from '@/components/date-display'
-// import VideoWatch from '@/components/video-watch'
+import ContactTableExpandItem from '@/components/contact-table-expand-item'
 
 export default {
   name: 'ContactTable',
   components: {
+    ContactTableExpandItem,
     TagsBar
   },
   props: {
@@ -94,5 +101,6 @@ export default {
 ::v-deep tbody tr td.non-clickable {
   cursor: auto;
   border-bottom: none !important;
+  padding: 0 !important;
 }
 </style>

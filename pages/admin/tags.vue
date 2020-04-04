@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="ma-2">
-      <h1>Tag List</h1>
+      <h1>Stichwort Übersicht</h1>
       <v-spacer />
       <v-btn class="primary mt-4" @click="startNewTag=!startNewTag">
         <v-icon left>
@@ -103,9 +103,10 @@ export default {
     }),
     headers () {
       return [
+        { text: 'Id', value: 'id' },
         { text: 'Name', value: 'name' },
         { text: '# Zuordnung', value: 'contact_ids.length' },
-        { text: 'Actions', value: 'actions', sortable: false, width: '300px' }
+        { text: 'Aktion', value: 'actions', sortable: false, width: '150px' }
       ]
     }
   },

@@ -39,21 +39,37 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" sm="4">
-          <ContactFormTextfield :obj="contactData" fieldname="rating" />
+        <v-col cols="12" sm="2">
+          <v-text-field
+            v-model="contactData.rating"
+            label="Bewertung"
+            prepend-icon="mdi-heart"
+            min="0" max="5"
+            maxlength="1"
+            type="number"
+            hint="0-5 Herzen"
+          />
         </v-col>
-        <v-col cols="12" sm="8">
+        <v-col cols="12" sm="10">
           <ContactFormTextfield :obj="contactData" fieldname="img" />
         </v-col>
       </v-row>
-      <small>* Plichtfelder</small>
+      <!--small>* Plichtfelder</small-->
+      <v-row class="d-flex justify-end">
+        <v-btn class="mr-2 secondary" @click="cancel">
+          <v-icon left>
+            mdi-close-box
+          </v-icon>
+          Abbrechen
+        </v-btn>
+        <v-btn :disabled="!valid" class="primary" @click="save">
+          <v-icon left>
+            mdi-content-save
+          </v-icon>
+          Speichern
+        </v-btn>
+      </v-row>
     </v-container>
-    <v-btn @click="cancel">
-      Abbrechen
-    </v-btn>
-    <v-btn :disabled="!valid" color="primary" @click="save">
-      Speichern
-    </v-btn>
   </v-form>
 </template>
 

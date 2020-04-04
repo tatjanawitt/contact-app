@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="ma-2">
-      <h1>Kontakte</h1>
+      <h1>Kontakt Übersicht</h1>
       <v-spacer />
       <v-btn class="primary" to="/admin/contacts/new">
         <v-icon left>
@@ -28,11 +28,12 @@ export default {
     }),
     headers () {
       return [
+        { text: 'Id', value: 'id' },
         { text: 'Vorname', value: 'fName' },
         { text: 'Nachname', value: 'lName' },
         { text: 'Ort', value: 'place' },
-        { text: 'Tags', value: 'tags', sortable: false },
-        { text: 'Actions', value: 'actions', sortable: false, width: '300px' }
+        { text: 'Stichworte', value: 'tags', sortable: false },
+        { text: 'Aktion', value: 'actions', sortable: false, width: '225px' }
       ]
     }
   }

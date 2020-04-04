@@ -32,15 +32,15 @@
       <v-col cols="12" sm="10">
         <v-card>
           <v-card-title class="indigo lighten-2">
-            <span class="headline white--text">
-              {{ contact.fName }} {{ contact.lName }}
-            </span>
-            <v-spacer />
             <v-avatar v-if="contact.img" size="70px">
               <v-img :src="contact.img" />
             </v-avatar>
+            <span class="headline white--text ml-4">
+              {{ fullName }}
+            </span>
+            <v-spacer />
+            <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
           </v-card-title>
-
           <ContactDetail :contact="contact" :show-footer="false" />
         </v-card>
       </v-col>
@@ -52,10 +52,12 @@
 import { mapState, mapGetters } from 'vuex'
 import _ from 'lodash'
 import ContactDetail from '@/components/contact-detail'
+import ContactRating from '@/components/contact-rating'
 
 export default {
   components: {
-    ContactDetail
+    ContactDetail,
+    ContactRating
   },
   computed: {
     ...mapState({
@@ -63,10 +65,14 @@ export default {
     }),
     ...mapGetters({
       getTag: 'tags/get',
-      getContact: 'contacts/get'
+      getContact: 'contacts/get',
+      getFullName: 'contacts/getFullName'
     }),
     contact () {
       return this.getContact(this.$route.params.id)
+    },
+    fullName () {
+      return this.getFullName(this.$route.params.id)
     },
     contactTags: {
       get () {

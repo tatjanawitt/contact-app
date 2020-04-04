@@ -11,7 +11,7 @@
         <v-icon left>
           mdi-tag-multiple
         </v-icon>
-        Tags
+        Stichworte
       </v-tab>
     </v-tabs>
     <router-view />
