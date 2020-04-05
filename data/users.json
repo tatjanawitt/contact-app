@@ -1,0 +1,49 @@
+[
+   {
+      "id":"1",
+      "name":"Toshinori Yagi",
+      "email":"user@gmail.com",
+      "token": "25%(&!$#tocuh",
+      "playedVideoIds": ["4"]
+   },
+   {
+      "id":"2",
+      "name":"Izuku Midoriya",
+      "email":"user2@gmail.com",
+      "token": "24%(&!$#tocuh",
+      "playedVideoIds": []
+   },
+   {
+      "id":"3",
+      "name":"Jeffrey Biles",
+      "email":"admin@vuescreencasts.com",
+      "admin": true,
+      "token": "rcohus!$#21234ch",
+      "playedVideoIds": ["1", "3"],
+      "s3Keys": {
+         "id": "tnoheurcheou",
+         "secret": "wvjktoenueouwvm"
+      }
+   },
+   {
+      "id":"4",
+      "name":"Evan You",
+      "email":"notminetogiveaway@secret.com",
+      "token": "55%(&!$#tocuh",
+      "playedVideoIds": []
+   },
+   {
+      "id":"5",
+      "name":"Spike Spiegel",
+      "email":"spike@bebop.bounty",
+      "token": "45%(&!$#tocuh",
+      "playedVideoIds": []
+   },
+   {
+      "id":"6",
+      "name":"Gon Freecs",
+      "email":"gon@hunter.gov",
+      "token": "35%(&!$#tocuh",
+      "playedVideoIds": []
+   }
+]

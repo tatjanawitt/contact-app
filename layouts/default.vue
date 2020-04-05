@@ -12,21 +12,30 @@
         </v-icon>
         Kontakte
       </v-btn>
-      <v-btn text to="/admin/contacts">
+      <v-btn v-if="$auth.user && $auth.user.admin" text to="/admin/contacts">
         <v-icon left>
           mdi-database-edit
         </v-icon>
         Admin
       </v-btn>
       <v-spacer />
-      <div>
-        <v-btn text>
+      <div v-if="$auth.loggedIn">
+        {{ $auth.user.email }}
+        <v-btn text @click="$auth.logout()">
+          Logout
+          <v-icon right>
+            mdi-logout-variant
+          </v-icon>
+        </v-btn>
+      </div>
+      <div v-else>
+        <v-btn text to="/login">
           <v-icon left>
             mdi-login-variant
           </v-icon>
           Login
         </v-btn>
-        <v-btn text>
+        <v-btn text to="/register">
           <v-icon left>
             mdi-account-box-outline
           </v-icon>
