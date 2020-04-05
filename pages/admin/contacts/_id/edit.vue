@@ -22,7 +22,8 @@ export default {
       contacts: state => state.contacts.contacts
     }),
     ...mapGetters({
-      getContact: 'contacts/get'
+      getContact: 'contacts/get',
+      fullName: 'contacts/getFullName'
     }),
     contact () {
       return this.getContact(this.$route.params.id)
@@ -31,13 +32,13 @@ export default {
   methods: {
     async update (newContact) {
       const contact = await this.$store.dispatch('contacts/edit', newContact)
-      // this.$store.dispatch('snackbar/create', {
-      //   text: `You have successfully edited your video, ${contact.name}.`
-      // })
+      this.$store.dispatch('snackbar/create', {
+        text: `Die Daten von ${this.fullName(contact.id)} wurden geändert.`
+      })
       this.$router.push(`/admin/contacts/${contact.id}`)
     },
     cancel () {
-      this.$router.push(`/admin/contacts/${this.contact.id}`)
+      this.$router.push('/admin/contacts')
     }
   }
 }

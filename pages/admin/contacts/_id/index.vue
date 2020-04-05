@@ -1,10 +1,10 @@
 <template>
   <v-card class="pa-4" color="rgba(255, 255, 255, 0.5)">
     <v-card-title class="display-1 d-flex justify-center">
-      Tags auswählen
+      Stichworte auswählen
     </v-card-title>
     <v-row justify="center">
-      <v-col cols="12" sm="7" md="8">
+      <v-col cols="12" sm="6" md="7">
         <v-combobox
           v-model="contactTags"
           :items="tags"
@@ -17,13 +17,16 @@
           return-object
         />
       </v-col>
-      <v-col cols="12" sm="3" md="2">
+      <v-col cols="12" sm="4" md="3">
         <div class="mt-4 d-flex justify-end">
           <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
-            Watch
+            <v-icon>mdi-card-account-details</v-icon>
           </v-btn>
-          <v-btn class="primary" :to="`/admin/contacts/${contact.id}/edit`">
-            Edit
+          <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
+            <v-icon>mdi-account-edit</v-icon>
+          </v-btn>
+          <v-btn class="primary" :to="`/admin/contacts`">
+            <v-icon>mdi-table-eye</v-icon>
           </v-btn>
         </div>
       </v-col>

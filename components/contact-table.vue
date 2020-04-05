@@ -12,11 +12,12 @@
     <v-data-table
       :items="mungedContacts"
       :headers="headers"
+      :search="search"
       show-expand
       sort-by="sortable"
-      :search="search"
       @click:row="goToContact"
     >
+      <!--p> :custom-filter="filter"</p-->
       <template #item.tags="{item}">
         <td class="non-clickable" @click.stop>
           <TagsBar :contact="item" />
@@ -50,9 +51,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+// import _ from 'lodash'
 import TagsBar from '@/components/tags-bar'
-// import DurationDisplay from '@/components/duration-display'
-// import DateDisplay from '@/components/date-display'
 import ContactTableExpandItem from '@/components/contact-table-expand-item'
 
 export default {
@@ -70,7 +70,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getTag: 'tags/get'
+      getTag: 'tags/get',
+      getFullName: 'contacts/getFullName'
     }),
     mungedContacts () {
       return this.contacts.map(c => ({ ...c, sortable: c.lName }))
@@ -80,14 +81,25 @@ export default {
     goToContact (contact) {
       this.$router.push(`/contacts/detail/${contact.id}`)
     },
+    // filter (value, search, item) {
+    //   const inName = RegExp(search, 'i').test(item.fName)
+
+    //   const tagMatches = item.tag_ids.map(id =>
+    //     RegExp(search, 'i').test(this.getTag(id).name)
+    //   )
+    //   const inTags = _.some(tagMatches)
+
+    //   return inName || inTags
+    // },
     deleteContact (contact) {
+      const fullName = this.getFullName(contact.id)
       if (confirm(
-        `Are you sure you want to delete ${contact.lName}`
+        `Willst Du den Kontakt von ${fullName} löschen?`
       )) {
         this.$store.dispatch('contacts/delete', contact)
-        // this.$store.dispatch('snackbar/create', {
-        //   text: `You have successfully deleted your video, ${contact.lName}.`
-        // })
+        this.$store.dispatch('snackbar/create', {
+          text: `Der Kontakt von ${fullName} wurde gelöscht.`
+        })
       }
     }
   }

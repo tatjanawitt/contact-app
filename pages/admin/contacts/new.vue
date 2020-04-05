@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ContactForm from '@/components/contact-form'
 
 export default {
@@ -17,12 +18,17 @@ export default {
   data () {
     return { contact: {} }
   },
+  computed: {
+    ...mapGetters({
+      fullName: 'contacts/getFullName'
+    })
+  },
   methods: {
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
-      // this.$store.dispatch("snackbar/create", {
-      //   text: `You have successfully created a new video, ${video.name}.`
-      // });
+      this.$store.dispatch('snackbar/create', {
+        text: `Der Kontakt für ${this.fullName(contact.id)} wurde angelegt.`
+      })
       this.$router.push(`/admin/contacts/${contact.id}`)
     },
     cancel () { this.$router.push('/admin/contacts') }
