@@ -136,3 +136,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep thead.v-data-table-header {
+    background-color:#F5F5F5;
+    white-space: nowrap;
+}
+</style>

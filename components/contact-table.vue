@@ -103,4 +103,8 @@ export default {
   border-bottom: none !important;
   padding: 0 !important;
 }
+::v-deep thead.v-data-table-header {
+    background-color:#F5F5F5;
+    white-space: nowrap;
+}
 </style>
