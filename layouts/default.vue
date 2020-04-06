@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <Navbar />
-    <v-content>
-      <nuxt />
-    </v-content>
+    <v-content><nuxt /></v-content>
     <v-snackbar
       v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
       :key="snackbar.text + Math.random()"
@@ -23,7 +21,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import Navbar from '@/layouts/navigation'
+import Navbar from '@/layouts/navbar'
 
 export default {
   middleware: 'load-contacts',
