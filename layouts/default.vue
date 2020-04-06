@@ -1,51 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-btn text to="/">
-        <v-icon left>
-          mdi-cake-variant
-        </v-icon> Geburtstage
-      </v-btn>
-      <v-btn text to="/contacts">
-        <v-icon left>
-          mdi-account-group
-        </v-icon>
-        Kontakte
-      </v-btn>
-      <v-btn v-if="$auth.user && $auth.user.admin" text to="/admin/contacts">
-        <v-icon left>
-          mdi-database-edit
-        </v-icon>
-        Admin
-      </v-btn>
-      <v-spacer />
-      <div v-if="$auth.loggedIn">
-        {{ $auth.user.email }}
-        <v-btn text @click="$auth.logout()">
-          Logout
-          <v-icon right>
-            mdi-logout-variant
-          </v-icon>
-        </v-btn>
-      </div>
-      <div v-else>
-        <v-btn text to="/login">
-          <v-icon left>
-            mdi-login-variant
-          </v-icon>
-          Login
-        </v-btn>
-        <v-btn text to="/register">
-          <v-icon left>
-            mdi-account-box-outline
-          </v-icon>
-          Register
-        </v-btn>
-      </div>
-    </v-app-bar>
-    <v-content>
-      <nuxt />
-    </v-content>
+    <Navbar />
+    <v-content><nuxt /></v-content>
     <v-snackbar
       v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
       :key="snackbar.text + Math.random()"
@@ -65,9 +21,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import Navbar from '@/layouts/navbar'
 
 export default {
   middleware: 'load-contacts',
+  components: { Navbar },
   computed: {
     ...mapState({
       snackbars: state => state.snackbar.snackbars
