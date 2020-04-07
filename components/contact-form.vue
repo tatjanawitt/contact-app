@@ -62,9 +62,7 @@
 <script>
 import ContactFormTextfield from '@/components/contact-form-textfield'
 import Datepicker from '@/components/datepicker'
-
 export default {
-  name: 'ContactForm',
   components: {
     ContactFormTextfield,
     Datepicker

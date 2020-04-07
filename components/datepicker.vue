@@ -1,32 +1,20 @@
 <template>
-  <v-menu
-    v-model="menu"
-    :close-on-content-click="false"
-    transition="scale-transition"
-    offset-y
-    max-width="290px"
-    min-width="290px"
+  <v-menu v-model="menu" :close-on-content-click="false"
+          transition="scale-transition" offset-y
+          max-width="290px" min-width="290px"
   >
     <template v-slot:activator="{ on }">
-      <v-text-field
-        v-model="computedDateFormatted"
-        label="Geburtsdatum"
-        prepend-icon="mdi-calendar-search"
-        readonly
-        v-on="on"
+      <v-text-field v-model="computedDateFormatted"
+                    prepend-icon="mdi-calendar-search"
+                    label="Geburtsdatum" readonly v-on="on"
       />
     </template>
-    <v-date-picker
-      v-model="date"
-      no-title
-      @input="menu = false"
-    />
+    <v-date-picker v-model="date" no-title @input="menu = false" />
   </v-menu>
 </template>
-<script>
 
+<script>
 export default {
-  name: 'Datepicker',
   props: {
     fieldname: { type: String, required: true },
     obj: { type: Object, required: true }
@@ -41,9 +29,7 @@ export default {
     }
   },
   computed: {
-    computedDateFormatted () {
-      return this.formatDate(this.date)
-    }
+    computedDateFormatted () { return this.formatDate(this.date) }
   },
   watch: {
     date (val) {

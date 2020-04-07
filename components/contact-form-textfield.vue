@@ -15,9 +15,7 @@
 <script>
 import validations from '@/utils/validations'
 import formFieldConfig from '@/utils/form-field-config'
-
 export default {
-  name: 'ContactFormTextfield',
   props: {
     fieldname: { type: String, required: true },
     obj: { type: Object, required: true }
