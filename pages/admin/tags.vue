@@ -1,13 +1,12 @@
 <template>
   <v-container>
     <v-row class="ma-2">
-      <h1>Stichwort Übersicht</h1>
+      <div class="display-1">
+        Stichwort Übersicht
+      </div>
       <v-spacer />
-      <v-btn class="primary mt-4" @click="startNewTag=!startNewTag">
-        <v-icon left>
-          mdi-tag-plus
-        </v-icon>
-        Neu
+      <v-btn class="primary" @click="startNewTag=!startNewTag">
+        <v-icon left v-text="'mdi-tag-plus'" />Neu
       </v-btn>
     </v-row>
     <v-text-field
@@ -19,7 +18,12 @@
       single-line
       hide-details
     />
-    <v-data-table :items="tags" :headers="headers" :search="search">
+    <v-data-table :items="tags"
+                  :headers="headers"
+                  :search="search"
+                  sort-by="id"
+                  :sort-desc="true"
+    >
       <template v-if="startNewTag" #body.prepend="{}">
         <tr>
           <td>
@@ -54,30 +58,25 @@
       </template>
 
       <template #item.contact_ids.length="{item}">
-        <v-chip
-          v-if="item.contact_ids.length"
-          :to="`/contacts/tags/${item.id}`"
-          :color="btnColor"
-          small dark label
+        <v-chip v-if="item.contact_ids.length"
+                :to="`/contacts/tags/${item.id}`"
+                :color="btnColor"
+                small dark label
         >
-          <v-icon left>
-            mdi-account-multiple
-          </v-icon>
+          <v-icon left v-text="'mdi-account-multiple'" />
           {{ item.contact_ids.length }} - {{ item.name }}
         </v-chip>
       </template>
 
       <template #item.actions="{ item }">
         <v-btn small class="primary" @click="setToEditing(item)">
-          <v-icon>mdi-pencil</v-icon>
+          <v-icon v-text="'mdi-pencil'" />
         </v-btn>
-        <v-btn
-          small
-          class="primary"
-          :disabled="item.contact_ids.length > 0"
-          @click="deleteTag(item)"
+        <v-btn small class="primary"
+               :disabled="item.contact_ids.length > 0"
+               @click="deleteTag(item)"
         >
-          <v-icon>mdi-delete-alert</v-icon>
+          <v-icon v-text="'mdi-delete-alert'" />
         </v-btn>
       </template>
     </v-data-table>
@@ -86,7 +85,6 @@
 
 <script>
 import { mapState } from 'vuex'
-
 export default {
   data () {
     return {
@@ -98,9 +96,7 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      tags: state => state.tags.tags
-    }),
+    ...mapState({ tags: state => state.tags.tags }),
     headers () {
       return [
         { text: 'Id', value: 'id' },

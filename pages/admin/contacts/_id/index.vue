@@ -20,13 +20,13 @@
       <v-col cols="12" sm="4" md="3">
         <div class="mt-4 d-flex justify-end">
           <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
-            <v-icon>mdi-card-account-details</v-icon>
+            <v-icon v-text="'mdi-card-account-details'" />
           </v-btn>
           <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
-            <v-icon>mdi-account-edit</v-icon>
+            <v-icon v-text="'mdi-account-edit'" />
           </v-btn>
           <v-btn class="primary" :to="`/admin/contacts`">
-            <v-icon>mdi-table-eye</v-icon>
+            <v-icon v-text="'mdi-table-eye'" />
           </v-btn>
         </div>
       </v-col>
@@ -34,13 +34,11 @@
     <v-row justify="center">
       <v-col cols="12" sm="10">
         <v-card>
-          <v-card-title class="indigo lighten-2">
+          <v-card-title class="secondary">
             <v-avatar v-if="contact.img" size="70px">
               <v-img :src="contact.img" />
             </v-avatar>
-            <span class="headline white--text ml-4">
-              {{ fullName }}
-            </span>
+            <span class="headline white--text ml-4" v-text="fullName" />
             <v-spacer />
             <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
           </v-card-title>
@@ -56,16 +54,13 @@ import { mapState, mapGetters } from 'vuex'
 import _ from 'lodash'
 import ContactDetail from '@/components/contact-detail'
 import ContactRating from '@/components/contact-rating'
-
 export default {
   components: {
     ContactDetail,
     ContactRating
   },
   computed: {
-    ...mapState({
-      tags: state => state.tags.tags
-    }),
+    ...mapState({ tags: state => state.tags.tags }),
     ...mapGetters({
       getTag: 'tags/get',
       getContact: 'contacts/get',

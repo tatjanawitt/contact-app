@@ -1,26 +1,19 @@
 <template>
   <v-container>
-    <h1>Kontakt ändern</h1>
-    <ContactForm
-      :contact="contact"
-      :save-contact="update"
-      :cancel-action="cancel"
-    />
+    <div class="display-1 ma-4 d-flex justify-center">
+      Kontakt ändern
+    </div>
+    <ContactForm :contact="contact" :save-contact="update" :cancel-action="cancel" />
   </v-container>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 import ContactForm from '@/components/contact-form'
-
 export default {
-  components: {
-    ContactForm
-  },
+  components: { ContactForm },
   computed: {
-    ...mapState({
-      contacts: state => state.contacts.contacts
-    }),
+    ...mapState({ contacts: state => state.contacts.contacts }),
     ...mapGetters({
       getContact: 'contacts/get',
       fullName: 'contacts/getFullName'
@@ -37,9 +30,7 @@ export default {
       })
       this.$router.push(`/admin/contacts/${contact.id}`)
     },
-    cancel () {
-      this.$router.push('/admin/contacts')
-    }
+    cancel () { this.$router.push('/admin/contacts') }
   }
 }
 </script>
