@@ -13,11 +13,11 @@
       :items="mungedContacts"
       :headers="headers"
       :search="search"
+      :custom-filter="filter"
       show-expand
       sort-by="sortable"
       @click:row="goToContact"
     >
-      <!--p> :custom-filter="filter"</p-->
       <template #item.tags="{item}">
         <td class="non-clickable" @click.stop>
           <TagsBar :contact="item" />
@@ -51,12 +51,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import _ from 'lodash'
 import TagsBar from '@/components/tags-bar'
 import ContactTableExpandItem from '@/components/contact-table-expand-item'
 
 export default {
-  name: 'ContactTable',
   components: {
     ContactTableExpandItem,
     TagsBar
@@ -81,16 +79,14 @@ export default {
     goToContact (contact) {
       this.$router.push(`/contacts/detail/${contact.id}`)
     },
-    // filter (value, search, item) {
-    //   const inName = RegExp(search, 'i').test(item.fName)
-
-    //   const tagMatches = item.tag_ids.map(id =>
-    //     RegExp(search, 'i').test(this.getTag(id).name)
-    //   )
-    //   const inTags = _.some(tagMatches)
-
-    //   return inName || inTags
-    // },
+    filter (value, search, item) {
+      const inFirstname = RegExp(search, 'i').test(item.fName)
+      const inLastname = RegExp(search, 'i').test(item.lName)
+      const inPlace = RegExp(search, 'i').test(item.place)
+      const inTags = item.tag_ids.some(id =>
+        RegExp(search, 'i').test(this.getTag(id).name))
+      return inFirstname || inLastname || inPlace || inTags
+    },
     deleteContact (contact) {
       const fullName = this.getFullName(contact.id)
       if (confirm(

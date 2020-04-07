@@ -55,7 +55,7 @@ export default {
   }),
   computed: {
     contactList () {
-      if (this.search && this.search.length > 2) {
+      if (this.search) {
         return this.contacts.filter(c =>
           c.lName.toLowerCase().includes(this.search.toLowerCase()) ||
           c.fName.toLowerCase().includes(this.search.toLowerCase()) ||
