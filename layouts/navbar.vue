@@ -1,9 +1,8 @@
 <template>
   <div>
     <v-app-bar text dense class="secondary" dark app>
-      <v-app-bar-nav-icon
-        class="hidden-md-and-up"
-        @click.stop="drawer = !drawer"
+      <v-app-bar-nav-icon class="hidden-md-and-up"
+                          @click.stop="drawer = !drawer"
       />
       <span class="hidden-sm-and-down">
         <span v-for="item in items" :key="item.icon + Math.random()">
@@ -34,11 +33,7 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute temporary
-      class="secondary" dark
-    >
+    <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
       <v-list class="d-flex flex-column">
         <div v-for="item in items" :key="item.icon + Math.random()" class="d-flex flex-column">
           <v-btn class="justify-start" x-large text :to="item.route">

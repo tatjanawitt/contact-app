@@ -8,9 +8,7 @@
 </template>
 
 <script>
-'use strict'
 import ContactBirthday from '@/components/contact-birthday'
-
 export default {
   components: { ContactBirthday },
   computed: {

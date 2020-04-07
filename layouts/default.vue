@@ -12,9 +12,7 @@
       @input="removeSnackbar(snackbar)"
     >
       {{ snackbar.text }}
-      <v-btn text @click="removeSnackbar(snackbar)">
-        Close
-      </v-btn>
+      <v-btn text @click="removeSnackbar(snackbar)" v-text="'Close'" />
     </v-snackbar>
   </v-app>
 </template>
@@ -22,7 +20,6 @@
 <script>
 import { mapState } from 'vuex'
 import Navbar from '@/layouts/navbar'
-
 export default {
   middleware: 'load-contacts',
   components: { Navbar },

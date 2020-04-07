@@ -1,3 +1,4 @@
+'use strict'
 export default async ({ $auth, redirect, store }) => {
   const user = await $auth.user
   if (user && user.admin) {
