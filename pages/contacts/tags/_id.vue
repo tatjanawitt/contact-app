@@ -8,14 +8,10 @@
 </template>
 
 <script>
-'use strict'
 import { mapState } from 'vuex'
 import ContactList from '@/components/contact-list'
-
 export default {
-  components: {
-    ContactList
-  },
+  components: { ContactList },
   computed: {
     ...mapState({
       contacts: state => state.contacts.contacts,

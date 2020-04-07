@@ -2,18 +2,14 @@
   <v-row justify="center">
     <v-col cols="12" sm="8">
       <v-card>
-        <v-card-title class="indigo lighten-2">
+        <v-card-title class="secondary">
           <v-badge :value="birthday" color="red darken-2" :content="age">
             <span class="headline white--text">
               {{ fullName }}
             </span>
           </v-badge>
           <v-spacer />
-          <ContactRating
-            :rating="contact.rating"
-            :readonly="false"
-            :large="true"
-          />
+          <ContactRating :rating="contact.rating" :readonly="false" :large="true" />
         </v-card-title>
         <ContactDetail :contact="contact" :show-footer="true" />
       </v-card>
@@ -22,11 +18,9 @@
 </template>
 
 <script>
-'use strict'
 import { mapGetters } from 'vuex'
 import ContactDetail from '@/components/contact-detail'
 import ContactRating from '@/components/contact-rating'
-
 export default {
   components: {
     ContactDetail,
