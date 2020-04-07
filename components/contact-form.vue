@@ -100,6 +100,13 @@ export default {
     },
     save () {
       this.saveContact({
+        born: '',
+        street: '',
+        zip: '',
+        place: '',
+        fon: '',
+        mobil: '',
+        img: '',
         ...this.contactData,
         rating: parseInt(this.contactData.rating) || 0
       })

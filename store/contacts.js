@@ -96,7 +96,7 @@ export const getters = {
   },
   getAddress: (state, getters) => (id) => {
     const c = getters.get(id)
-    return `${c.street}, ${c.zip} ${c.place}`
+    return `${c.street || ''} ${c.street ? ',' : ''} ${c.zip || ''} ${c.place || ''}` || ''
   },
   getDateFormat: (state, getters) => (id) => {
     const c = getters.get(id)
