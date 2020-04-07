@@ -12,10 +12,14 @@ const emailFormat = () => {
   const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,24})+$/
   return v => (v && regex.test(v)) || 'Bitte eine gültige Email eintragen.'
 }
+const zipFormat = () => {
+  return v => !v || /^[0-9]{5}?$/.test(v) || 'Bitte eine gültige PLZ eintragen.'
+}
 
 export default {
   required,
   minLength,
   maxLength,
-  emailFormat
+  emailFormat,
+  zipFormat
 }

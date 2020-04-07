@@ -46,14 +46,13 @@ const contactForm = [
     value: 'zip',
     icon: 'mdi-map-marker',
     max: '5',
-    rules: []
+    rules: [v.zipFormat()]
   },
   {
     text: 'Ort',
     value: 'place',
     icon: 'mdi-home-city',
-    max: '50',
-    rules: []
+    max: '50'
   },
   {
     text: 'Bild (URL)',
@@ -64,8 +63,7 @@ const contactForm = [
     text: 'Bewertung (1-5)',
     value: 'rating',
     icon: 'mdi-heart',
-    max: '1',
-    rules: []
+    max: '1'
   }
 ]
 

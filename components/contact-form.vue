@@ -44,10 +44,9 @@
             v-model="contactData.rating"
             label="Bewertung"
             prepend-icon="mdi-heart"
-            min="0" max="5"
-            maxlength="1"
-            type="number"
             hint="0-5 Herzen"
+            min="0" max="5" maxlength="1"
+            :rules="ratingRule"
           />
         </v-col>
         <v-col cols="12" sm="10">
@@ -91,7 +90,8 @@ export default {
   data () {
     return {
       valid: false,
-      contactData: { ...this.contact }
+      contactData: { ...this.contact },
+      ratingRule: [v => !v || /^[0-5]{1}[\W_]?$/.test(v) || 'Zahl <= 5']
     }
   },
   methods: {
