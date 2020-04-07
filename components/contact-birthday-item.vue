@@ -15,21 +15,16 @@
       </v-row>
     </v-list-item-content>
     <v-list-item-icon>
-      <v-icon :color="birthdayToday ? 'red darken-2':'grey lighten-1'">
-        mdi-cake-variant
-      </v-icon>
+      <v-icon :color="color" v-text="'mdi-cake-variant'" />
     </v-list-item-icon>
   </v-list-item>
 </template>
 
 <script>
-'use strict'
 import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import TagsBar from '@/components/tags-bar'
-
 export default {
-  name: 'ContactBirthdayItem',
   components: {
     ContactRating,
     TagsBar
@@ -46,9 +41,6 @@ export default {
     age () {
       return this.getAge(this.contact.id)
     },
-    birthdayToday () {
-      return this.getBirthdayToday(this.contact.id)
-    },
     imgPlaceholder () {
       return this.getImagePlaceholder()
     },
@@ -58,6 +50,9 @@ export default {
           day: 'numeric'
         })} wird <b>${this.contact.fName} ${this.contact.lName
         }</b> ${this.age + 1}`
+    },
+    color () {
+      return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'
     }
   },
   methods: {

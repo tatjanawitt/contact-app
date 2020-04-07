@@ -21,12 +21,9 @@
 </template>
 
 <script>
-'use strict'
 import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contact-birthday-item'
-
 export default {
-  name: 'ContactBirthday',
   components: { ContactBirthdayItem },
   data () {
     return { panel: 0 }

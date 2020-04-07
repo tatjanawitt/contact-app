@@ -9,12 +9,11 @@
     <ContactDetailItem icon="mdi-map-marker" :content="address" />
     <v-divider inset />
     <ContactDetailItem icon="mdi-cake-variant" :content="birthday" :color="color" />
-
     <span v-if="showFooter">
       <v-divider inset />
       <v-list-item>
         <v-list-item-action>
-          <v-icon>mdi-tag-multiple</v-icon>
+          <v-icon v-text="'mdi-tag-multiple'" />
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title class="text-wrap">
@@ -28,13 +27,10 @@
 </template>
 
 <script>
-'use strict'
 import { mapGetters } from 'vuex'
 import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
-
 export default {
-  name: 'ContactDetail',
   components: {
     ContactDetailItem,
     TagsBar

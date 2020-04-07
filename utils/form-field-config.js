@@ -63,7 +63,8 @@ const contactForm = [
     text: 'Bewertung (1-5)',
     value: 'rating',
     icon: 'mdi-heart',
-    max: '1'
+    max: '1',
+    rules: [v.ratingFormat()]
   }
 ]
 

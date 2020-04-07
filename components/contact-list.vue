@@ -8,51 +8,32 @@
       class="mb-3"
       hide-details
     />
-    <v-sheet
-      v-if="contactList && contactList.length"
-      class="mx-auto"
-      elevation="8"
+    <v-sheet v-if="contactList && contactList.length"
+             class="mx-auto" elevation="8"
     >
-      <v-slide-group
-        v-model="model"
-        class="pa-4"
-        active-class="success"
-        show-arrows
+      <v-slide-group v-model="model" class="pa-4"
+                     active-class="success" show-arrows
       >
         <v-slide-item v-for="c in contactList" :key="c.id">
           <ContactListItem :contact="c" />
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-    <v-alert
-      v-else
-      color="indigo lighten-2"
-      dark
-      border="top"
-      icon="mdi-database-search"
-      transition="scale-transition"
-    >
-      Keine Kontakte gefunden!
-    </v-alert>
+    <v-alert v-else class="secondary" dark border="top"
+             icon="mdi-database-search" transition="scale-transition"
+             v-text="'Keine Kontakte gefunden!'"
+    />
   </div>
 </template>
 
 <script>
-'use strict'
 import ContactListItem from '@/components/contact-list-item'
-
 export default {
-  name: 'ContactList',
-  components: {
-    ContactListItem
-  },
+  components: { ContactListItem },
   props: {
     contacts: { type: Array, required: true }
   },
-  data: () => ({
-    model: null,
-    search: null
-  }),
+  data: () => ({ model: null, search: null }),
   computed: {
     contactList () {
       if (this.search) {

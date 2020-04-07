@@ -16,10 +16,14 @@ const zipFormat = () => {
   return v => !v || /^[0-9]{5}?$/.test(v) || 'Bitte eine gültige PLZ eintragen.'
 }
 
+const ratingFormat = () => {
+  return v => !v || /^[0-5]{1}[\W_]?$/.test(v) || 'Zahl <= 5'
+}
 export default {
   required,
   minLength,
   maxLength,
   emailFormat,
-  zipFormat
+  zipFormat,
+  ratingFormat
 }

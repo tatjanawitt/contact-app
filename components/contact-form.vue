@@ -40,14 +40,7 @@
       </v-row>
       <v-row>
         <v-col cols="12" sm="2">
-          <v-text-field
-            v-model="contactData.rating"
-            label="Bewertung"
-            prepend-icon="mdi-heart"
-            hint="0-5 Herzen"
-            min="0" max="5" maxlength="1"
-            :rules="ratingRule"
-          />
+          <ContactFormTextfield :obj="contactData" fieldname="rating" />
         </v-col>
         <v-col cols="12" sm="10">
           <ContactFormTextfield :obj="contactData" fieldname="img" />
@@ -56,16 +49,10 @@
       <small>* Plichtfelder müssen ausgefüllt werden.</small>
       <v-row class="d-flex justify-end">
         <v-btn class="mr-2 secondary" @click="cancel">
-          <v-icon left>
-            mdi-close-box
-          </v-icon>
-          Abbrechen
+          <v-icon left v-text="'mdi-close-box'" />Abbrechen
         </v-btn>
         <v-btn :disabled="!valid" class="primary" @click="save">
-          <v-icon left>
-            mdi-content-save
-          </v-icon>
-          Speichern
+          <v-icon left v-text="'mdi-content-save'" />Speichern
         </v-btn>
       </v-row>
     </v-container>
@@ -90,8 +77,7 @@ export default {
   data () {
     return {
       valid: false,
-      contactData: { ...this.contact },
-      ratingRule: [v => !v || /^[0-5]{1}[\W_]?$/.test(v) || 'Zahl <= 5']
+      contactData: { ...this.contact }
     }
   },
   methods: {

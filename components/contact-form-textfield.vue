@@ -45,7 +45,8 @@ export default {
         i.value === this.fieldname).max || this.defaultMaxlength
     },
     rules () {
-      return this.fieldConfig.find(i => i.value === this.fieldname).rules
+      return this.fieldConfig.find(i =>
+        i.value === this.fieldname).rules
     }
   },
   methods: {

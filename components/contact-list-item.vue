@@ -1,49 +1,28 @@
 <template>
   <v-card width="300px" hover class="ma-2">
     <nuxt-link :to="{ path: `/contacts/detail/${contact.id}`}">
-      <v-img
-        :src="contact.img || imgPlaceholder"
-        height="200px"
-        class="white--text align-end"
+      <v-img :src="contact.img || imgPlaceholder" height="200px"
+             class="white--text align-end"
       >
         <v-card-title class="justify-center">
-          <v-badge
-            :value="birthday"
-            color="red darken-2"
-            :content="age"
-            overlap
-          >
-            <v-btn text dark>
-              {{ fullName }}
-            </v-btn>
+          <v-badge :value="bToday" :color="color" :content="age" overlap>
+            <v-btn text dark v-text="fullName" />
           </v-badge>
         </v-card-title>
       </v-img>
-
       <v-card-subtitle>
         <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
         <ContactDetailItem icon="mdi-email" :content="contact.email" />
       </v-card-subtitle>
       <v-divider class="mx-4" />
-
       <v-card-text class="py-0">
         <v-row>
-          <ContactRating
-            :rating="contact.rating"
-            :readonly="true"
-            :large="false"
-          />
+          <ContactRating :rating="contact.rating" :readonly="true" :large="false" />
           <v-spacer />
-          <v-icon
-            :color="birthday ? 'red darken-2' : 'grey lighten-1'"
-            class="mr-3"
-          >
-            mdi-cake-variant
-          </v-icon>
+          <v-icon :color="color" class="mr-3" v-text="'mdi-cake-variant'" />
         </v-row>
       </v-card-text>
     </nuxt-link>
-
     <v-divider class="mx-4" />
     <v-card-actions>
       <TagsBar :contact="contact" />
@@ -52,14 +31,12 @@
 </template>
 
 <script>
-'use strict'
 import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
 
 export default {
-  name: 'ContactListItem',
   components: {
     ContactRating,
     ContactDetailItem,
@@ -81,11 +58,14 @@ export default {
     imgPlaceholder () {
       return this.getImagePlaceholder()
     },
-    birthday () {
+    bToday () {
       return this.getBirthdayToday(this.contact.id)
     },
     age () {
       return this.getAge(this.contact.id)
+    },
+    color () {
+      return this.bToday ? 'red darken-2' : 'grey'
     }
   }
 }
