@@ -1,24 +1,24 @@
 <template>
   <div>
-    <v-app-bar text app>
+    <v-app-bar text dense class="secondary" dark app>
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
         @click.stop="drawer = !drawer"
       />
-      <v-layout class="hidden-sm-and-down">
-        <div v-for="item in items" :key="item.icon + Math.random()">
-          <v-btn large text :to="item.route">
+      <span class="hidden-sm-and-down">
+        <span v-for="item in items" :key="item.icon + Math.random()">
+          <v-btn large text tile :to="item.route">
             <v-icon left v-text="item.icon" />{{ item.text }}
           </v-btn>
-        </div>
-        <v-btn v-if="$auth.user && $auth.user.admin" large text :to="admin.route">
+        </span>
+        <v-btn v-if="$auth.user && $auth.user.admin" large tile text :to="admin.route">
           <v-icon left v-text="admin.icon" />{{ admin.text }}
         </v-btn>
-      </v-layout>
+      </span>
 
       <v-spacer />
       <div v-if="$auth.loggedIn">
-        <v-btn large text>
+        <v-btn large text tile>
           <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
         </v-btn>
         <v-btn large text @click="$auth.logout()">
@@ -27,7 +27,7 @@
       </div>
       <div v-else>
         <span v-for="item in users" :key="item.icon + Math.random()">
-          <v-btn large text :to="item.route">
+          <v-btn large text tile :to="item.route">
             <v-icon left v-text="item.icon" />{{ item.text }}
           </v-btn>
         </span>
@@ -37,6 +37,7 @@
     <v-navigation-drawer
       v-model="drawer"
       absolute temporary
+      class="secondary" dark
     >
       <v-list class="d-flex flex-column">
         <div v-for="item in items" :key="item.icon + Math.random()" class="d-flex flex-column">
