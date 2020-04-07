@@ -5,12 +5,12 @@
         v-if="hasName"
         v-model="userInfo.name"
         label="Name"
-        :rules="[required('name'), minLength('password', 3)]"
+        :rules="[required('Name'), minLength('Name', 3)]"
       />
       <v-text-field
         v-model="userInfo.email"
         label="Email"
-        :rules="[required('email'), emailFormat()]"
+        :rules="[required('Email'), emailFormat()]"
       />
       <v-text-field
         v-model="userInfo.password"
@@ -18,7 +18,7 @@
         :type="showPassword ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         counter="true"
-        :rules="[required('password'), minLength('password', 8)]"
+        :rules="[required('Password'), minLength('Password', 8)]"
         @click:append="showPassword = !showPassword"
       />
       <v-btn :disabled="!valid" class="primary" @click="submitForm(userInfo)">

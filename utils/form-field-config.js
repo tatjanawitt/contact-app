@@ -1,24 +1,27 @@
+import v from '@/utils/validations'
 const contactForm = [
   {
-    text: 'Vorname',
+    text: 'Vorname*',
     value: 'fName',
     icon: 'mdi-account-heart',
     max: '30',
-    min: '3'
+    min: '3',
+    rules: [v.required('Vorname'), v.minLength('Vorname', 3)]
   },
   {
-    text: 'Nachname',
+    text: 'Nachname*',
     value: 'lName',
     icon: 'mdi-human-male-boy',
     max: '30',
-    min: '3'
+    min: '3',
+    rules: [v.required('Nachname'), v.minLength('Nachname', 3)]
   },
   {
-    text: 'Email',
+    text: 'Email*',
     value: 'email',
     icon: 'mdi-email',
     max: '50',
-    min: '7'
+    rules: [v.required('Email'), v.emailFormat()]
   },
   {
     text: 'Telefon',
@@ -42,13 +45,15 @@ const contactForm = [
     text: 'Postleitzahl',
     value: 'zip',
     icon: 'mdi-map-marker',
-    max: '5'
+    max: '5',
+    rules: []
   },
   {
     text: 'Ort',
     value: 'place',
     icon: 'mdi-home-city',
-    max: '50'
+    max: '50',
+    rules: []
   },
   {
     text: 'Bild (URL)',
@@ -59,7 +64,8 @@ const contactForm = [
     text: 'Bewertung (1-5)',
     value: 'rating',
     icon: 'mdi-heart',
-    max: '1'
+    max: '1',
+    rules: []
   }
 ]
 

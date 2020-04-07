@@ -7,6 +7,7 @@
     :prepend-icon="icon"
     clearable
     :hint="defaultHint"
+    :rules="rules"
     @change="changeValue"
   />
 </template>
@@ -42,11 +43,10 @@ export default {
     maxlength () {
       return this.fieldConfig.find(i =>
         i.value === this.fieldname).max || this.defaultMaxlength
+    },
+    rules () {
+      return this.fieldConfig.find(i => i.value === this.fieldname).rules
     }
-    // rules () {
-    //   return this.fieldConfig.find(i => i.value === this.fieldname).min
-    //     ? this.minLength(this.fieldConfig.find(i => i.value === this.fieldname).min) : this.noRule()
-    // }
   },
   methods: {
     changeValue () {
