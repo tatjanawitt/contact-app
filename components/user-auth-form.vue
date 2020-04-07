@@ -5,7 +5,7 @@
         v-if="hasName"
         v-model="userInfo.name"
         label="Name"
-        :rules="[required('name')]"
+        :rules="[required('name'), minLength('password', 3)]"
       />
       <v-text-field
         v-model="userInfo.email"
