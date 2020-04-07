@@ -16,6 +16,7 @@
       :custom-filter="filter"
       show-expand
       sort-by="sortable"
+      :sort-desc="true"
       @click:row="goToContact"
     >
       <template #item.tags="{item}">
@@ -26,22 +27,18 @@
       <template #item.actions="{item}">
         <td class="non-clickable" @click.stop>
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}`">
-            <v-icon>mdi-tag-plus</v-icon>
+            <v-icon v-text="'mdi-tag-plus'" />
           </v-btn>
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
-            <v-icon>
-              mdi-pencil
-            </v-icon>
+            <v-icon v-text="'mdi-pencil'" />
           </v-btn>
           <v-btn small class="primary" @click="deleteContact(item)">
-            <v-icon>
-              mdi-delete-alert
-            </v-icon>
+            <v-icon v-text="'mdi-delete-alert'" />
           </v-btn>
         </td>
       </template>
       <template #expanded-item="{item}">
-        <td :colspan="headers.length+1" class="non-clickable" @click.stop>
+        <td :colspan="headers.length + 1" class="non-clickable" @click.stop>
           <ContactTableExpandItem :contact="item" />
         </td>
       </template>
@@ -53,7 +50,6 @@
 import { mapGetters } from 'vuex'
 import TagsBar from '@/components/tags-bar'
 import ContactTableExpandItem from '@/components/contact-table-expand-item'
-
 export default {
   components: {
     ContactTableExpandItem,
@@ -63,16 +59,14 @@ export default {
     contacts: { type: Array, required: true },
     headers: { type: Array, required: true }
   },
-  data () {
-    return { search: '' }
-  },
+  data () { return { search: '' } },
   computed: {
     ...mapGetters({
       getTag: 'tags/get',
       getFullName: 'contacts/getFullName'
     }),
     mungedContacts () {
-      return this.contacts.map(c => ({ ...c, sortable: c.lName }))
+      return this.contacts.map(c => ({ ...c, sortable: c.id }))
     }
   },
   methods: {

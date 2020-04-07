@@ -1,31 +1,21 @@
 <template>
   <v-form v-model="valid">
     <div @keydown.enter="submitForm(userInfo)">
-      <v-text-field
-        v-if="hasName"
-        v-model="userInfo.name"
-        label="Name"
-        :rules="[required('Name'), minLength('Name', 3)]"
+      <v-text-field v-if="hasName" v-model="userInfo.name" label="Name"
+                    :rules="[required('Name'), minLength('Name', 3)]"
       />
-      <v-text-field
-        v-model="userInfo.email"
-        label="Email"
-        :rules="[required('Email'), emailFormat()]"
+      <v-text-field v-model="userInfo.email" label="Email"
+                    :rules="[required('Email'), emailFormat()]"
       />
-      <v-text-field
-        v-model="userInfo.password"
-        label="Password"
-        :type="showPassword ? 'text' : 'password'"
-        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        counter="true"
-        :rules="[required('Password'), minLength('Password', 8)]"
-        @click:append="showPassword = !showPassword"
+      <v-text-field v-model="userInfo.password" label="Password"
+                    :type="showPassword ? 'text' : 'password'"
+                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                    counter="true"
+                    :rules="[required('Password'), minLength('Password', 8)]"
+                    @click:append="showPassword = !showPassword"
       />
       <v-btn :disabled="!valid" class="primary" @click="submitForm(userInfo)">
-        <v-icon left>
-          {{ iconType }}
-        </v-icon>
-        {{ buttonText }}
+        <v-icon left v-text="iconType" />{{ buttonText }}
       </v-btn>
     </div>
   </v-form>
@@ -33,33 +23,18 @@
 
 <script>
 import validations from '@/utils/validations'
-
 export default {
-  name: 'UserAuthForm',
   props: {
-    submitForm: {
-      type: Function,
-      required: true
-    },
-    buttonText: {
-      type: String,
-      required: true
-    },
-    iconType: {
-      type: String,
-      required: true
-    },
+    submitForm: { type: Function, required: true },
+    buttonText: { type: String, required: true },
+    iconType: { type: String, required: true },
     hasName: Boolean
   },
   data () {
     return {
       valid: false,
       showPassword: false,
-      userInfo: {
-        name: '',
-        email: '',
-        password: ''
-      },
+      userInfo: { name: '', email: '', password: '' },
       ...validations
     }
   }

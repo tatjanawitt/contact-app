@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'ContactRating',
   props: {
     rating: { type: Number, required: true },
     readonly: { type: Boolean, required: true },

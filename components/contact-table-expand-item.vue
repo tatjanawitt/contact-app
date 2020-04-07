@@ -2,7 +2,9 @@
   <nuxt-link :to="`/admin/contacts/${contact.id}/edit`">
     <v-row class="px-6">
       <v-col cols="12" sm="5" md="4">
-        <v-img :src="contact.img || imgPlaceholder" max-width="300px" max-height="250px" />
+        <v-img :src="contact.img || imgPlaceholder"
+               max-width="300px" max-height="250px"
+        />
         <ContactRating :rating="contact.rating" :readonly="true" :large="true" />
       </v-col>
       <v-col cols="12" sm="7" md="8">
@@ -13,13 +15,10 @@
 </template>
 
 <script>
-'use strict'
 import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetail from '@/components/contact-detail'
-
 export default {
-  name: 'ContactTableExpandItem',
   components: {
     ContactRating,
     ContactDetail
@@ -31,9 +30,7 @@ export default {
     ...mapGetters({
       getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
-    imgPlaceholder () {
-      return this.getImagePlaceholder()
-    }
+    imgPlaceholder () { return this.getImagePlaceholder() }
   }
 }
 </script>
