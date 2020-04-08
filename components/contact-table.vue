@@ -2,7 +2,7 @@
   <div>
     <v-text-field
       v-model="search"
-      class="mb-3"
+      class="mb-6"
       label="Kontakte suchen"
       clearable
       append-icon="mdi-magnify"

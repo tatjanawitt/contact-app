@@ -12,7 +12,7 @@
     <v-text-field
       v-model="search"
       label="Tags suchen"
-      class="mb-3"
+      class="mb-6"
       clearable
       append-icon="mdi-magnify"
       single-line

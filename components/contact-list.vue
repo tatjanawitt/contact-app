@@ -5,7 +5,7 @@
       append-icon="mdi-account-search"
       label="Name oder Ort suchen"
       clearable
-      class="mb-3"
+      class="mb-6"
       hide-details
     />
     <v-sheet v-if="contactList && contactList.length"
@@ -21,8 +21,9 @@
     </v-sheet>
     <v-alert v-else class="secondary" dark border="top"
              icon="mdi-database-search" transition="scale-transition"
-             v-text="'Keine Kontakte gefunden!'"
-    />
+    >
+      Keine Kontakte gefunden!
+    </v-alert>
   </div>
 </template>
 
