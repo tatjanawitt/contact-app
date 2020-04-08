@@ -23,7 +23,7 @@ export default {
         this.$store.dispatch('snackbar/create', {
           text: `Dein Login war erfolgreich, ${this.$auth.user.name}`
         })
-        this.$router.push('/')
+        this.$router.push('/birthdays')
       } catch {
         this.$store.dispatch('snackbar/create', {
           color: 'red',

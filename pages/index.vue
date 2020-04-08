@@ -1,18 +1,26 @@
 <template>
   <v-container>
     <div class="display-2 ma-4 d-flex justify-center">
-      Geburtstage {{ nowYear }}
+      Willkommen
+      <div v-if="$auth.loggedIn" to="/birthdays" />
+      <div v-else to="/login">
+        <v-btn to="/login">
+          login
+        </v-btn>
+        <v-btn to="/register">
+          register
+        </v-btn>
+      </div>
     </div>
-    <ContactBirthday />
   </v-container>
 </template>
 
 <script>
-import ContactBirthday from '@/components/contact-birthday'
 export default {
-  components: { ContactBirthday },
-  computed: {
-    nowYear () { return new Date().getFullYear() }
+  methods: {
+    goToLogin () {
+      this.this.$router.push('/login')
+    }
   }
 }
 </script>

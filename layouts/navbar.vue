@@ -1,6 +1,9 @@
 <template>
   <div>
     <v-app-bar text dense class="secondary" dark app>
+      <v-avatar size="36px" class="mr-2">
+        <v-img src="https://cdn.pixabay.com/photo/2015/11/03/08/58/meeting-1019875__340.jpg" />
+      </v-avatar>
       <v-app-bar-nav-icon class="hidden-md-and-up"
                           @click.stop="drawer = !drawer"
       />
@@ -56,13 +59,14 @@ export default {
     return {
       drawer: false,
       items: [
-        { text: 'Geburtstage', icon: 'mdi-cake-variant', route: '/' },
+        { text: 'Start', icon: 'mdi-home', route: '/' },
+        { text: 'Geburtstage', icon: 'mdi-cake-variant', route: '/birthdays' },
         { text: 'Kontakte', icon: 'mdi-account-group', route: '/contacts' }
       ],
       admin: { text: 'Admin', icon: 'mdi-database-edit', route: '/admin/contacts' },
       users: [
         { text: 'Login', icon: 'mdi-login-variant', route: '/login' },
-        { text: 'Register', icon: ' mdi-account-box-outline', route: '/register' }
+        { text: 'Register', icon: 'mdi-account-box-outline', route: '/register' }
       ]
     }
   }

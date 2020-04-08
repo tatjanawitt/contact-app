@@ -5,7 +5,7 @@
         <v-icon left v-text="'mdi-account-multiple'" />Kontakte
       </v-tab>
       <v-tab to="/admin/tags">
-        <v-icon left v-text="' mdi-tag-multiple'" />Stichworte
+        <v-icon left v-text="'mdi-tag-multiple'" />Stichworte
       </v-tab>
     </v-tabs>
     <router-view />
