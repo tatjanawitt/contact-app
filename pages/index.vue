@@ -20,7 +20,7 @@ export default {
     }),
     content () {
       if (this.$auth.loggedIn) {
-        const list = this.contacts.filter(c => c.img.length > 0)
+        const list = this.contacts.filter(c => c.img.length > 0 && c.rating > 3)
         return {
           title: `Hi ${this.$auth.user.name}!`,
           sub: 'Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten.',
