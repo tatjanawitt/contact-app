@@ -21,6 +21,13 @@
         </v-btn>
       </span>
 
+      <!--nuxt-link :to="`${$t('links.home')}?lang=${state.locale}`">
+        {{ $t('navs.about.title') }}
+      </nuxt-link>
+      <v-btn @click="changeLang(lang)">
+        {{ $t('home.title') }}
+      </v-btn-->
+
       <v-spacer />
       <div v-if="$auth.loggedIn">
         <v-btn class="hidden-sm-and-down" large text tile>
@@ -88,6 +95,14 @@ export default {
         { text: 'Login', icon: 'mdi-login-variant', route: '/login' },
         { text: 'Register', icon: 'mdi-account-box-outline', route: '/register' }
       ]
+    }
+  },
+  methods: {
+    changeLang (lang) {
+      // mutate 'locale' in store
+      this.$store.commit('SET_LANG', lang)
+      // re-route to the current page but with the selected language in a query string
+      this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
     }
   }
 }
