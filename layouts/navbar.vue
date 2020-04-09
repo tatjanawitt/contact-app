@@ -8,8 +8,11 @@
                           @click.stop="drawer = !drawer"
       />
       <span class="hidden-sm-and-down">
+        <v-btn large tile text :to="start.route">
+          <v-icon left v-text="start.icon" />{{ start.text }}
+        </v-btn>
         <span v-for="item in items" :key="item.icon + Math.random()">
-          <v-btn large text tile :to="item.route">
+          <v-btn v-if="$auth.user" large text tile :to="item.route">
             <v-icon left v-text="item.icon" />{{ item.text }}
           </v-btn>
         </span>
@@ -38,11 +41,15 @@
 
     <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
       <v-list class="d-flex flex-column">
+        <v-btn class="justify-start" x-large text :to="start.route">
+          <v-icon left v-text="start.icon" />{{ start.text }}
+        </v-btn>
+        <v-divider class="mx-4" />
         <div v-for="item in items" :key="item.icon + Math.random()" class="d-flex flex-column">
-          <v-btn class="justify-start" x-large text :to="item.route">
+          <v-btn v-if="$auth.user" class="justify-start" x-large text :to="item.route">
             <v-icon left v-text="item.icon" />{{ item.text }}
           </v-btn>
-          <v-divider class="mx-4" />
+          <v-divider v-if="$auth.user" class="mx-4" />
         </div>
         <v-btn v-if="$auth.user && $auth.user.admin" class="justify-start" x-large text :to="admin.route">
           <v-icon left v-text="admin.icon" />{{ admin.text }}
@@ -58,8 +65,8 @@ export default {
   data () {
     return {
       drawer: false,
+      start: { text: 'Start', icon: 'mdi-home', route: '/' },
       items: [
-        { text: 'Start', icon: 'mdi-home', route: '/' },
         { text: 'Geburtstage', icon: 'mdi-cake-variant', route: '/birthdays' },
         { text: 'Kontakte', icon: 'mdi-account-group', route: '/contacts' }
       ],
