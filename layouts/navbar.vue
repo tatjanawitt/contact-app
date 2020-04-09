@@ -23,14 +23,14 @@
 
       <v-spacer />
       <div v-if="$auth.loggedIn">
-        <v-btn large text tile>
+        <v-btn class="hidden-sm-and-down" large text tile>
           <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
         </v-btn>
         <v-btn large text @click="$auth.logout()">
           Logout<v-icon right v-text="'mdi-logout-variant'" />
         </v-btn>
       </div>
-      <div v-else>
+      <div v-else class="hidden-sm-and-down">
         <span v-for="item in users" :key="item.icon + Math.random()">
           <v-btn large text tile :to="item.route">
             <v-icon left v-text="item.icon" />{{ item.text }}
@@ -41,6 +41,19 @@
 
     <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
       <v-list class="d-flex flex-column">
+        <div v-if="$auth.loggedIn" class="d-flex flex-column">
+          <v-chip class="justify-start primary" x-large label tile>
+            <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
+          </v-chip>
+          <v-divider class="mx-4" />
+        </div>
+        <div v-else class="d-flex flex-column">
+          <span v-for="item in users" :key="item.icon + Math.random()">
+            <v-btn class="justify-start" x-large text tile :to="item.route">
+              <v-icon left v-text="item.icon" />{{ item.text }}
+            </v-btn>
+          </span>
+        </div>
         <v-btn class="justify-start" x-large text :to="start.route">
           <v-icon left v-text="start.icon" />{{ start.text }}
         </v-btn>
