@@ -4,13 +4,25 @@
     "birthdays": "Geburtstage",
     "contacts": "Kontakte",
     "admin": "Admin",
-    "login": "Login",
-    "register": "Anmelden"
+    "login": "Anmelden",
+    "register": "Registrieren"
   },
   "home": {
     "title": "Herzlich Willkommen!",
     "sub": "Bitte melde Dich an, um deinen persönlichen Freundes-, Verwandten- und Bekanntenkreis zu verwalten.",
     "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten."
+  },
+  "userInfo": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "register": "Registrieren",
+    "name": "Name",
+    "password": "Passwort",
+    "email": "Email",
+    "regSuccess": "Deine Registrierung war erfolgreich, ",
+    "regError": "Die Registrierung ging schief. Bitte versuche es nochmal.",
+    "logSuccess": "Dein Anmeldung war erfolgreich, ",
+    "logError": "Das Anmelden ging schief. Bitte versuche es nochmal."
   },
   "birthdays": {
     "title": " Geburtstage ",

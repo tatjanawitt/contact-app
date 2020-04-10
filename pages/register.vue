@@ -1,9 +1,7 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center">
-      Register
-    </div>
-    <UserAuthForm button-text="Register"
+    <div class="display-2 ma-4 d-flex justify-center" v-text="$t('userInfo.register')" />
+    <UserAuthForm :button-text="$t('userInfo.register')"
                   icon-type="mdi-account-box-outline"
                   :submit-form="registerUser"
                   :has-name="true"
@@ -23,13 +21,13 @@ export default {
           data: registrationInfo
         })
         this.$store.dispatch('snackbar/create', {
-          text: `Deine Registrierung war erfolgreich, ${this.$auth.user.name}`
+          text: this.$t('userInfo.regSuccess') + this.$auth.user.name
         })
         this.$router.push('/')
       } catch {
         this.$store.dispatch('snackbar/create', {
           color: 'red',
-          text: 'Die Registrierung ging schief. Bitte versuche es nochmal.'
+          text: this.$t('userInfo.regError')
         })
       }
     }

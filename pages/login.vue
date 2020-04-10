@@ -1,9 +1,7 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center">
-      Login
-    </div>
-    <UserAuthForm button-text="Login"
+    <div class="display-2 ma-4 d-flex justify-center" v-text="$t('userInfo.login')" />
+    <UserAuthForm :button-text="$t('userInfo.login')"
                   icon-type="mdi-login-variant"
                   :submit-form="loginUser"
     />
@@ -21,13 +19,13 @@ export default {
           data: loginInfo
         })
         this.$store.dispatch('snackbar/create', {
-          text: `Dein Login war erfolgreich, ${this.$auth.user.name}`
+          text: this.$t('userInfo.logSuccess') + this.$auth.user.name
         })
         this.$router.push('/')
       } catch {
         this.$store.dispatch('snackbar/create', {
           color: 'red',
-          text: 'Das Login ging schief. Bitte versuche es nochmal.'
+          text: this.$t('userInfo.logError')
         })
       }
     }

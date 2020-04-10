@@ -12,6 +12,18 @@
     "sub": "Please log in to manage your personal circle of friends, family and acquaintances.",
     "subAuth": "Welcome to your personal network of friends, family and acquaintances."
   },
+  "userInfo": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "name": "Name",
+    "password": "Password",
+    "email": "Email",
+    "regSuccess": "Thanks for signing up, ",
+    "regError": "There was an issue signing up. Please try again.",
+    "logSuccess": "Thanks for signing in, ",
+    "logError": "There was an issue signing in. Please try again."
+  },
   "birthdays": {
     "title": " Birthdays ",
     "label": " Birthday",

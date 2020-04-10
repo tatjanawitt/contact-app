@@ -27,7 +27,7 @@
           <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
         </v-btn>
         <v-btn large text @click="$auth.logout()">
-          Logout<v-icon right v-text="'mdi-logout-variant'" />
+          {{ $t('userInfo.logout') }}<v-icon right v-text="'mdi-logout-variant'" />
         </v-btn>
       </div>
       <div v-else class="hidden-sm-and-down">
