@@ -34,6 +34,7 @@
   "contacts": {
     "title": "All Contacts",
     "noData": "No contacts found!",
-    "search": "Search name or place"
+    "search": "Search name or place",
+    "notice": "<b>Note:</b> With the number of hearts you can change the sorting of the cards"
   }
 }

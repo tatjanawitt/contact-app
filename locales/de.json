@@ -34,6 +34,7 @@
   "contacts": {
     "title": "Alle Kontakte",
     "noData": "Keine Kontakte gefunden!",
-    "search": "Name oder Ort suchen"
+    "search": "Name oder Ort suchen",
+    "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
   }
 }
