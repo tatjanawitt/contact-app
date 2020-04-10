@@ -21,12 +21,12 @@
         </v-btn>
       </span>
 
-      <!--nuxt-link :to="`${$t('links.home')}?lang=${state.locale}`">
-        {{ $t('navs.about.title') }}
-      </nuxt-link>
-      <v-btn @click="changeLang(lang)">
-        {{ $t('home.title') }}
-      </v-btn-->
+      <v-btn @click="changeLang('en')">
+        {{ $t('links.en') }}
+      </v-btn>
+      <v-btn @click="changeLang('de')">
+        {{ $t('links.fr') }}
+      </v-btn>
 
       <v-spacer />
       <div v-if="$auth.loggedIn">
@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -97,12 +98,21 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState({
+      language: state => state.locale,
+      languages: state => state.locales
+    }),
+    lang () { return this.language },
+    langs () { return this.languages }
+  },
   methods: {
     changeLang (lang) {
       // mutate 'locale' in store
+      console.log(lang)
       this.$store.commit('SET_LANG', lang)
       // re-route to the current page but with the selected language in a query string
-      this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
     }
   }
 }
