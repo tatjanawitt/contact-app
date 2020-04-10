@@ -1,16 +1,19 @@
 {
   "links": {
-    "home": "Home",
-    "about": "About",
-    "en": "English",
-    "fr": "French"
+    "home": "Dashbord",
+    "birthdays": "Birthdays",
+    "contacts": "Contacts",
+    "admin": "Admin",
+    "login": "Login",
+    "register": "Register"
   },
   "home": {
-    "title": "Welcome",
-    "introduction": "This is an introduction in English."
+    "title": "Welcome at our place!",
+    "sub": "Please log in to manage your personal circle of friends, relatives and acquaintances.",
+    "subAuth": "Welcome to your personal network of friends, relatives and acquaintances."
   },
-  "about": {
-    "title": "About",
+  "birthdays": {
+    "title": "Birthdays in ",
     "introduction": "This page is made to give you more informations."
   }
 }

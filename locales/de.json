@@ -1,16 +1,19 @@
 {
   "links": {
     "home": "Start",
-    "about": "About",
-    "en": "English version",
-    "fr": "French version"
+    "birthdays": "Geburtstage",
+    "contacts": "Kontakte",
+    "admin": "Admin",
+    "login": "Login",
+    "register": "Anmelden"
   },
   "home": {
-    "title": "Willkommen",
-    "introduction": "This is an introduction in English."
+    "title": "Herzlich Willkommen!",
+    "sub": "Bitte melde Dich an, um deinen persönlichen Freundes-, Verwandten- und Bekanntenkreis zu verwalten.",
+    "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten."
   },
-  "about": {
-    "title": "About",
+  "birthdays": {
+    "title": "Geburtstage ",
     "introduction": "This page is made to give you more informations."
   }
 }

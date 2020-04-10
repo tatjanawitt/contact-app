@@ -21,13 +21,6 @@
         </v-btn>
       </span>
 
-      <v-btn @click="changeLang('en')">
-        {{ $t('links.en') }}
-      </v-btn>
-      <v-btn @click="changeLang('de')">
-        {{ $t('links.fr') }}
-      </v-btn>
-
       <v-spacer />
       <div v-if="$auth.loggedIn">
         <v-btn class="hidden-sm-and-down" large text tile>
@@ -44,6 +37,9 @@
           </v-btn>
         </span>
       </div>
+      <v-chip icon small class="primary" @click="changeLang(language === 'de' ? 'en': 'de')">
+        {{ language === 'de' ? 'EN': 'DE' }}
+      </v-chip>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
@@ -81,39 +77,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   data () {
-    return {
-      drawer: false,
-      start: { text: 'Start', icon: 'mdi-home', route: '/' },
-      items: [
-        { text: 'Geburtstage', icon: 'mdi-cake-variant', route: '/birthdays' },
-        { text: 'Kontakte', icon: 'mdi-account-group', route: '/contacts' }
-      ],
-      admin: { text: 'Admin', icon: 'mdi-database-edit', route: '/admin/contacts' },
-      users: [
-        { text: 'Login', icon: 'mdi-login-variant', route: '/login' },
-        { text: 'Register', icon: 'mdi-account-box-outline', route: '/register' }
-      ]
-    }
+    return { drawer: false }
   },
   computed: {
-    ...mapState({
-      language: state => state.locale,
-      languages: state => state.locales
-    }),
-    lang () { return this.language },
-    langs () { return this.languages }
+    start () {
+      return { text: this.$t('links.home'), icon: 'mdi-home', route: '/' }
+    },
+    items () {
+      return [
+        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' },
+        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' }
+      ]
+    },
+    admin () { return { text: this.$t('links.admin'), icon: 'mdi-database-edit', route: '/admin/contacts' } },
+    users () {
+      return [
+        { text: this.$t('links.login'), icon: 'mdi-login-variant', route: '/login' },
+        { text: this.$t('links.register'), icon: 'mdi-account-box-outline', route: '/register' }
+      ]
+    },
+    language () { return this.$i18n.locale }
   },
   methods: {
-    changeLang (lang) {
-      // mutate 'locale' in store
-      console.log(lang)
-      this.$store.commit('SET_LANG', lang)
-      // re-route to the current page but with the selected language in a query string
-      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
-    }
+    changeLang (lang) { this.$i18n.locale = lang }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="display-2 ma-4 d-flex justify-center">
-      Geburtstage {{ nowYear }}
+      {{ $t('birthdays.title') }} {{ nowYear }}
     </div>
     <ContactBirthday />
   </v-container>

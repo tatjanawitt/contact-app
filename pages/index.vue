@@ -23,13 +23,13 @@ export default {
         const list = this.contacts.filter(c => c.img.length > 0 && c.rating > 3)
         return {
           title: `Hi ${this.$auth.user.name}!`,
-          sub: 'Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten.',
+          sub: this.$t('home.subAuth'),
           images: list.map(c => ({ src: c.img }))
         }
       } else {
         return {
-          title: 'Herzlich Willkommen!',
-          sub: 'Bitte melde Dich an, um deinen persönlichen Freundes-, Verwandten- und Bekanntenkreis zu verwalten.',
+          title: this.$t('home.title'),
+          sub: this.$t('home.sub'),
           images: [
             { src: 'https://cdn.pixabay.com/photo/2015/11/03/08/58/meeting-1019875_960_720.jpg' },
             { src: 'https://cdn.pixabay.com/photo/2019/11/29/01/58/wedding-4660419_960_720.jpg' },

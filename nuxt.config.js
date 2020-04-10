@@ -33,9 +33,6 @@ export default {
     '~/plugins/mirage',
     '~/plugins/i18n.js'
   ],
-  router: {
-    middleware: ['i18n']
-  },
   /*
   ** Nuxt.js dev-modules
   */
