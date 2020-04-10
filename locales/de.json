@@ -13,7 +13,10 @@
     "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten."
   },
   "birthdays": {
-    "title": "Geburtstage ",
-    "introduction": "This page is made to give you more informations."
+    "title": " Geburtstage ",
+    "label": " Geburtstag",
+    "search": "Vor- oder Nachname suchen",
+    "on": "Am ",
+    "turns": " wird "
   }
 }

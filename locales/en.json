@@ -13,7 +13,10 @@
     "subAuth": "Welcome to your personal network of friends, relatives and acquaintances."
   },
   "birthdays": {
-    "title": "Birthdays in ",
-    "introduction": "This page is made to give you more informations."
+    "title": " Birthdays ",
+    "label": " Birthday",
+    "search": "Search first- or lastname",
+    "on": "On ",
+    "turns": " turns "
   }
 }
