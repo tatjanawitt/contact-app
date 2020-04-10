@@ -1,12 +1,10 @@
 <template>
   <v-container>
     <v-row class="ma-2">
-      <div class="display-1">
-        Kontakt Übersicht
-      </div>
+      <div class="display-1" v-text="$t('contacts.header')" />
       <v-spacer />
       <v-btn class="primary" to="/admin/contacts/new">
-        <v-icon left v-text="'mdi-account-plus'" />Neu
+        <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
       </v-btn>
     </v-row>
     <ContactTable :contacts="contacts" :headers="headers" />
@@ -23,11 +21,11 @@ export default {
     headers () {
       return [
         { text: 'Id', value: 'id' },
-        { text: 'Vorname', value: 'fName' },
-        { text: 'Nachname', value: 'lName' },
-        { text: 'Ort', value: 'place' },
-        { text: 'Stichworte', value: 'tags', sortable: false },
-        { text: 'Aktion', value: 'actions', sortable: false, width: '225px' }
+        { text: this.$t('cForm.firstname'), value: 'fName' },
+        { text: this.$t('cForm.lastname'), value: 'lName' },
+        { text: this.$t('cForm.place'), value: 'place' },
+        { text: this.$t('links.tags'), value: 'tags', sortable: false },
+        { text: this.$t('action'), value: 'actions', sortable: false, width: '225px' }
       ]
     }
   }

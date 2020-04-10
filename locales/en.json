@@ -1,11 +1,14 @@
 {
+  "new": "New",
+  "action": "Actions",
   "links": {
     "home": "Dashbord",
     "birthdays": "Birthdays",
     "contacts": "Contacts",
     "admin": "Admin",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "tags": "Tags"
   },
   "home": {
     "title": "Welcome at our place!",
@@ -35,6 +38,21 @@
     "title": "All Contacts",
     "noData": "No contacts found!",
     "search": "Search name or place",
+    "tabSearch": "Search contacts",
+    "header": "Contact Overview",
     "notice": "<b>Note:</b> With the number of hearts you can change the sorting of the cards"
+  },
+  "cForm": {
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "place": "Place"
+  },
+  "tags": {
+    "tabSearch": "Search tags",
+    "header": "Tags Overview",
+    "choice": "Tags Choice",
+    "name": "Name",
+    "numContacts": "# Assignment",
+    "alertDel": "Do you realy want to delete, "
   }
 }

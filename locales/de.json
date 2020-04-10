@@ -1,11 +1,14 @@
 {
+  "new": "Neu",
+  "action": "Aktion",
   "links": {
     "home": "Start",
     "birthdays": "Geburtstage",
     "contacts": "Kontakte",
     "admin": "Admin",
     "login": "Anmelden",
-    "register": "Registrieren"
+    "register": "Registrieren",
+    "tags": "Stichworte"
   },
   "home": {
     "title": "Herzlich Willkommen!",
@@ -35,6 +38,23 @@
     "title": "Alle Kontakte",
     "noData": "Keine Kontakte gefunden!",
     "search": "Name oder Ort suchen",
+    "tabSearch": "Kontakte suchen",
+    "header": "Kontakt Übersicht",
+    "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
+    "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
     "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
+  },
+  "cForm": {
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "place": "Ort"
+  },
+  "tags": {
+    "tabSearch": "Stichworte suchen",
+    "header": "Stichwort Übersicht",
+    "choice": "Stichworte auswählen",
+    "name": "Name",
+    "numContacts": "# Zuordnung",
+    "alertDel": "Sie wollen den Tag wirklich löschen, "
   }
 }
