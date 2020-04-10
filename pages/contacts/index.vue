@@ -1,8 +1,6 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center">
-      Alle Kontakte
-    </div>
+    <div class="display-2 ma-4 d-flex justify-center" v-text="$t('contacts.title')" />
     <ContactList :contacts="contacts" />
   </v-container>
 </template>

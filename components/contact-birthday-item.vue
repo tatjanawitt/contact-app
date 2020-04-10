@@ -49,8 +49,8 @@ export default {
         this.contact.born.toLocaleDateString(this.lang, {
           month: 'long',
           day: 'numeric'
-        })} ${this.$t('birthdays.turns')} <b>${this.contact.fName} ${this.contact.lName
-        }</b> ${this.age + 1}`
+        })}, <b>${this.contact.fName} ${this.contact.lName
+        }</b> ${this.$t('birthdays.turns')} ${this.age + 1}`
     },
     color () {
       return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'

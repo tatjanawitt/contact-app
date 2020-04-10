@@ -9,14 +9,19 @@
   },
   "home": {
     "title": "Welcome at our place!",
-    "sub": "Please log in to manage your personal circle of friends, relatives and acquaintances.",
-    "subAuth": "Welcome to your personal network of friends, relatives and acquaintances."
+    "sub": "Please log in to manage your personal circle of friends, family and acquaintances.",
+    "subAuth": "Welcome to your personal network of friends, family and acquaintances."
   },
   "birthdays": {
     "title": " Birthdays ",
     "label": " Birthday",
     "search": "Search first- or lastname",
     "on": "On ",
-    "turns": " turns "
+    "turns": " will be "
+  },
+  "contacts": {
+    "title": "All Contacts",
+    "noData": "No contacts found!",
+    "search": "Search name or place"
   }
 }

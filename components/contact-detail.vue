@@ -49,7 +49,7 @@ export default {
       return this.getAddress(this.contact.id)
     },
     birthday () {
-      return this.getDateFormat(this.contact.id)
+      return this.getDateFormat(this.contact.id, this.$i18n.locale)
     },
     color () {
       return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'

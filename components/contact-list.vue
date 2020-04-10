@@ -3,7 +3,7 @@
     <v-text-field
       v-model="search"
       append-icon="mdi-account-search"
-      label="Name oder Ort suchen"
+      :label="$t('contacts.search')"
       clearable
       class="mb-6"
       hide-details
@@ -22,7 +22,7 @@
     <v-alert v-else class="secondary" dark border="top"
              icon="mdi-database-search" transition="scale-transition"
     >
-      Keine Kontakte gefunden!
+      {{ $t('contacts.noData') }}
     </v-alert>
   </div>
 </template>

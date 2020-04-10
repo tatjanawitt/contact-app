@@ -18,5 +18,10 @@
     "search": "Vor- oder Nachname suchen",
     "on": "Am ",
     "turns": " wird "
+  },
+  "contacts": {
+    "title": "Alle Kontakte",
+    "noData": "Keine Kontakte gefunden!",
+    "search": "Name oder Ort suchen"
   }
 }

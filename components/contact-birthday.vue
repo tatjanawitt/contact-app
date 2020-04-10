@@ -30,7 +30,7 @@
       <v-alert v-else class="secondary" dark border="top"
                icon="mdi-database-search" transition="scale-transition"
       >
-        Keine Kontakte gefunden!
+        {{ $t('contacts.noData') }}
       </v-alert>
     </v-col>
   </v-row>
