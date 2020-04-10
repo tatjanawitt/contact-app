@@ -45,9 +45,24 @@
     "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
   },
   "cForm": {
-    "firstname": "Vorname",
-    "lastname": "Nachname",
-    "place": "Ort"
+    "newLabel": "Kontakt anlegen",
+    "editLabel": "Kontakt ändern",
+    "newSuccess": "Ein neuer Kontakt wurde angelegt, ",
+    "editSuccess": "Der Kontakt wurde geändert, ",
+    "note": "* Plichtfelder müssen ausgefüllt werden.",
+    "saveBtn": "Speichern",
+    "closeBtn": "Abbrechen",
+    "fName": "Vorname",
+    "lName": "Nachname",
+    "email": "Email",
+    "born": "Geburtsdatum",
+    "street": "Strasse",
+    "zip": "PLZ",
+    "place": "Ort",
+    "fon": "Telefon",
+    "mobile": "Mobil",
+    "img": "Bild (URL)",
+    "rating": "Bewertung"
   },
   "tags": {
     "tabSearch": "Stichworte suchen",

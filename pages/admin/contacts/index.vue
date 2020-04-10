@@ -21,8 +21,8 @@ export default {
     headers () {
       return [
         { text: 'Id', value: 'id' },
-        { text: this.$t('cForm.firstname'), value: 'fName' },
-        { text: this.$t('cForm.lastname'), value: 'lName' },
+        { text: this.$t('cForm.fName'), value: 'fName' },
+        { text: this.$t('cForm.lName'), value: 'lName' },
         { text: this.$t('cForm.place'), value: 'place' },
         { text: this.$t('links.tags'), value: 'tags', sortable: false },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '225px' }

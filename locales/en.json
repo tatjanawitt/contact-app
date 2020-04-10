@@ -45,9 +45,24 @@
     "notice": "<b>Note:</b> With the number of hearts you can change the sorting of the cards"
   },
   "cForm": {
-    "firstname": "Firstname",
-    "lastname": "Lastname",
-    "place": "Place"
+    "newLabel": "Create Contact",
+    "editLabel": "Edit Contact",
+    "newSuccess": "You have successfully created a new contact, ",
+    "editSuccess": "You have successfully edited your contact, ",
+    "note": "* Mandatory fields must be filled.",
+    "saveBtn": "Save",
+    "closeBtn": "Close",
+    "fName": "Firstname",
+    "lName": "Lastname",
+    "email": "Email",
+    "born": "Birthdate",
+    "street": "Street",
+    "zip": "Postcode",
+    "place": "Place",
+    "fon": "Fon No",
+    "mobile": "Mobil No",
+    "img": "Image (URL)",
+    "rating": "Rating"
   },
   "tags": {
     "tabSearch": "Search tags",

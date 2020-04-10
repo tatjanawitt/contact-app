@@ -1,8 +1,6 @@
 <template>
   <v-container>
-    <div class="display-1 ma-4 d-flex justify-center">
-      Kontakt anlegen
-    </div>
+    <div class="display-1 ma-4 d-flex justify-center" v-text="$t('cForm.newLabel')" />
     <ContactForm :contact="contact" :save-contact="create" :cancel-action="cancel" />
   </v-container>
 </template>
@@ -22,7 +20,7 @@ export default {
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
       this.$store.dispatch('snackbar/create', {
-        text: `Der Kontakt für ${this.fullName(contact.id)} wurde angelegt.`
+        text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'
       })
       this.$router.push(`/admin/contacts/${contact.id}`)
     },
