@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <Navbar />
-    <v-content><nuxt /></v-content>
+    <v-content>
+      <v-sheet class="pa-4" color="rgba(255, 255, 255, 0.7)">
+        <nuxt />
+      </v-sheet>
+    </v-content>
     <v-snackbar
       v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
       :key="snackbar.text + Math.random()"

@@ -8,7 +8,6 @@
       </v-carousel>
     </v-layout>
   </v-container>
-  </v-sheet>
 </template>
 
 <script>

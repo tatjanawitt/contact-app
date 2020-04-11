@@ -37,7 +37,9 @@
           </v-btn>
         </span>
       </div>
-      <v-avatar class="language ml-2" size="26px" @click="changeLang(language === 'de' ? 'en': 'de')">
+      <v-avatar class="language ml-2" size="26px"
+                @click="changeLang(language === 'de' ? 'en': 'de')"
+      >
         <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
       </v-avatar>
     </v-app-bar>
