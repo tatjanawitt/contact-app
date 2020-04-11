@@ -1,23 +1,23 @@
-const required = (propertyType) => {
-  return v => (v && v.length > 0) || `${propertyType} ist ein Pflichtfeld.`
+const required = () => {
+  return v => (v && v.length > 0) || 'required / Pflichtfeld'
 }
-const minLength = (propertyType, minLength) => {
-  return v => (v && v.length >= minLength) || `${propertyType} muss mind. ${minLength} Zeichen lang sein.`
+const minLength = (minLength) => {
+  return v => (v && v.length >= minLength) || `min ${minLength} characters / Zeichen`
 }
-const maxLength = (propertyType, maxLength) => {
-  return v => (v && v.length <= maxLength) || `${propertyType} darf nicht länger als ${maxLength} Zeichen lang sein.`
+const maxLength = (maxLength) => {
+  return v => (v && v.length <= maxLength) || `max ${maxLength} characters / Zeichen`
 }
 
 const emailFormat = () => {
   const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,24})+$/
-  return v => (v && regex.test(v)) || 'Bitte eine gültige Email eintragen.'
+  return v => (v && regex.test(v)) || 'invalid / ungültig'
 }
 const zipFormat = () => {
-  return v => !v || /^[0-9]{5}?$/.test(v) || 'Bitte eine gültige PLZ eintragen.'
+  return v => !v || /^[0-9]{5}?$/.test(v) || 'invalid / ungültig'
 }
 
 const ratingFormat = () => {
-  return v => !v || /^[0-5]{1}[\W_]?$/.test(v) || 'Zahl <= 5'
+  return v => !v || /^[0-5]{1}[\W_]?$/.test(v) || 'number <= 5'
 }
 export default {
   required,

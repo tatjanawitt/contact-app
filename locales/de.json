@@ -52,6 +52,7 @@
     "note": "* Plichtfelder müssen ausgefüllt werden.",
     "saveBtn": "Speichern",
     "closeBtn": "Abbrechen",
+    "hint": "eingefügte Zeichen",
     "fName": "Vorname*",
     "lName": "Nachname*",
     "email": "Email*",

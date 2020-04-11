@@ -6,7 +6,7 @@ const contactForm = [
     icon: 'mdi-account-heart',
     max: '30',
     min: '3',
-    rules: [v.required('Vorname'), v.minLength('Vorname', 3)]
+    rules: [v.required(), v.minLength(3)]
   },
   {
     text: 'Nachname*',
@@ -14,14 +14,14 @@ const contactForm = [
     icon: 'mdi-human-male-boy',
     max: '30',
     min: '3',
-    rules: [v.required('Nachname'), v.minLength('Nachname', 3)]
+    rules: [v.required(), v.minLength(3)]
   },
   {
     text: 'Email*',
     value: 'email',
     icon: 'mdi-email',
     max: '50',
-    rules: [v.required('Email'), v.emailFormat()]
+    rules: [v.required(), v.emailFormat()]
   },
   {
     text: 'Telefon',

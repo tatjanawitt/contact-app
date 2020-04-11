@@ -2,16 +2,16 @@
   <v-form v-model="valid">
     <div @keydown.enter="submitForm(userInfo)">
       <v-text-field v-if="hasName" v-model="userInfo.name" :label="$t('userInfo.name')"
-                    :rules="[required($t('userInfo.name')), minLength($t('userInfo.name'), 3)]"
+                    :rules="[required(), minLength(3)]"
       />
       <v-text-field v-model="userInfo.email" :label="$t('userInfo.email')"
-                    :rules="[required($t('userInfo.email')), emailFormat()]"
+                    :rules="[required(), emailFormat()]"
       />
       <v-text-field v-model="userInfo.password" :label="$t('userInfo.password')"
                     :type="showPassword ? 'text' : 'password'"
                     :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                     counter="true"
-                    :rules="[required($t('userInfo.password')), minLength($t('userInfo.password'), 8)]"
+                    :rules="[required(), minLength(8)]"
                     @click:append="showPassword = !showPassword"
       />
       <v-btn :disabled="!valid" class="primary" @click="submitForm(userInfo)">

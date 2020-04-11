@@ -52,6 +52,7 @@
     "note": "* Mandatory fields must be filled.",
     "saveBtn": "Save",
     "closeBtn": "Close",
+    "hint": "inserted characters",
     "fName": "Firstname*",
     "lName": "Lastname*",
     "email": "Email*",
