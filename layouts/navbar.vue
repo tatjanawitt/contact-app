@@ -37,9 +37,9 @@
           </v-btn>
         </span>
       </div>
-      <v-chip icon small class="primary" @click="changeLang(language === 'de' ? 'en': 'de')">
-        {{ language === 'de' ? 'EN': 'DE' }}
-      </v-chip>
+      <v-avatar class="language ml-2" size="26px" @click="changeLang(language === 'de' ? 'en': 'de')">
+        <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
+      </v-avatar>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
@@ -105,3 +105,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.language {
+  cursor: pointer;
+}
+</style>
