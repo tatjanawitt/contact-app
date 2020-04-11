@@ -98,10 +98,11 @@ export const getters = {
     const c = getters.get(id)
     return `${c.street || ''} ${c.street ? ',' : ''} ${c.zip || ''} ${c.place || ''}` || ''
   },
-  getDateFormat: (state, getters) => (id) => {
+  getDateFormat: (state, getters) => (id, lang = 'de') => {
     const c = getters.get(id)
+    const format = lang === 'en' ? 'en-EN' : 'de-DE'
     return !c.born ? '' : (
-      c.born.toLocaleDateString('default', {
+      c.born.toLocaleDateString(format, {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

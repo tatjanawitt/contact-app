@@ -3,7 +3,7 @@
     <v-col cols="12">
       <v-text-field
         v-model="search"
-        label="Vor- oder Nachname suchen"
+        :label="$t('birthdays.search')"
         clearable
         append-icon="mdi-account-search"
         hide-details
@@ -16,7 +16,7 @@
             {{ item.month }}:&nbsp;
             <span class="subtitle-1 grey--text">
               {{ item.contacts.length }}
-              {{ item.contacts.length > 1 ? ' Geburtstage' : ' Geburtstag' }}
+              {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
             </span>
           </v-expansion-panel-header>
           <v-expansion-panel-content
@@ -30,7 +30,7 @@
       <v-alert v-else class="secondary" dark border="top"
                icon="mdi-database-search" transition="scale-transition"
       >
-        Keine Kontakte gefunden!
+        {{ $t('contacts.noData') }}
       </v-alert>
     </v-col>
   </v-row>
@@ -73,7 +73,7 @@ export default {
       return this.monthList.map(item => ({
         month: item,
         contacts: this.contacts.filter(c =>
-          item === new Date(c.born).toLocaleString('default', { month: 'long' })
+          item === new Date(c.born).toLocaleString(this.lang, { month: 'long' })
         ).sort((a, b) => {
           const aBorn = new Date(yearNow, a.born.getMonth(), a.born.getDate())
           const bBorn = new Date(yearNow, b.born.getMonth(), b.born.getDate())
@@ -83,9 +83,10 @@ export default {
     },
     monthList () {
       return Array.from(Array(12), (e, i) =>
-        new Date(25e8 * ++i).toLocaleString('default', { month: 'long' })
+        new Date(25e8 * ++i).toLocaleString(this.lang, { month: 'long' })
       )
-    }
+    },
+    lang () { return this.$i18n.locale === 'de' ? 'de-DE' : 'en-EN' }
   }
 }
 </script>

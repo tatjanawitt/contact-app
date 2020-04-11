@@ -1,8 +1,6 @@
 <template>
   <v-container>
-    <div class="display-1 ma-4 d-flex justify-center">
-      Kontakt ändern
-    </div>
+    <div class="display-1 ma-4 d-flex justify-center" v-text="$t('cForm.editLabel')" />
     <ContactForm :contact="contact" :save-contact="update" :cancel-action="cancel" />
   </v-container>
 </template>
@@ -26,7 +24,7 @@ export default {
     async update (newContact) {
       const contact = await this.$store.dispatch('contacts/edit', newContact)
       this.$store.dispatch('snackbar/create', {
-        text: `Die Daten von ${this.fullName(contact.id)} wurden geändert.`
+        text: this.$t('cForm.editSuccess') + this.fullName(contact.id) + '.'
       })
       this.$router.push(`/admin/contacts/${contact.id}`)
     },

@@ -46,13 +46,13 @@
           <ContactFormTextfield :obj="contactData" fieldname="img" />
         </v-col>
       </v-row>
-      <small>* Plichtfelder müssen ausgefüllt werden.</small>
+      <small>{{ $t('cForm.note') }}</small>
       <v-row class="d-flex justify-end">
         <v-btn class="mr-2 secondary" @click="cancel">
-          <v-icon left v-text="'mdi-close-box'" />Abbrechen
+          <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
         </v-btn>
         <v-btn :disabled="!valid" class="primary" @click="save">
-          <v-icon left v-text="'mdi-content-save'" />Speichern
+          <v-icon left v-text="'mdi-content-save'" />{{ $t('cForm.saveBtn') }}
         </v-btn>
       </v-row>
     </v-container>

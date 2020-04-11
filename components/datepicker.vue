@@ -6,7 +6,7 @@
     <template v-slot:activator="{ on }">
       <v-text-field v-model="computedDateFormatted"
                     prepend-icon="mdi-calendar-search"
-                    label="Geburtsdatum" readonly v-on="on"
+                    :label="$t('cForm.born')" readonly v-on="on"
       />
     </template>
     <v-date-picker v-model="date" no-title @input="menu = false" />

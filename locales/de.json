@@ -1,0 +1,76 @@
+{
+  "new": "Neu",
+  "action": "Aktion",
+  "links": {
+    "home": "Start",
+    "birthdays": "Geburtstage",
+    "contacts": "Kontakte",
+    "admin": "Admin",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "tags": "Stichworte"
+  },
+  "home": {
+    "title": "Herzlich Willkommen!",
+    "sub": "Bitte melde Dich an, um deinen persönlichen Freundes-, Verwandten- und Bekanntenkreis zu verwalten.",
+    "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten."
+  },
+  "userInfo": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "register": "Registrieren",
+    "name": "Name*",
+    "password": "Passwort*",
+    "email": "Email*",
+    "regSuccess": "Deine Registrierung war erfolgreich, ",
+    "regError": "Die Registrierung ging schief. Bitte versuche es nochmal.",
+    "logSuccess": "Dein Anmeldung war erfolgreich, ",
+    "logError": "Das Anmelden ging schief. Bitte versuche es nochmal."
+  },
+  "birthdays": {
+    "title": " Geburtstage ",
+    "label": " Geburtstag",
+    "search": "Vor- oder Nachname suchen",
+    "on": "Am ",
+    "turns": " wird "
+  },
+  "contacts": {
+    "title": "Alle Kontakte",
+    "noData": "Keine Kontakte gefunden!",
+    "search": "Name oder Ort suchen",
+    "tabSearch": "Kontakte suchen",
+    "header": "Kontakt Übersicht",
+    "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
+    "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
+    "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
+  },
+  "cForm": {
+    "newLabel": "Kontakt anlegen",
+    "editLabel": "Kontakt ändern",
+    "newSuccess": "Ein neuer Kontakt wurde angelegt, ",
+    "editSuccess": "Der Kontakt wurde geändert, ",
+    "note": "* Plichtfelder müssen ausgefüllt werden.",
+    "saveBtn": "Speichern",
+    "closeBtn": "Abbrechen",
+    "hint": "eingefügte Zeichen",
+    "fName": "Vorname*",
+    "lName": "Nachname*",
+    "email": "Email*",
+    "born": "Geburtsdatum",
+    "street": "Strasse",
+    "zip": "PLZ",
+    "place": "Ort",
+    "fon": "Telefon",
+    "mobil": "Mobil",
+    "img": "Bild (URL)",
+    "rating": "Bewertung"
+  },
+  "tags": {
+    "tabSearch": "Stichworte suchen",
+    "header": "Stichwort Übersicht",
+    "choice": "Stichworte auswählen",
+    "name": "Name",
+    "numContacts": "# Zuordnung",
+    "alertDel": "Sie wollen den Tag wirklich löschen, "
+  }
+}

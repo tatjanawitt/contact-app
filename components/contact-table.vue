@@ -3,7 +3,7 @@
     <v-text-field
       v-model="search"
       class="mb-6"
-      label="Kontakte suchen"
+      :label="$t('contacts.tabSearch')"
       clearable
       append-icon="mdi-magnify"
       single-line
@@ -84,11 +84,11 @@ export default {
     deleteContact (contact) {
       const fullName = this.getFullName(contact.id)
       if (confirm(
-        `Willst Du den Kontakt von ${fullName} löschen?`
+        `${this.$t('contacts.alertDel')} "${fullName}" ?`
       )) {
         this.$store.dispatch('contacts/delete', contact)
         this.$store.dispatch('snackbar/create', {
-          text: `Der Kontakt von ${fullName} wurde gelöscht.`
+          text: `${this.$t('contacts.delSuccess')} "${fullName}".`
         })
       }
     }

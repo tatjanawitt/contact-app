@@ -23,7 +23,6 @@ export default {
   data () {
     return {
       defaultMaxlength: 255,
-      defaultHint: 'eingefügte Zeichen',
       fieldItem: this.obj[this.fieldname] || '',
       ...validations,
       fieldConfig: [...formFieldConfig.contactForm]
@@ -31,8 +30,10 @@ export default {
   },
   computed: {
     label () {
-      return this.fieldConfig.find(i =>
-        i.value === this.fieldname).text
+      return this.$t('cForm.' + [this.fieldname])
+    },
+    defaultHint () {
+      return this.$t('cForm.hint')
     },
     icon () {
       return this.fieldConfig.find(i =>

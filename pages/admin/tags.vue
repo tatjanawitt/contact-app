@@ -1,17 +1,15 @@
 <template>
   <v-container>
     <v-row class="ma-2">
-      <div class="display-1">
-        Stichwort Übersicht
-      </div>
+      <div class="display-1" v-text="$t('tags.header')" />
       <v-spacer />
       <v-btn class="primary" @click="startNewTag=!startNewTag">
-        <v-icon left v-text="'mdi-tag-plus'" />Neu
+        <v-icon left v-text="'mdi-tag-plus'" />{{ $t('new') }}
       </v-btn>
     </v-row>
     <v-text-field
       v-model="search"
-      label="Tags suchen"
+      :label="$t('tags.tabSearch')"
       class="mb-6"
       clearable
       append-icon="mdi-magnify"
@@ -100,9 +98,9 @@ export default {
     headers () {
       return [
         { text: 'Id', value: 'id' },
-        { text: 'Name', value: 'name' },
-        { text: '# Zuordnung', value: 'contact_ids.length' },
-        { text: 'Aktion', value: 'actions', sortable: false, width: '150px' }
+        { text: this.$t('tags.name'), value: 'name' },
+        { text: this.$t('tags.numContacts'), value: 'contact_ids.length' },
+        { text: this.$t('action'), value: 'actions', sortable: false, width: '150px' }
       ]
     }
   },
@@ -118,7 +116,7 @@ export default {
       this.updateTag.id = ''
     },
     deleteTag (tag) {
-      if (confirm(`Wollen Sie den Tag "${tag.name}" wirklich löschen?`)) {
+      if (confirm(`${this.$t('tags.alertDel')} "${tag.name}" ?`)) {
         this.$store.dispatch('tags/delete', { tag })
       }
     },

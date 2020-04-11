@@ -27,7 +27,7 @@
           <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
         </v-btn>
         <v-btn large text @click="$auth.logout()">
-          Logout<v-icon right v-text="'mdi-logout-variant'" />
+          {{ $t('userInfo.logout') }}<v-icon right v-text="'mdi-logout-variant'" />
         </v-btn>
       </div>
       <div v-else class="hidden-sm-and-down">
@@ -37,6 +37,9 @@
           </v-btn>
         </span>
       </div>
+      <v-chip icon small class="primary" @click="changeLang(language === 'de' ? 'en': 'de')">
+        {{ language === 'de' ? 'EN': 'DE' }}
+      </v-chip>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary class="secondary" dark>
@@ -76,19 +79,29 @@
 <script>
 export default {
   data () {
-    return {
-      drawer: false,
-      start: { text: 'Start', icon: 'mdi-home', route: '/' },
-      items: [
-        { text: 'Geburtstage', icon: 'mdi-cake-variant', route: '/birthdays' },
-        { text: 'Kontakte', icon: 'mdi-account-group', route: '/contacts' }
-      ],
-      admin: { text: 'Admin', icon: 'mdi-database-edit', route: '/admin/contacts' },
-      users: [
-        { text: 'Login', icon: 'mdi-login-variant', route: '/login' },
-        { text: 'Register', icon: 'mdi-account-box-outline', route: '/register' }
+    return { drawer: false }
+  },
+  computed: {
+    start () {
+      return { text: this.$t('links.home'), icon: 'mdi-home', route: '/' }
+    },
+    items () {
+      return [
+        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' },
+        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' }
       ]
-    }
+    },
+    admin () { return { text: this.$t('links.admin'), icon: 'mdi-database-edit', route: '/admin/contacts' } },
+    users () {
+      return [
+        { text: this.$t('links.login'), icon: 'mdi-login-variant', route: '/login' },
+        { text: this.$t('links.register'), icon: 'mdi-account-box-outline', route: '/register' }
+      ]
+    },
+    language () { return this.$i18n.locale }
+  },
+  methods: {
+    changeLang (lang) { this.$i18n.locale = lang }
   }
 }
 </script>

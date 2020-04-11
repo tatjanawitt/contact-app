@@ -30,7 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/mirage'
+    '~/plugins/mirage',
+    '~/plugins/i18n.js'
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,8 +1,6 @@
 <template>
   <v-card class="pa-4" color="rgba(255, 255, 255, 0.5)">
-    <v-card-title class="display-1 d-flex justify-center">
-      Stichworte auswählen
-    </v-card-title>
+    <v-card-title class="display-1 d-flex justify-center" v-text="$t('tags.choice')" />
     <v-row justify="center">
       <v-col cols="12" sm="6" md="7">
         <v-combobox

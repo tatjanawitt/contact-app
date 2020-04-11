@@ -12,7 +12,9 @@
       @input="removeSnackbar(snackbar)"
     >
       {{ snackbar.text }}
-      <v-btn text @click="removeSnackbar(snackbar)" v-text="'Close'" />
+      <v-btn icon @click="removeSnackbar(snackbar)">
+        <v-icon v-text="'mdi-close-circle'" />
+      </v-btn>
     </v-snackbar>
   </v-app>
 </template>
