@@ -31,8 +31,7 @@ export default {
   },
   computed: {
     label () {
-      return this.fieldConfig.find(i =>
-        i.value === this.fieldname).text
+      return this.$t('cForm.' + [this.fieldname])
     },
     icon () {
       return this.fieldConfig.find(i =>
