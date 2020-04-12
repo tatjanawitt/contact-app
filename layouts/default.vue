@@ -2,8 +2,12 @@
   <v-app>
     <Navbar />
     <v-content>
-      <v-sheet class="pa-4" color="rgba(255, 255, 255, 0.7)">
-        <nuxt />
+      <v-sheet :height="height()" color="rgba(255, 255, 255, 0.5)">
+        <v-row justify="center">
+          <v-col cols="12" md="8">
+            <nuxt />
+          </v-col>
+        </v-row>
       </v-sheet>
     </v-content>
     <v-snackbar
@@ -37,6 +41,9 @@ export default {
   methods: {
     removeSnackbar (snackbar) {
       this.$store.dispatch('snackbar/remove', snackbar)
+    },
+    height () {
+      return window.innerHeight + 'px'
     }
   }
 }
