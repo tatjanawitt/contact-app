@@ -2,26 +2,28 @@
   <v-app id="inspire">
     <Navbar />
     <v-content>
-      <v-row justify="center">
-        <v-col cols="12" md="8">
-          <nuxt />
-        </v-col>
-      </v-row>
+      <v-container fluid>
+        <v-row justify="center">
+          <v-col cols="12" md="8">
+            <nuxt />
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-snackbar
+        v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
+        :key="snackbar.text + Math.random()"
+        :value="snackbar.showing"
+        :timeout="snackbar.timeout"
+        :color="snackbar.color"
+        :style="`bottom: ${(index * 60) + 8}px`"
+        @input="removeSnackbar(snackbar)"
+      >
+        {{ snackbar.text }}
+        <v-btn icon @click="removeSnackbar(snackbar)">
+          <v-icon v-text="'mdi-close-circle'" />
+        </v-btn>
+      </v-snackbar>
     </v-content>
-    <v-snackbar
-      v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
-      :key="snackbar.text + Math.random()"
-      :value="snackbar.showing"
-      :timeout="snackbar.timeout"
-      :color="snackbar.color"
-      :style="`bottom: ${(index * 60) + 8}px`"
-      @input="removeSnackbar(snackbar)"
-    >
-      {{ snackbar.text }}
-      <v-btn icon @click="removeSnackbar(snackbar)">
-        <v-icon v-text="'mdi-close-circle'" />
-      </v-btn>
-    </v-snackbar>
   </v-app>
 </template>
 
