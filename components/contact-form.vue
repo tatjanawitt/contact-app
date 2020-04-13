@@ -1,62 +1,67 @@
 <template>
-  <v-form v-model="valid">
-    <v-container>
-      <v-row>
-        <v-col cols="12" sm="6">
-          <ContactFormTextfield :obj="contactData" fieldname="fName" />
-        </v-col>
-        <v-col cols="12" sm="6">
-          <ContactFormTextfield :obj="contactData" fieldname="lName" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="7">
-          <ContactFormTextfield :obj="contactData" fieldname="email" />
-        </v-col>
-        <v-col cols="12" sm="5">
-          <Datepicker :obj="contactData" fieldname="born" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="12">
-          <ContactFormTextfield :obj="contactData" fieldname="street" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="4">
-          <ContactFormTextfield :obj="contactData" fieldname="zip" />
-        </v-col>
-        <v-col cols="12" sm="8">
-          <ContactFormTextfield :obj="contactData" fieldname="place" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="6">
-          <ContactFormTextfield :obj="contactData" fieldname="fon" />
-        </v-col>
-        <v-col cols="12" sm="6">
-          <ContactFormTextfield :obj="contactData" fieldname="mobil" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="2">
-          <ContactFormTextfield :obj="contactData" fieldname="rating" />
-        </v-col>
-        <v-col cols="12" sm="10">
-          <ContactFormTextfield :obj="contactData" fieldname="img" />
-        </v-col>
-      </v-row>
-      <small>{{ $t('cForm.note') }}</small>
-      <v-row class="d-flex justify-end">
-        <v-btn class="mr-2 secondary" @click="cancel">
-          <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
-        </v-btn>
-        <v-btn :disabled="!valid" class="primary" @click="save">
-          <v-icon left v-text="'mdi-content-save'" />{{ $t('cForm.saveBtn') }}
-        </v-btn>
-      </v-row>
-    </v-container>
-  </v-form>
+  <v-row>
+    <v-sheet class="pa-8 ma-2" color="rgba(255, 255, 255, 0.7)" width="100%" elevation="14">
+      <div class="display-1 ma-4 d-flex justify-center" v-text="header" />
+      <v-form v-model="valid">
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <ContactFormTextfield :obj="contactData" fieldname="fName" />
+            </v-col>
+            <v-col cols="12" sm="6">
+              <ContactFormTextfield :obj="contactData" fieldname="lName" />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="7">
+              <ContactFormTextfield :obj="contactData" fieldname="email" />
+            </v-col>
+            <v-col cols="12" sm="5">
+              <Datepicker :obj="contactData" fieldname="born" />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="12">
+              <ContactFormTextfield :obj="contactData" fieldname="street" />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="4">
+              <ContactFormTextfield :obj="contactData" fieldname="zip" />
+            </v-col>
+            <v-col cols="12" sm="8">
+              <ContactFormTextfield :obj="contactData" fieldname="place" />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="6">
+              <ContactFormTextfield :obj="contactData" fieldname="fon" />
+            </v-col>
+            <v-col cols="12" sm="6">
+              <ContactFormTextfield :obj="contactData" fieldname="mobil" />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="2">
+              <ContactFormTextfield :obj="contactData" fieldname="rating" />
+            </v-col>
+            <v-col cols="12" sm="10">
+              <ContactFormTextfield :obj="contactData" fieldname="img" />
+            </v-col>
+          </v-row>
+          <small>{{ $t('cForm.note') }}</small>
+          <v-row class="d-flex justify-end">
+            <v-btn class="mr-2 secondary" @click="cancel">
+              <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
+            </v-btn>
+            <v-btn :disabled="!valid" class="primary" @click="save">
+              <v-icon left v-text="'mdi-content-save'" />{{ $t('cForm.saveBtn') }}
+            </v-btn>
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-sheet>
+  </v-row>
 </template>
 
 <script>
@@ -70,7 +75,8 @@ export default {
   props: {
     contact: { type: Object, required: true },
     saveContact: { type: Function, required: true },
-    cancelAction: { type: Function, required: true }
+    cancelAction: { type: Function, required: true },
+    header: { type: String, required: true }
   },
   data () {
     return {

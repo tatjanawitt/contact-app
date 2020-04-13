@@ -31,7 +31,7 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="12" sm="10">
-        <v-card>
+        <v-card class="cardColor">
           <v-card-title class="secondary">
             <v-avatar v-if="contact.img" size="70px">
               <v-img :src="contact.img" />

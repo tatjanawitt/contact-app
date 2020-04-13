@@ -97,6 +97,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-data-table {
+  background-color:rgba(255, 255, 255, 0.8);
+}
 ::v-deep tbody tr {
   cursor: pointer;
 }
@@ -106,7 +109,7 @@ export default {
   padding: 0 !important;
 }
 ::v-deep thead.v-data-table-header {
-    background-color:#F5F5F5;
+    background-color:rgba(121, 134, 203, 0.5);
     white-space: nowrap;
 }
 </style>

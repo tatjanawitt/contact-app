@@ -65,5 +65,5 @@ main {
 }
 .cardColor {
    background-color: transparent !important;
- }
+}
 </style>

@@ -1,7 +1,10 @@
 <template>
   <v-container>
-    <div class="display-1 ma-4 d-flex justify-center" v-text="$t('cForm.newLabel')" />
-    <ContactForm :contact="contact" :save-contact="create" :cancel-action="cancel" />
+    <ContactForm :contact="contact"
+                 :save-contact="create"
+                 :cancel-action="cancel"
+                 :header="$t('cForm.newLabel')"
+    />
   </v-container>
 </template>
 
