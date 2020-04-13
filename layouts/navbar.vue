@@ -37,7 +37,7 @@
           </v-btn>
         </span>
       </div>
-      <v-avatar class="language ml-2" size="26px"
+      <v-avatar class="language mx-2" size="26px"
                 @click="changeLang(language === 'de' ? 'en': 'de')"
       >
         <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
