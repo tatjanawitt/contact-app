@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center" v-text="$t('userInfo.register')" />
     <UserAuthForm :button-text="$t('userInfo.register')"
                   icon-type="mdi-account-box-outline"
                   :submit-form="registerUser"

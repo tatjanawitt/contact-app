@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center" v-text="$t('userInfo.login')" />
     <UserAuthForm :button-text="$t('userInfo.login')"
                   icon-type="mdi-login-variant"
                   :submit-form="loginUser"
