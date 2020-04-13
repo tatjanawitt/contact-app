@@ -1,28 +1,29 @@
 <template>
-  <v-card width="300px" hover class="ma-2">
-    <nuxt-link :to="{ path: `/contacts/detail/${contact.id}`}">
-      <v-img :src="contact.img || imgPlaceholder" height="200px"
-             class="white--text align-end"
-      >
-        <v-card-title class="justify-center">
-          <v-badge :value="bToday" :color="color" :content="age" overlap>
-            <v-btn text dark v-text="fullName" />
-          </v-badge>
-        </v-card-title>
-      </v-img>
-      <v-card-subtitle>
-        <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
-        <ContactDetailItem icon="mdi-email" :content="contact.email" />
-      </v-card-subtitle>
-      <v-divider class="mx-4" />
-      <v-card-text class="py-0">
-        <v-row>
-          <ContactRating :rating="contact.rating" :readonly="true" :large="false" />
-          <v-spacer />
-          <v-icon :color="color" class="mr-3" v-text="'mdi-cake-variant'" />
-        </v-row>
-      </v-card-text>
-    </nuxt-link>
+  <v-card flat height="100%" @dblclick="goToContact(contact)">
+    <v-img :src="contact.img || imgPlaceholder" height="200px"
+           class="white--text align-end"
+    >
+      <v-card-title class="justify-center">
+        <v-badge :value="bToday" :color="color" :content="age" overlap>
+          <v-btn color="rgba(121, 134, 203, 0.5)" small dark
+                 @mousedown.stop @click="goToContact(contact)"
+                 v-text="fullName"
+          />
+        </v-badge>
+      </v-card-title>
+    </v-img>
+    <v-card-subtitle>
+      <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
+      <ContactDetailItem icon="mdi-email" :content="contact.email" />
+    </v-card-subtitle>
+    <v-divider class="mx-4" />
+    <v-card-text class="py-0">
+      <v-row>
+        <ContactRating :rating="contact.rating" :readonly="true" :large="false" />
+        <v-spacer />
+        <v-icon :color="color" class="mr-3" v-text="'mdi-cake-variant'" />
+      </v-row>
+    </v-card-text>
     <v-divider class="mx-4" />
     <v-card-actions>
       <TagsBar :contact="contact" />
@@ -66,6 +67,11 @@ export default {
     },
     color () {
       return this.bToday ? 'red darken-2' : 'grey'
+    }
+  },
+  methods: {
+    goToContact (contact) {
+      this.$router.push(`/contacts/detail/${contact.id}`)
     }
   }
 }

@@ -11,11 +11,11 @@
     <v-sheet v-if="contactList && contactList.length"
              class="mx-auto" elevation="8"
     >
-      <v-slide-group v-model="model" class="pa-4"
-                     active-class="success" show-arrows
-      >
-        <v-slide-item v-for="c in contactList" :key="c.id">
-          <ContactListItem :contact="c" />
+      <v-slide-group v-model="model" center-active>
+        <v-slide-item v-for="c in contactList" :key="c.id" #default="{ active, toggle }">
+          <v-card width="300px" hover class="ma-2" @click="toggle">
+            <ContactListItem :contact="c" />
+          </v-card>
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
@@ -50,3 +50,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep div.v-item-group.theme--light.v-slide-group {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+.theme--light.v-sheet {
+  background-color: transparent;
+}
+</style>
