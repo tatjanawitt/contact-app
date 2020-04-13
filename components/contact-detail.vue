@@ -57,3 +57,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.theme--light.v-list, .theme--light.v-sheet {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+</style>

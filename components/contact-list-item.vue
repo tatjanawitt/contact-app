@@ -7,8 +7,9 @@
         <v-badge :value="bToday" :color="color" :content="age" overlap>
           <v-btn color="rgba(121, 134, 203, 0.5)" small dark
                  @mousedown.stop @click="goToContact(contact)"
-                 v-text="fullName"
-          />
+          >
+            <v-icon left v-text="'mdi-card-account-details-outline'" />{{ fullName }}
+          </v-btn>
         </v-badge>
       </v-card-title>
     </v-img>

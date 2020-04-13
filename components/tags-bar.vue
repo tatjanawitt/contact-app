@@ -2,7 +2,7 @@
   <div>
     <v-chip v-for="tag_id in contact.tag_ids" :key="`${contact.id}-${tag_id}`"
             :to="`/contacts/tags/${tag_id}`"
-            class="mr-1 my-1 secondary" small dark label
+            class="mr-1 my-1 secondary" small dark
             @mousedown.stop v-text="getTag(tag_id).name"
     />
   </div>

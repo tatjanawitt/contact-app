@@ -63,4 +63,7 @@ main {
 #inspire {
   background: none;
 }
+.cardColor {
+   background-color: transparent !important;
+ }
 </style>

@@ -8,9 +8,7 @@
       class="mb-6"
       hide-details
     />
-    <v-sheet v-if="contactList && contactList.length"
-             class="mx-auto" elevation="8"
-    >
+    <v-sheet v-if="contactList && contactList.length" class="mx-auto" elevation="8">
       <v-slide-group v-model="model" center-active>
         <v-slide-item v-for="c in contactList" :key="c.id" #default="{ active, toggle }">
           <v-card width="300px" hover class="ma-2" @click="toggle">

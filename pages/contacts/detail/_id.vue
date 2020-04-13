@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-col cols="12" sm="8">
       <div class="subtitle-1" v-html="$t('contacts.notice')" />
-      <v-card>
+      <v-card class="cardColor">
         <v-card-title class="secondary">
           <v-badge :value="birthday" color="red darken-2" :content="age">
             <span class="headline white--text">
