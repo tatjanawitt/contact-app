@@ -90,3 +90,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.v-expansion-panel {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+</style>

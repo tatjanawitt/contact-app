@@ -1,14 +1,12 @@
 <template>
-  <v-app>
+  <v-app id="inspire">
     <Navbar />
     <v-content>
-      <v-sheet :height="height()" color="rgba(255, 255, 255, 0.5)">
-        <v-row justify="center">
-          <v-col cols="12" md="8">
-            <nuxt />
-          </v-col>
-        </v-row>
-      </v-sheet>
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <nuxt />
+        </v-col>
+      </v-row>
     </v-content>
     <v-snackbar
       v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
@@ -49,10 +47,20 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-main {
-  background-image: url("../static/event.jpg");
+<style lang="scss">
+body {
+  background-image: url("/event.jpg");
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  background-color: #ffffff;
+}
+main {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%
+}
+#inspire {
+  background: none;
 }
 </style>
