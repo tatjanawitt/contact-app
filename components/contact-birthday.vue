@@ -14,7 +14,7 @@
         <v-expansion-panel v-for="(item,i) in list" :key="i">
           <v-expansion-panel-header class="title">
             {{ item.month }}:&nbsp;
-            <span class="subtitle-1 grey--text">
+            <span class="subtitle-1 grey--text-darken-1">
               {{ item.contacts.length }}
               {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
             </span>
@@ -94,5 +94,9 @@ export default {
 <style lang="scss" scoped>
 .v-expansion-panel {
   background-color: rgba(255, 255, 255, 0.7) !important;
+}
+button.v-expansion-panel-header.title.v-expansion-panel-header--active {
+   background-color: #7986CB;
+   color: white;
 }
 </style>
