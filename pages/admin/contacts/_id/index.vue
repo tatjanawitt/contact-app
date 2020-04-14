@@ -7,7 +7,11 @@
           v-model="contactTags"
           :items="tags"
           item-text="name"
+          append-icon="mdi-tag-plus"
           class="mr-6"
+          filled
+          dark
+          background-color="rgba(121, 134, 203, 0.4)"
           multiple
           chips
           deletable-chips
@@ -16,7 +20,7 @@
         />
       </v-col>
       <v-col cols="12" sm="4" md="3">
-        <div class="mt-4 d-flex justify-end">
+        <div class="mt-2 d-flex justify-end">
           <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
             <v-icon v-text="'mdi-card-account-details'" />
           </v-btn>

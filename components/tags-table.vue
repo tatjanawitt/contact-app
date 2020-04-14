@@ -17,7 +17,7 @@
         <tr>
           <td>
             <v-text-field
-              v-model="newTagName" label="Edit"
+              v-model="newTagName" :label="$t('tags.name')"
               autofocus single-line counter
               @blur="createTag()"
               @keydown.enter="createTag()"
