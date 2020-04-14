@@ -17,18 +17,15 @@
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-    <v-alert v-else class="secondary" dark border="top"
-             icon="mdi-database-search" transition="scale-transition"
-    >
-      {{ $t('contacts.noData') }}
-    </v-alert>
+    <NoDataAlert v-else :hint-text="$t('contacts.noData')" />
   </div>
 </template>
 
 <script>
 import ContactListItem from '@/components/contact-list-item'
+import NoDataAlert from '@/components/no-data-alert'
 export default {
-  components: { ContactListItem },
+  components: { ContactListItem, NoDataAlert },
   props: {
     contacts: { type: Array, required: true }
   },

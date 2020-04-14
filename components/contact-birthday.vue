@@ -27,11 +27,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <v-alert v-else class="secondary" dark border="top"
-               icon="mdi-database-search" transition="scale-transition"
-      >
-        {{ $t('contacts.noData') }}
-      </v-alert>
+      <NoDataAlert v-else :hint-text="$t('contacts.noData')" />
     </v-col>
   </v-row>
 </template>
@@ -39,8 +35,9 @@
 <script>
 import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contact-birthday-item'
+import NoDataAlert from '@/components/no-data-alert'
 export default {
-  components: { ContactBirthdayItem },
+  components: { ContactBirthdayItem, NoDataAlert },
   data () {
     return { panel: 0, search: null }
   },
