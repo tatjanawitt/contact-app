@@ -71,12 +71,15 @@
         <v-btn small class="primary" @click="setToEditing(item)">
           <v-icon v-text="'mdi-pencil'" />
         </v-btn>
-        <v-btn small class="primary"
-               :disabled="item.contact_ids.length > 0"
-               @click="deleteTag(item)"
-        >
-          <v-icon v-text="'mdi-delete-alert'" />
-        </v-btn>
+        <DialogConfirm
+          :item="item"
+          :content="`${$t('tags.alertDel')} <b>${item.name}</b>?`"
+          :agree-action="deleteTag"
+          agree-img="mdi-delete"
+          :agree-btn="$t('cForm.delBtn')"
+          :header="$t('tags.delHeader')"
+          :disabled="item.contact_ids.length > 0"
+        />
       </template>
     </v-data-table>
   </v-container>
@@ -84,7 +87,9 @@
 
 <script>
 import { mapState } from 'vuex'
+import DialogConfirm from '@/components/dialog-confirm'
 export default {
+  components: { DialogConfirm },
   data () {
     return {
       startNewTag: false,
@@ -117,9 +122,7 @@ export default {
       this.updateTag.id = ''
     },
     deleteTag (tag) {
-      if (confirm(`${this.$t('tags.alertDel')} "${tag.name}" ?`)) {
-        this.$store.dispatch('tags/delete', { tag })
-      }
+      this.$store.dispatch('tags/delete', { tag })
     },
     createTag () {
       if (this.newTagName.length > 0) {

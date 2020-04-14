@@ -38,7 +38,7 @@
             :item="item"
             :content="`${$t('contacts.alertDel')} <b>${getFullName(item.id)}</b>?`"
             :agree-action="deleteContact"
-            agree-img="mdi-content-save"
+            agree-img="mdi-delete"
             :agree-btn="$t('cForm.delBtn')"
             :header="$t('contacts.delHeader')"
           />

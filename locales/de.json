@@ -73,6 +73,7 @@
     "choice": "Stichworte auswählen",
     "name": "Name",
     "numContacts": "# Zuordnung",
-    "alertDel": "Sie wollen den Tag wirklich löschen, "
+    "alertDel": "Sie wollen das Stichwort wirklich löschen, ",
+    "delHeader": "Stichwort löschen"
   }
 }

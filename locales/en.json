@@ -73,6 +73,7 @@
     "choice": "Tags Choice",
     "name": "Name",
     "numContacts": "# Assignment",
-    "alertDel": "Are you sure you want to delete, "
+    "alertDel": "Are you sure you want to delete, ",
+    "delHeader": "Delete Tag"
   }
 }

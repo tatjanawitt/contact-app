@@ -1,6 +1,6 @@
 <template>
   <span>
-    <v-btn color="primary" small @click.stop="dialog = true">
+    <v-btn color="primary" small :disabled="disabled" @click.stop="dialog = true">
       <v-icon v-text="'mdi-delete-alert'" />
     </v-btn>
 
@@ -32,7 +32,8 @@ export default {
     agreeAction: { type: Function, required: true },
     agreeImg: { type: String, required: false, default: 'mdi-check-bold' },
     agreeBtn: { type: String, required: false, default: 'OK' },
-    header: { type: String, required: false, default: 'Confirm' }
+    header: { type: String, required: false, default: 'Confirm' },
+    disabled: { type: Boolean, required: false, default: false }
   },
   data () {
     return { dialog: false }
