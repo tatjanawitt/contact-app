@@ -19,6 +19,7 @@
       show-expand
       sort-by="sortable"
       :sort-desc="true"
+      :no-results-text="$t('noData')"
       @click:row="goToContact"
     >
       <template #item.tags="{item}">

@@ -1,6 +1,7 @@
 {
   "new": "New",
   "action": "Actions",
+  "noData": "No data available",
   "links": {
     "home": "Dashbord",
     "birthdays": "Birthdays",

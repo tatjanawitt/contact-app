@@ -1,6 +1,7 @@
 {
   "new": "Neu",
   "action": "Aktion",
+  "noData": "Keine Daten vorhanden",
   "links": {
     "home": "Start",
     "birthdays": "Geburtstage",

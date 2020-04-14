@@ -17,15 +17,15 @@
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-    <NoDataAlert v-else :hint-text="$t('contacts.noData')" />
+    <AlertNoData v-else :hint-text="$t('contacts.noData')" />
   </div>
 </template>
 
 <script>
 import ContactListItem from '@/components/contact-list-item'
-import NoDataAlert from '@/components/no-data-alert'
+import AlertNoData from '@/components/alert-no-data'
 export default {
-  components: { ContactListItem, NoDataAlert },
+  components: { ContactListItem, AlertNoData },
   props: {
     contacts: { type: Array, required: true }
   },

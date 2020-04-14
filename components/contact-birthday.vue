@@ -27,7 +27,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <NoDataAlert v-else :hint-text="$t('contacts.noData')" />
+      <AlertNoData v-else :hint-text="$t('contacts.noData')" />
     </v-col>
   </v-row>
 </template>
@@ -35,9 +35,9 @@
 <script>
 import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contact-birthday-item'
-import NoDataAlert from '@/components/no-data-alert'
+import AlertNoData from '@/components/alert-no-data'
 export default {
-  components: { ContactBirthdayItem, NoDataAlert },
+  components: { ContactBirthdayItem, AlertNoData },
   data () {
     return { panel: 0, search: null }
   },
