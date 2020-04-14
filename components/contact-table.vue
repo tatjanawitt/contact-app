@@ -34,9 +34,14 @@
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
             <v-icon v-text="'mdi-pencil'" />
           </v-btn>
-          <v-btn small class="primary" @click="deleteContact(item)">
-            <v-icon v-text="'mdi-delete-alert'" />
-          </v-btn>
+          <DialogConfirm
+            :item="item"
+            :content="`${$t('contacts.alertDel')} <b>${getFullName(item.id)}</b>?`"
+            :agree-action="deleteContact"
+            agree-img="mdi-content-save"
+            :agree-btn="$t('cForm.delBtn')"
+            :header="$t('contacts.delHeader')"
+          />
         </td>
       </template>
       <template #expanded-item="{item}">
@@ -52,10 +57,12 @@
 import { mapGetters } from 'vuex'
 import TagsBar from '@/components/tags-bar'
 import ContactTableExpandItem from '@/components/contact-table-expand-item'
+import DialogConfirm from '@/components/dialog-confirm'
 export default {
   components: {
     ContactTableExpandItem,
-    TagsBar
+    TagsBar,
+    DialogConfirm
   },
   props: {
     contacts: { type: Array, required: true },
@@ -85,14 +92,10 @@ export default {
     },
     deleteContact (contact) {
       const fullName = this.getFullName(contact.id)
-      if (confirm(
-        `${this.$t('contacts.alertDel')} "${fullName}" ?`
-      )) {
-        this.$store.dispatch('contacts/delete', contact)
-        this.$store.dispatch('snackbar/create', {
-          text: `${this.$t('contacts.delSuccess')} "${fullName}".`
-        })
-      }
+      this.$store.dispatch('contacts/delete', contact)
+      this.$store.dispatch('snackbar/create', {
+        text: `${this.$t('contacts.delSuccess')} "${fullName}".`
+      })
     }
   }
 }

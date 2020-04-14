@@ -42,6 +42,7 @@
     "header": "Kontakt Übersicht",
     "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
     "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
+    "delHeader": "Kontakt löschen",
     "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
   },
   "cForm": {
@@ -50,6 +51,7 @@
     "newSuccess": "Ein neuer Kontakt wurde angelegt, ",
     "editSuccess": "Der Kontakt wurde geändert, ",
     "note": "* Plichtfelder müssen ausgefüllt werden.",
+    "delBtn": "Löschen",
     "saveBtn": "Speichern",
     "closeBtn": "Abbrechen",
     "hint": "eingefügte Zeichen",

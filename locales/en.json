@@ -42,6 +42,7 @@
     "header": "Contact Overview",
     "alertDel": "Are you sure you want to delete this contact, ",
     "delSuccess": "You have successfully deleted your contact, ",
+    "delHeader": "Delete Contact",
     "notice": "<b>Note:</b> With the number of hearts you can change the sorting of the cards"
   },
   "cForm": {
@@ -50,6 +51,7 @@
     "newSuccess": "You have successfully created a new contact, ",
     "editSuccess": "You have successfully edited your contact, ",
     "note": "* Mandatory fields must be filled.",
+    "delBtn": "Delete",
     "saveBtn": "Save",
     "closeBtn": "Close",
     "hint": "inserted characters",
