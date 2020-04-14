@@ -14,6 +14,8 @@
       :headers="headers"
       :search="search"
       :custom-filter="filter"
+      :items-per-page="5"
+      :mobile-breakpoint="780"
       show-expand
       sort-by="sortable"
       :sort-desc="true"

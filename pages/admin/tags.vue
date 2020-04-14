@@ -21,6 +21,7 @@
                   :search="search"
                   sort-by="id"
                   :sort-desc="true"
+                  :items-per-page="5"
     >
       <template v-if="startNewTag" #body.prepend="{}">
         <tr>
