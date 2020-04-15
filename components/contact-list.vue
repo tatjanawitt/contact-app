@@ -11,7 +11,7 @@
     <v-sheet v-if="contactList && contactList.length" class="mx-auto" elevation="8">
       <v-slide-group v-model="model" center-active show-arrows>
         <v-slide-item v-for="c in contactList" :key="c.id" #default="{ active, toggle }">
-          <v-card width="300px" hover class="ma-2" @click="toggle">
+          <v-card max-width="17.5rem" hover class="ma-1" @click="toggle">
             <ContactListItem :contact="c" />
           </v-card>
         </v-slide-item>

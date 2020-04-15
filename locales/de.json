@@ -44,10 +44,10 @@
     "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
     "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
     "delHeader": "Kontakt löschen",
-    "notice": "<b>Hinweis:</b> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
+    "notice": "<b>Hinweis:</b><br> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
   },
   "cForm": {
-    "newLabel": "Kontakt anlegen",
+    "newLabel": "Neuer Kontakt",
     "editLabel": "Kontakt ändern",
     "newSuccess": "Ein neuer Kontakt wurde angelegt, ",
     "editSuccess": "Der Kontakt wurde geändert, ",
@@ -71,7 +71,7 @@
   "tags": {
     "tabSearch": "Stichworte suchen",
     "header": "Stichwort Übersicht",
-    "choice": "Stichworte auswählen",
+    "choice": "Stichworte Auswahl",
     "name": "Name",
     "numContacts": "# Zuordnung",
     "alertDel": "Sie wollen das Stichwort wirklich löschen, ",

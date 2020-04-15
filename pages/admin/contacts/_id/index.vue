@@ -1,6 +1,6 @@
 <template>
   <v-container class="px-0">
-    <v-card-title class="display-1 d-flex justify-center" v-text="$t('tags.choice')" />
+    <div class="display-1 ma-4 d-flex justify-center" v-text="$t('tags.choice')" />
     <v-row justify="center">
       <v-col cols="12" sm="7" md="8">
         <v-combobox
@@ -34,6 +34,7 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="12" sm="12">
+        <div class="subtitle-1" v-html="$t('contacts.notice')" />
         <v-card class="cardColor">
           <v-card-title class="secondary">
             <v-avatar v-if="contact.img" size="70px">

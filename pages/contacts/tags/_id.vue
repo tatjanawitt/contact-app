@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container px-0>
     <div class="display-2 ma-4 d-flex justify-center">
       {{ tag.name }}
     </div>

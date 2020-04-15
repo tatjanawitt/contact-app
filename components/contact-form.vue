@@ -49,12 +49,12 @@
               <ContactFormTextfield :obj="contactData" fieldname="img" />
             </v-col>
           </v-row>
-          <small>{{ $t('cForm.note') }}</small>
+          <small class="d-flex justify-end mb-2" v-text="$t('cForm.note')" />
           <v-row class="d-flex justify-end">
-            <v-btn class="mr-2 secondary" @click="cancel">
+            <v-btn small class="mr-2 secondary" @click="cancel">
               <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
             </v-btn>
-            <v-btn :disabled="!valid" class="primary" @click="save">
+            <v-btn small :disabled="!valid" class="primary" @click="save">
               <v-icon left v-text="'mdi-content-save'" />{{ $t('cForm.saveBtn') }}
             </v-btn>
           </v-row>

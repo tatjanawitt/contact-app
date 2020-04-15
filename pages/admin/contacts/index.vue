@@ -1,11 +1,17 @@
 <template>
-  <v-container>
-    <v-row class="ma-2">
-      <div class="display-1" v-text="$t('contacts.header')" />
-      <v-spacer />
-      <v-btn class="primary" to="/admin/contacts/new">
-        <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
-      </v-btn>
+  <v-container px-0>
+    <v-row class="my-2">
+      <v-col cols="12" sm="2" class="hidden-xs-only" />
+      <v-col cols="12" sm="8">
+        <div class="display-1 center" v-text="$t('contacts.header')" />
+      </v-col>
+      <v-col cols="12" sm="2">
+        <div class="d-flex justify-end">
+          <v-btn class="primary" to="/admin/contacts/new">
+            <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
+          </v-btn>
+        </div>
+      </v-col>
     </v-row>
     <ContactTable :contacts="contacts" :headers="headers" />
   </v-container>

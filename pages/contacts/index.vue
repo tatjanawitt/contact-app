@@ -1,5 +1,5 @@
 <template>
-  <v-container class="px-0">
+  <v-container px-0>
     <div class="display-2 ma-4 d-flex justify-center" v-text="$t('contacts.title')" />
     <ContactList :contacts="contacts" />
   </v-container>

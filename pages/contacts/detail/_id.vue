@@ -1,11 +1,11 @@
 <template>
   <v-row justify="center">
     <v-col cols="12" sm="8">
-      <div class="subtitle-1" v-html="$t('contacts.notice')" />
+      <div class="subtitle-1 white--text" v-html="$t('contacts.notice')" />
       <v-card class="cardColor">
         <v-card-title class="secondary">
           <v-badge :value="birthday" color="red darken-2" :content="age">
-            <span class="headline white--text">
+            <span class="headline white--text ml-3">
               {{ fullName }}
             </span>
           </v-badge>

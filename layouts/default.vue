@@ -2,12 +2,8 @@
   <v-app id="inspire">
     <Navbar />
     <v-content>
-      <v-container fluid>
-        <v-row justify="center">
-          <v-col cols="12" sm="12" md="10" lg="8">
-            <nuxt />
-          </v-col>
-        </v-row>
+      <v-container pa-0 fluid>
+        <nuxt />
       </v-container>
       <v-snackbar
         v-for="(snackbar, index) in snackbars.filter(s => s.showing)"
@@ -70,4 +66,5 @@ main {
 .cardColor {
    background-color: transparent !important;
 }
+.center { text-align: center; }
 </style>

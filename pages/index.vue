@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 d-flex justify-center" v-text="content.title" />
+    <div class="display-2 ma-4 center" v-text="content.title" />
     <div class="subtitle-1 ma-4 d-flex justify-center" v-text="content.sub" />
     <v-layout elevation-14>
       <v-carousel cycle hide-delimiters>
