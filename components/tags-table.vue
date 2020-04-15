@@ -43,7 +43,7 @@
       <template #item.contact_ids.length="{item}">
         <v-chip v-if="item.contact_ids.length"
                 :to="`/contacts/tags/${item.id}`"
-                :color="btnColor"
+                color="secondary"
                 small dark label
         >
           <v-icon left v-text="'mdi-account-multiple'" />
@@ -82,14 +82,11 @@ export default {
     return {
       newTagName: '',
       updateTag: { id: '', name: '' },
-      btnColor: 'indigo lighten-2',
       search: ''
     }
   },
   methods: {
-    setToEditing (tag) {
-      this.updateTag = { ...tag }
-    },
+    setToEditing (tag) { this.updateTag = { ...tag } },
     updateTagName (tag) {
       if (this.updateTag.name.length > 0) {
         const editTag = { ...tag, name: this.updateTag.name }
@@ -97,9 +94,7 @@ export default {
       }
       this.updateTag.id = ''
     },
-    deleteTag (tag) {
-      this.$store.dispatch('tags/delete', { tag })
-    },
+    deleteTag (tag) { this.$store.dispatch('tags/delete', { tag }) },
     createTag () {
       if (this.newTagName.length > 0) {
         this.$store.dispatch('tags/create', { name: this.newTagName })
