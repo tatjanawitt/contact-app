@@ -2,16 +2,15 @@
   <v-container>
     <v-card-title class="display-1 d-flex justify-center" v-text="$t('tags.choice')" />
     <v-row justify="center">
-      <v-col cols="12" sm="6" md="7">
+      <v-col cols="12" sm="7" md="8">
         <v-combobox
           v-model="contactTags"
           :items="tags"
           item-text="name"
           append-icon="mdi-tag-plus"
-          class="mr-6"
-          filled
+          outlined
           dark
-          background-color="rgba(121, 134, 203, 0.4)"
+          background-color="rgba(232, 135, 0, 0.7)"
           multiple
           chips
           deletable-chips
@@ -19,8 +18,8 @@
           return-object
         />
       </v-col>
-      <v-col cols="12" sm="4" md="3">
-        <div class="mt-2 d-flex justify-end">
+      <v-col cols="12" sm="5" md="4">
+        <div class="mt-4 d-flex justify-end">
           <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
             <v-icon v-text="'mdi-card-account-details'" />
           </v-btn>
@@ -34,7 +33,7 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" sm="10">
+      <v-col cols="12" sm="12">
         <v-card class="cardColor">
           <v-card-title class="secondary">
             <v-avatar v-if="contact.img" size="70px">
