@@ -14,7 +14,7 @@ export const mutations = {
 export const actions = {
   create ({ commit }, snackbar) {
     snackbar.showing = true
-    snackbar.color = snackbar.color || 'success'
+    snackbar.color = snackbar.color || 'secondary'
     commit('ADD', snackbar)
   },
   remove ({ commit }, snackbar) {

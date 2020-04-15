@@ -18,7 +18,9 @@
         :style="`bottom: ${(index * 60) + 8}px`"
         @input="removeSnackbar(snackbar)"
       >
-        {{ snackbar.text }}
+        <v-icon left dark
+                v-text="snackbar.color === 'secondary' ? 'mdi-check-circle' : 'mdi-alert-circle'"
+        />{{ snackbar.text }}
         <v-btn icon @click="removeSnackbar(snackbar)">
           <v-icon v-text="'mdi-close-circle'" />
         </v-btn>

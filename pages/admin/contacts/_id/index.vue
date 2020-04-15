@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="px-0">
     <v-card-title class="display-1 d-flex justify-center" v-text="$t('tags.choice')" />
     <v-row justify="center">
       <v-col cols="12" sm="7" md="8">
