@@ -1,7 +1,7 @@
 <template>
   <v-container px-0>
     <div class="display-2 ma-4 d-flex justify-center">
-      {{ tag.name }}
+      {{ contactsOnTag.length + ' ' + tag.name }}
     </div>
     <ContactList :contacts="contactsOnTag" />
   </v-container>

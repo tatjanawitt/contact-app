@@ -9,7 +9,10 @@
       hide-details
     />
     <v-sheet v-if="contactList && contactList.length" class="mx-auto" elevation="8">
-      <v-slide-group v-model="model" center-active show-arrows>
+      <v-slide-group v-model="model" center-active show-arrows
+                     prev-icon="mdi-account-arrow-left"
+                     next-icon="mdi-account-arrow-right"
+      >
         <v-slide-item v-for="c in contactList" :key="c.id" #default="{ active, toggle }">
           <v-card max-width="17.5rem" hover class="ma-1" @click="toggle">
             <ContactListItem :contact="c" />
