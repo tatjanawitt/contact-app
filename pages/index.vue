@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 center" v-text="content.title" />
-    <div class="subtitle-1 ma-4 d-flex justify-center" v-text="content.sub" />
+    <div class="display-2 my-6 center" v-text="content.title" />
+    <div class="subtitle-1 my-4 d-flex justify-center" v-text="content.sub" />
     <v-layout elevation-14>
       <v-carousel cycle hide-delimiters>
         <v-carousel-item v-for="(img,i) in content.images" :key="i" :src="img.src" />

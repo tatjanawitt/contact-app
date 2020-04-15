@@ -1,10 +1,8 @@
 <template>
-  <v-container px-0>
-    <div class="display-2 ma-4 d-flex justify-center">
-      {{ contactsOnTag.length + ' ' + tag.name }}
-    </div>
+  <div>
+    <div class="display-2 my-6 center" v-text="tagName" />
     <ContactList :contacts="contactsOnTag" />
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -24,6 +22,9 @@ export default {
     },
     tag () {
       return this.tags.find(t => t.id === this.$route.params.id)
+    },
+    tagName () {
+      return `${this.contactsOnTag.length} ${this.tag.name}`
     }
   }
 }

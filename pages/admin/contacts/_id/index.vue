@@ -1,6 +1,6 @@
 <template>
   <v-container class="px-0">
-    <div class="display-1 ma-4 d-flex justify-center" v-text="$t('tags.choice')" />
+    <div class="display-1 my-4 center" v-text="$t('tags.choice')" />
     <v-row justify="center">
       <v-col cols="12" sm="7" md="8">
         <v-combobox

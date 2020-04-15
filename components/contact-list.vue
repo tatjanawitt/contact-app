@@ -1,12 +1,9 @@
 <template>
   <div>
-    <v-text-field
-      v-model="search"
-      append-icon="mdi-account-search"
+    <SearchField
       :label="$t('contacts.search')"
-      clearable
-      class="mb-6"
-      hide-details
+      icon="mdi-account-search"
+      :search="search"
     />
     <v-sheet v-if="contactList && contactList.length" class="mx-auto" elevation="8">
       <v-slide-group v-model="model" center-active show-arrows
@@ -27,19 +24,23 @@
 <script>
 import ContactListItem from '@/components/contact-list-item'
 import AlertNoData from '@/components/alert-no-data'
+import SearchField from '@/components/search-field'
 export default {
-  components: { ContactListItem, AlertNoData },
+  components: { ContactListItem, AlertNoData, SearchField },
   props: {
     contacts: { type: Array, required: true }
   },
-  data: () => ({ model: null, search: null }),
+  data: () => ({
+    model: null,
+    search: { item: null }
+  }),
   computed: {
     contactList () {
-      if (this.search) {
+      if (this.search.item) {
         return this.contacts.filter(c =>
-          c.lName.toLowerCase().includes(this.search.toLowerCase()) ||
-          c.fName.toLowerCase().includes(this.search.toLowerCase()) ||
-          c.place.toLowerCase().includes(this.search.toLowerCase())
+          c.lName.toLowerCase().includes(this.search.item.toLowerCase()) ||
+          c.fName.toLowerCase().includes(this.search.item.toLowerCase()) ||
+          c.place.toLowerCase().includes(this.search.item.toLowerCase())
         )
       } else {
         return this.contacts

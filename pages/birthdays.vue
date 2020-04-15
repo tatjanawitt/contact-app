@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="display-2 ma-4 center" v-text="$t('birthdays.title') + ' ' + nowYear" />
+    <div class="display-2 my-6 center" v-text="title" />
     <ContactBirthday />
   </v-container>
 </template>
@@ -11,7 +11,12 @@ export default {
   middleware: ['auth-user'],
   components: { ContactBirthday },
   computed: {
-    nowYear () { return new Date().getFullYear() }
+    nowYear () {
+      return new Date().getFullYear()
+    },
+    title () {
+      return `${this.$t('birthdays.title')} ${this.nowYear}`
+    }
   }
 }
 </script>

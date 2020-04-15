@@ -1,57 +1,55 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12">
-      <v-text-field
-        v-model="search"
-        :label="$t('birthdays.search')"
-        clearable
-        append-icon="mdi-account-search"
-        hide-details
-      />
-    </v-col>
-    <v-col cols="12">
-      <v-expansion-panels v-if="list && list.length" v-model="panel" focusable>
-        <v-expansion-panel v-for="(item,i) in list" :key="i">
-          <v-expansion-panel-header class="title">
-            {{ item.month }}:&nbsp;
-            <span class="subtitle-1 grey--text-darken-1">
-              {{ item.contacts.length }}
-              {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
-            </span>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content
-            v-for="contact in item.contacts"
-            :key="contact.id + contact.zip"
-          >
-            <ContactBirthdayItem :contact="contact" />
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-      <AlertNoData v-else :hint-text="$t('contacts.noData')" />
-    </v-col>
-  </v-row>
+  <div>
+    <SearchField
+      :label="$t('birthdays.search')"
+      icon="mdi-account-search"
+      :search="search"
+    />
+    <v-expansion-panels v-if="list && list.length" v-model="panel" focusable>
+      <v-expansion-panel v-for="(item,i) in list" :key="i">
+        <v-expansion-panel-header class="title">
+          {{ item.month }}:&nbsp;
+          <span class="subtitle-1 grey--text-darken-1">
+            {{ item.contacts.length }}
+            {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
+          </span>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content
+          v-for="contact in item.contacts"
+          :key="contact.id + contact.zip"
+        >
+          <ContactBirthdayItem :contact="contact" />
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+    <AlertNoData v-else :hint-text="$t('contacts.noData')" />
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contact-birthday-item'
 import AlertNoData from '@/components/alert-no-data'
+import SearchField from '@/components/search-field'
 export default {
-  components: { ContactBirthdayItem, AlertNoData },
+  components: { ContactBirthdayItem, AlertNoData, SearchField },
   data () {
-    return { panel: 0, search: null }
+    return {
+      panel: 0,
+      search: { item: null }
+    }
   },
   computed: {
     ...mapState({
       contacts: state => state.contacts.contacts
     }),
     list () {
-      if (this.search) {
+      if (this.search.item) {
         const searchlist = [...this.currentMonthFirst]
         const result = searchlist.map((item) => {
           const contacts = item.contacts.filter(c =>
-            c.lName.toLowerCase().includes(this.search.toLowerCase()) ||
-            c.fName.toLowerCase().includes(this.search.toLowerCase())
+            c.lName.toLowerCase().includes(this.search.item.toLowerCase()) ||
+            c.fName.toLowerCase().includes(this.search.item.toLowerCase())
           )
           return { ...item, contacts }
         })
