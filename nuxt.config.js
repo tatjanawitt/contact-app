@@ -76,10 +76,10 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          primary: '#e88700',
+          primary: colors.orange.darken3,
           secondary: colors.indigo.lighten2,
-          anchor: '#e88700',
-          accent: '#e88700'
+          anchor: colors.orange.darken3,
+          accent: colors.orange.darken3
         }
       }
     }

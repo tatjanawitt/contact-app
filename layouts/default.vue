@@ -19,7 +19,7 @@
         @input="removeSnackbar(snackbar)"
       >
         <v-icon left dark
-                v-text="snackbar.color === 'secondary' ? 'mdi-check-circle' : 'mdi-alert-circle'"
+                v-text="snackbar.color === 'primary' ? 'mdi-check-circle' : 'mdi-alert-circle'"
         />{{ snackbar.text }}
         <v-btn icon @click="removeSnackbar(snackbar)">
           <v-icon v-text="'mdi-close-circle'" />

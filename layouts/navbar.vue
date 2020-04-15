@@ -1,44 +1,18 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app temporary persistent class="secondary" dark>
-      <v-list class="d-flex flex-column">
-        <div v-if="$auth.loggedIn" class="d-flex flex-column">
-          <v-chip class="justify-start primary" x-large label tile>
-            <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
-          </v-chip>
-          <v-divider class="mx-4" />
-        </div>
-        <div v-else class="d-flex flex-column">
-          <span v-for="item in users" :key="item.icon + Math.random()">
-            <v-btn class="justify-start" x-large text tile :to="item.route">
-              <v-icon left v-text="item.icon" />{{ item.text }}
-            </v-btn>
-          </span>
-        </div>
-        <v-btn class="justify-start" x-large text :to="start.route">
-          <v-icon left v-text="start.icon" />{{ start.text }}
-        </v-btn>
-        <v-divider class="mx-4" />
-        <div v-for="item in items" :key="item.icon + Math.random()" class="d-flex flex-column">
-          <v-btn v-if="$auth.user" class="justify-start" x-large text :to="item.route">
-            <v-icon left v-text="item.icon" />{{ item.text }}
-          </v-btn>
-          <v-divider v-if="$auth.user" class="mx-4" />
-        </div>
-        <v-btn v-if="$auth.user && $auth.user.admin" class="justify-start" x-large text :to="admin.route">
-          <v-icon left v-text="admin.icon" />{{ admin.text }}
-        </v-btn>
-        <v-divider v-if="$auth.user && $auth.user.admin" class="mx-4" />
-      </v-list>
-    </v-navigation-drawer>
-
+    <NavbarMobile
+      :start="start"
+      :items="items"
+      :admin="admin"
+      :users="users"
+      :nav="nav"
+    />
     <v-app-bar app text dense class="secondary" dark>
       <v-avatar size="36px" class="mr-2">
         <v-img src="https://cdn.pixabay.com/photo/2015/11/03/08/58/meeting-1019875__340.jpg" />
       </v-avatar>
-      <v-app-bar-nav-icon class="hidden-md-and-up"
-                          @click.stop="drawer = !drawer"
-      />
+
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="nav.drawer = !nav.drawer" />
       <span class="hidden-sm-and-down">
         <v-btn large tile text :to="start.route">
           <v-icon left v-text="start.icon" />{{ start.text }}
@@ -62,6 +36,7 @@
           {{ $t('userInfo.logout') }}<v-icon right v-text="'mdi-logout-variant'" />
         </v-btn>
       </div>
+
       <div v-else class="hidden-sm-and-down">
         <span v-for="item in users" :key="item.icon + Math.random()">
           <v-btn large text tile :to="item.route">
@@ -69,8 +44,10 @@
           </v-btn>
         </span>
       </div>
-      <v-avatar class="language mx-2" size="26px"
-                @click="changeLang(language === 'de' ? 'en': 'de')"
+
+      <v-avatar
+        class="language mx-2" size="26px"
+        @click="changeLang(language === 'de' ? 'en': 'de')"
       >
         <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
       </v-avatar>
@@ -79,9 +56,11 @@
 </template>
 
 <script>
+import NavbarMobile from '@/layouts/navbar-mobile'
 export default {
+  components: { NavbarMobile },
   data () {
-    return { drawer: false }
+    return { nav: { drawer: false } }
   },
   computed: {
     start () {
@@ -109,7 +88,5 @@ export default {
 </script>
 
 <style>
-.language {
-  cursor: pointer;
-}
+.language { cursor: pointer; }
 </style>
