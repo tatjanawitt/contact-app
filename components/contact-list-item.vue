@@ -67,7 +67,7 @@ export default {
       return this.getAge(this.contact.id)
     },
     color () {
-      return this.bToday ? 'red darken-2' : 'grey'
+      return this.bToday ? 'error' : 'grey'
     }
   },
   methods: {

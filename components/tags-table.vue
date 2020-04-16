@@ -84,18 +84,32 @@ export default {
   },
   methods: {
     setToEditing (tag) { this.updateTag = { ...tag } },
-    updateTagName (tag) {
+    async updateTagName (tag) {
       if (this.updateTag.name.length > 0) {
         const editTag = { ...tag, name: this.updateTag.name }
-        this.$store.dispatch('tags/update', { editTag })
+        const updatedTag = await this.$store.dispatch('tags/update', { editTag })
+        this.$store.dispatch('snackbar/create', {
+          text: this.$t('tags.editSuccess') + updatedTag.name + '.'
+        })
       }
       this.updateTag.id = ''
     },
-    deleteTag (tag) { this.$store.dispatch('tags/delete', { tag }) },
-    createTag () {
+    async deleteTag (tag) {
+      const res = await this.$store.dispatch('tags/delete', { tag })
+      const info = { text: this.$t('tags.delSuccess') + tag.name + '.' }
+      if (res.status !== 200 && res.status !== 204) {
+        info.text = this.$t('errorMsg')
+        info.color = 'error'
+      }
+      this.$store.dispatch('snackbar/create', { ...info })
+    },
+    async createTag () {
       if (this.newTagName.length > 0) {
-        this.$store.dispatch('tags/create', { name: this.newTagName })
+        const newTag = await this.$store.dispatch('tags/create', { name: this.newTagName })
         this.newTagName = ''
+        this.$store.dispatch('snackbar/create', {
+          text: this.$t('tags.newSuccess') + newTag.name + '.'
+        })
       }
       this.startNew.tag = false
     }

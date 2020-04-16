@@ -60,12 +60,18 @@ export const actions = {
     return createdTag
   },
   async update ({ commit }, { editTag }) {
-    await this.$axios.put(`/tags/${editTag.id}`, editTag)
-    commit('UPDATE', { editTag })
+    const response = await this.$axios.put(`/tags/${editTag.id}`, editTag)
+    const updatedTag = response.data.data
+    deserializeTags([updatedTag])
+    commit('UPDATE', { editTag: updatedTag.attributes })
+    return updatedTag.attributes
   },
-  delete ({ commit }, { tag }) {
-    this.$axios.delete(`/tags/${tag.id}`)
-    commit('DELETE', { tag })
+  async delete ({ commit }, { tag }) {
+    const response = await this.$axios.delete(`/tags/${tag.id}`)
+    if (response.status === 200 || response.status === 204) {
+      commit('DELETE', { tag })
+    }
+    return response
   }
 }
 

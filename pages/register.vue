@@ -25,7 +25,7 @@ export default {
         this.$router.push('/')
       } catch {
         this.$store.dispatch('snackbar/create', {
-          color: 'red',
+          color: 'error',
           text: this.$t('userInfo.regError')
         })
       }

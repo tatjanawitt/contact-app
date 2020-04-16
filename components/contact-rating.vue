@@ -2,7 +2,7 @@
   <v-rating
     v-model="newRating"
     :readonly="readonly"
-    color="red darken-2"
+    color="error"
     :background-color="small ? 'red lighten-2' : 'red lighten-4'"
     empty-icon="mdi-heart-outline"
     full-icon="mdi-heart"

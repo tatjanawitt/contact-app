@@ -53,7 +53,7 @@ export default {
         }</b> ${this.$t('birthdays.turns')} ${this.age + 1}`
     },
     color () {
-      return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'
+      return this.getBirthdayToday(this.contact.id) ? 'error' : 'grey'
     },
     lang () {
       return this.$i18n.locale === 'de' ? 'de-DE' : 'en-EN'

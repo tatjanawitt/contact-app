@@ -2,6 +2,7 @@
   "new": "Neu",
   "action": "Aktion",
   "noData": "Keine Daten vorhanden",
+  "errorMsg": "Fehler! ... Etwas ging schief.",
   "links": {
     "home": "Start",
     "birthdays": "Geburtstage",
@@ -75,6 +76,9 @@
     "name": "Name",
     "numContacts": "# Zuordnung",
     "alertDel": "Sie wollen das Stichwort wirklich löschen, ",
+    "delSuccess": "Das Stichwort wurde erfolgreich gelöscht, ",
+    "newSuccess": "Ein neues Stichwort wurde angelegt, ",
+    "editSuccess": "Das Stichwort wurde geändert, ",
     "delHeader": "Stichwort löschen"
   }
 }

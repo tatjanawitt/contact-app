@@ -52,7 +52,7 @@ export default {
       return this.getDateFormat(this.contact.id, this.$i18n.locale)
     },
     color () {
-      return this.getBirthdayToday(this.contact.id) ? 'red darken-2' : 'grey'
+      return this.getBirthdayToday(this.contact.id) ? 'error' : 'grey'
     }
   }
 }

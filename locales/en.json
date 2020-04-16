@@ -2,6 +2,7 @@
   "new": "New",
   "action": "Actions",
   "noData": "No data available",
+  "errorMsg": "Error! ... Something goes wrong.",
   "links": {
     "home": "Dashbord",
     "birthdays": "Birthdays",
@@ -75,6 +76,9 @@
     "name": "Name",
     "numContacts": "# Assignment",
     "alertDel": "Are you sure you want to delete, ",
+    "delSuccess": "You have successfully deleted your tag, ",
+    "newSuccess": "You have successfully created a new tag, ",
+    "editSuccess": "You have successfully edited your tag, ",
     "delHeader": "Delete Tag"
   }
 }
