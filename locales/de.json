@@ -42,8 +42,8 @@
     "search": "Name oder Ort suchen",
     "tabSearch": "Kontakte suchen",
     "header": "Kontakt Übersicht",
-    "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
-    "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
+    "alertDel": "Sie wollen den Kontakt wirklich löschen von ",
+    "delSuccess": "Der Kontakt wurde erfolgreich gelöscht von ",
     "ratingSuccess": "Die Bewertung wurde erfolgreich gaändert auf ",
     "delHeader": "Kontakt löschen",
     "notice": "<b>Hinweis:</b><br> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
@@ -51,8 +51,8 @@
   "cForm": {
     "newLabel": "Neuer Kontakt",
     "editLabel": "Kontakt ändern",
-    "newSuccess": "Ein neuer Kontakt wurde angelegt, ",
-    "editSuccess": "Der Kontakt wurde geändert, ",
+    "newSuccess": "Ein neuer Kontakt wurde erfolgreich angelegt für ",
+    "editSuccess": "Der Kontakt wurde erfolgreich geändert bei ",
     "note": "* Plichtfelder müssen ausgefüllt werden.",
     "delBtn": "Löschen",
     "saveBtn": "Speichern",
@@ -76,10 +76,10 @@
     "choice": "Stichworte Auswahl",
     "name": "Name",
     "numContacts": "# Zuordnung",
-    "alertDel": "Sie wollen das Stichwort wirklich löschen, ",
-    "delSuccess": "Das Stichwort wurde erfolgreich gelöscht, ",
-    "newSuccess": "Ein neues Stichwort wurde angelegt, ",
-    "editSuccess": "Das Stichwort wurde geändert, ",
+    "alertDel": "Sie wollen das Stichwort wirklich löschen: ",
+    "delSuccess": "Das Stichwort wurde erfolgreich gelöscht: ",
+    "newSuccess": "Ein neues Stichwort wurde angelegt: ",
+    "editSuccess": "Das Stichwort wurde erfolgreich geändert: ",
     "addedSuccess": "Die Stichwort-Bearbeitung war erfolgreich bei ",
     "delHeader": "Stichwort löschen"
   }

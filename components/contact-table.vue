@@ -95,7 +95,7 @@ export default {
       const fullName = this.getFullName(contact.id)
       this.$store.dispatch('contacts/delete', contact)
       this.$store.dispatch('snackbar/create', {
-        text: `${this.$t('contacts.delSuccess')} "${fullName}".`
+        text: this.$t('contacts.delSuccess') + fullName + '.'
       })
     }
   }

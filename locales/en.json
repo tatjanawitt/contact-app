@@ -42,8 +42,8 @@
     "search": "Search name or place",
     "tabSearch": "Search contacts",
     "header": "Contact Overview",
-    "alertDel": "Are you sure you want to delete this contact, ",
-    "delSuccess": "You have successfully deleted your contact, ",
+    "alertDel": "Are you sure you want to delete this contact from ",
+    "delSuccess": "You have successfully deleted your contact for ",
     "ratingSuccess": "You have successfully updated your rating to ",
     "delHeader": "Delete Contact",
     "notice": "<b>Note:</b><br> With the number of hearts you can change the sorting of the cards"
@@ -51,8 +51,8 @@
   "cForm": {
     "newLabel": "Create Contact",
     "editLabel": "Edit Contact",
-    "newSuccess": "You have successfully created a new contact, ",
-    "editSuccess": "You have successfully edited your contact, ",
+    "newSuccess": "You have successfully created a new contact for ",
+    "editSuccess": "You have successfully edited your contact for ",
     "note": "* Mandatory fields must be filled.",
     "delBtn": "Delete",
     "saveBtn": "Save",
@@ -77,9 +77,9 @@
     "name": "Name",
     "numContacts": "# Assignment",
     "alertDel": "Are you sure you want to delete, ",
-    "delSuccess": "You have successfully deleted your tag, ",
-    "newSuccess": "You have successfully created a new tag, ",
-    "editSuccess": "You have successfully edited your tag, ",
+    "delSuccess": "You have successfully deleted your tag: ",
+    "newSuccess": "You have successfully created a new tag: ",
+    "editSuccess": "You have successfully edited your tag: ",
     "addedSuccess": "You have successfully managed your tagging by ",
     "delHeader": "Delete Tag"
   }
