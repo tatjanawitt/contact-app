@@ -10,7 +10,8 @@
     "admin": "Admin",
     "login": "Anmelden",
     "register": "Registrieren",
-    "tags": "Stichworte"
+    "tags": "Stichworte",
+    "users": "Benutzer"
   },
   "home": {
     "title": "Herzlich Willkommen!",
@@ -82,5 +83,11 @@
     "editSuccess": "Das Stichwort wurde erfolgreich geändert: ",
     "addedSuccess": "Die Stichwort-Bearbeitung war erfolgreich bei ",
     "delHeader": "Stichwort löschen"
+  },
+  "users": {
+    "name": "Name",
+    "email": "Email",
+    "admin": "Admin",
+    "header": "Benutzer Übersicht"
   }
 }

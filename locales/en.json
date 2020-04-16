@@ -10,7 +10,8 @@
     "admin": "Admin",
     "login": "Login",
     "register": "Register",
-    "tags": "Tags"
+    "tags": "Tagginglist",
+    "users": "Users"
   },
   "home": {
     "title": "Welcome at our place!",
@@ -82,5 +83,11 @@
     "editSuccess": "You have successfully edited your tag: ",
     "addedSuccess": "You have successfully managed your tagging by ",
     "delHeader": "Delete Tag"
+  },
+  "users": {
+    "name": "Name",
+    "email": "Email",
+    "admin": "Admin",
+    "header": "Users Overview"
   }
 }

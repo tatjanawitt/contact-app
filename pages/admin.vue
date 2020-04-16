@@ -8,6 +8,9 @@
         <v-tab to="/admin/tags">
           <v-icon left v-text="'mdi-tag-multiple'" />{{ $t('links.tags') }}
         </v-tab>
+        <v-tab to="/admin/users">
+          <v-icon left v-text="'mdi-account-multiple'" />{{ $t('links.users') }}
+        </v-tab>
       </v-tabs>
     </v-toolbar>
     <router-view />

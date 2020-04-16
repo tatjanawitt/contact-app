@@ -25,7 +25,9 @@ new Server({
     tag: Model.extend({
       contacts: hasMany()
     }),
-    user: Model
+    user: Model.extend({
+      contacts: hasMany()
+    })
   },
   serializers: {
     application: BaseSerializer,
@@ -52,9 +54,14 @@ new Server({
       }
     }),
     user: BaseSerializer.extend({
-      attrs: ['name', 'email', 'admin'],
-      keyForAttribute (attr) {
-        return attr
+      include: ['contacts'],
+      normalize (json) {
+        return {
+          data: {
+            type: 'user',
+            attributes: json
+          }
+        }
       }
     })
   },
@@ -81,6 +88,8 @@ new Server({
     this.post('/contact_tags', () => new Response(201))
     this.post('/contact_tags/delete', () => new Response(200))
 
+    this.get('/users')
+
     // Nuxt Auth endpoints
     this.post('/sessions', function (schema, request) {
       const json = JSON.parse(request.requestBody)
@@ -95,7 +104,7 @@ new Server({
       const json = JSON.parse(request.requestBody)
       const token = Math.random().toString().slice(1)
       json.token = token
-      // json.playedVideoIds = []
+      json.contactIds = []
       schema.db.users.insert(json)
       return { token }
     })

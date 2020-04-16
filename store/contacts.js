@@ -38,7 +38,7 @@ export const actions = {
   async loadAll ({ commit, dispatch }) {
     const { data: contacts } = await getData('/contacts', this.$axios)
     deserializeContacts(contacts)
-    commit('SET', contacts.map(v => v.attributes))
+    commit('SET', contacts.map(c => c.attributes))
   },
   async create ({ commit }, contact) {
     const response = await this.$axios.post('/contacts', contact)
