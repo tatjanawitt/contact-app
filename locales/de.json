@@ -44,6 +44,7 @@
     "header": "Kontakt Übersicht",
     "alertDel": "Sie wollen den Kontakt wirklich löschen, ",
     "delSuccess": "Der Kontakt wurde erfolgreich gelöscht, ",
+    "ratingSuccess": "Die Bewertung wurde erfolgreich gaändert auf ",
     "delHeader": "Kontakt löschen",
     "notice": "<b>Hinweis:</b><br> Mit der Anzahl der Herzen änderst Du die Sortierung der Karten"
   },
@@ -79,6 +80,7 @@
     "delSuccess": "Das Stichwort wurde erfolgreich gelöscht, ",
     "newSuccess": "Ein neues Stichwort wurde angelegt, ",
     "editSuccess": "Das Stichwort wurde geändert, ",
+    "addedSuccess": "Die Stichwort-Bearbeitung war erfolgreich bei ",
     "delHeader": "Stichwort löschen"
   }
 }

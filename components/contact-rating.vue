@@ -27,6 +27,9 @@ export default {
           id: this.$route.params.id,
           rating: newValue
         })
+        this.$store.dispatch('snackbar/create', {
+          text: this.$t('contacts.ratingSuccess') + newValue + '.'
+        })
       }
     },
     small () {

@@ -106,6 +106,9 @@ export default {
             })
           }
         }
+        this.$store.dispatch('snackbar/create', {
+          text: this.$t('tags.addedSuccess') + this.fullName + '.'
+        })
       }
     }
   }
