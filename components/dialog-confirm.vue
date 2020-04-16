@@ -12,12 +12,14 @@
         <v-divider class="mx-2 mb-2" />
         <v-card-actions>
           <v-spacer />
-          <v-btn class="secondary" @click="cancel">
-            <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
-          </v-btn>
-          <v-btn class="primary" @click="agree()">
-            <v-icon left v-text="agreeImg" />{{ agreeBtn }}
-          </v-btn>
+          <div class="mr-1 mb-1">
+            <v-btn class="secondary" @click="cancel">
+              <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
+            </v-btn>
+            <v-btn class="primary" @click="agree()">
+              <v-icon left v-text="agreeImg" />{{ agreeBtn }}
+            </v-btn>
+          </div>
         </v-card-actions>
       </v-card>
     </v-dialog>
