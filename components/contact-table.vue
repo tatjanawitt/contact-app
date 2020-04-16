@@ -5,16 +5,6 @@
       icon="mdi-magnify"
       :search="search"
     />
-
-    <!--v-text-field
-      v-model="search"
-      class="mb-6"
-      :label="$t('contacts.tabSearch')"
-      clearable
-      append-icon="mdi-magnify"
-      single-line
-      hide-details
-    /-->
     <v-data-table
       :items="mungedContacts"
       :headers="headers"
