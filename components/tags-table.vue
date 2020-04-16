@@ -122,7 +122,7 @@ export default {
   background-color:rgba(255, 255, 255, 0.8);
 }
 ::v-deep thead.v-data-table-header {
-    background-color: rgba(121, 134, 203, 0.5);
+    background-color: rgba(121, 134, 203, 0.3);
     white-space: nowrap;
 }
 </style>

@@ -115,7 +115,7 @@ export default {
   padding: 0 !important;
 }
 ::v-deep thead.v-data-table-header {
-    background-color:rgba(121, 134, 203, 0.5);
+    background-color:rgba(121, 134, 203, 0.3);
     white-space: nowrap;
 }
 </style>
