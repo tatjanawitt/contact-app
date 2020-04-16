@@ -1,5 +1,5 @@
 <template>
-  <v-container class="px-0">
+  <div>
     <v-row class="my-2">
       <v-col cols="12" sm="2" class="hidden-xs-only" />
       <v-col cols="12" sm="8">
@@ -14,7 +14,7 @@
       </v-col>
     </v-row>
     <TagsTable :start-new="startNew" :tags="tags" :headers="headers" />
-  </v-container>
+  </div>
 </template>
 
 <script>

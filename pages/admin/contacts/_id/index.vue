@@ -1,5 +1,5 @@
 <template>
-  <v-container class="px-0">
+  <div>
     <div class="display-1 my-4 center" v-text="$t('tags.choice')" />
     <v-row justify="center">
       <v-col cols="12" sm="7" md="8">
@@ -48,7 +48,7 @@
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
