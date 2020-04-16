@@ -1,15 +1,11 @@
 <template>
-  <v-container class="px-0">
-    <v-text-field
-      v-model="search"
+  <div>
+    <SearchField
       :label="$t('tags.tabSearch')"
-      class="mb-6"
-      clearable
-      append-icon="mdi-magnify"
-      single-line
-      hide-details
+      icon="mdi-magnify"
+      :search="search"
     />
-    <v-data-table :items="tags" :headers="headers" :search="search"
+    <v-data-table :items="tags" :headers="headers" :search="search.item"
                   sort-by="id" :sort-desc="true" :items-per-page="5"
                   :no-results-text="$t('noData')"
     >
@@ -66,13 +62,14 @@
         />
       </template>
     </v-data-table>
-  </v-container>
+  </div>
 </template>
 
 <script>
 import DialogConfirm from '@/components/dialog-confirm'
+import SearchField from '@/components/search-field'
 export default {
-  components: { DialogConfirm },
+  components: { DialogConfirm, SearchField },
   props: {
     startNew: { type: Object, required: true },
     tags: { type: Array, required: true },
@@ -82,7 +79,7 @@ export default {
     return {
       newTagName: '',
       updateTag: { id: '', name: '' },
-      search: ''
+      search: { item: '' }
     }
   },
   methods: {

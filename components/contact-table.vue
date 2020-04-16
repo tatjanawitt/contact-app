@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-text-field
+    <SearchField
+      :label="$t('contacts.tabSearch')"
+      icon="mdi-magnify"
+      :search="search"
+    />
+
+    <!--v-text-field
       v-model="search"
       class="mb-6"
       :label="$t('contacts.tabSearch')"
@@ -8,16 +14,16 @@
       append-icon="mdi-magnify"
       single-line
       hide-details
-    />
+    /-->
     <v-data-table
       :items="mungedContacts"
       :headers="headers"
-      :search="search"
+      :search="search.item"
       :custom-filter="filter"
       :items-per-page="5"
       :mobile-breakpoint="780"
       show-expand
-      sort-by="sortable"
+      sort-by="id"
       :sort-desc="true"
       :no-results-text="$t('noData')"
       @click:row="goToContact"
@@ -59,24 +65,28 @@ import { mapGetters } from 'vuex'
 import TagsBar from '@/components/tags-bar'
 import ContactTableExpandItem from '@/components/contact-table-expand-item'
 import DialogConfirm from '@/components/dialog-confirm'
+import SearchField from '@/components/search-field'
 export default {
   components: {
     ContactTableExpandItem,
     TagsBar,
-    DialogConfirm
+    DialogConfirm,
+    SearchField
   },
   props: {
     contacts: { type: Array, required: true },
     headers: { type: Array, required: true }
   },
-  data () { return { search: '' } },
+  data () {
+    return { search: { item: '' } }
+  },
   computed: {
     ...mapGetters({
       getTag: 'tags/get',
       getFullName: 'contacts/getFullName'
     }),
     mungedContacts () {
-      return this.contacts.map(c => ({ ...c, sortable: c.id }))
+      return [...this.contacts]
     }
   },
   methods: {
