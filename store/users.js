@@ -1,6 +1,6 @@
 'use strict'
 
-// import Vue from 'vue'
+import Vue from 'vue'
 import { getData, deserializeUsers } from '@/utils/store-utils'
 
 export const state = () => ({
@@ -16,6 +16,10 @@ export const mutations = {
   },
   DELETE (state, userId) {
     state.users = state.users.filter(u => u.id !== userId)
+  },
+  EDIT (state, newUser) {
+    const cIndex = state.users.findIndex(u => u.id === newUser.id)
+    Vue.set(state.users, cIndex, newUser)
   },
   ADD_CONTACT_TO_USER (state, { contactId, user }) {
     const userContacts = user.contactIds.concat(contactId)
@@ -44,6 +48,13 @@ export const actions = {
     commit('ADD', savedUser.attributes)
     return savedUser.attributes
   },
+  async edit ({ commit }, user) {
+    const response = await this.$axios.put(`/users/${user.id}`, user)
+    const newUser = response.data.data
+    deserializeUsers([newUser])
+    commit('EDIT', newUser.attributes)
+    return newUser.attributes
+  },
   addContactToUser ({ commit, rootState }, contactId) {
     if (rootState.auth.loggedIn) {
       commit('ADD_CONTACT_TO_USER', { contactId, user: rootState.auth.user })
@@ -53,6 +64,9 @@ export const actions = {
 }
 
 export const getters = {
+  get: state => (id) => {
+    return state.users.find(u => u.id === id) || {}
+  },
   usersContacts: (state, getters, rootState, rootGetters) => {
     const user = rootState.auth.user
     return user ? user.contactIds : []

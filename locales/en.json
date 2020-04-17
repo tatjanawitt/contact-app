@@ -92,6 +92,10 @@
     "tabSearch": "Search users",
     "alertDel": "Are you sure you want to delete,  ",
     "delHeader": "Delete User",
-    "delSuccess": "You have successfully deleted the user: "
+    "delSuccess": "You have successfully deleted the user: ",
+    "newLabel": "Create User",
+    "editLabel": "Edit User",
+    "newSuccess": "You have successfully created a new user: ",
+    "editSuccess": "You have successfully edited the user: "
   }
 }

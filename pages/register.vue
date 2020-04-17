@@ -15,7 +15,7 @@ export default {
   methods: {
     async registerUser (registrationInfo) {
       try {
-        await this.$axios.post('/users', registrationInfo)
+        await this.$axios.post('/register', registrationInfo)
         await this.$auth.loginWith('local', {
           data: registrationInfo
         })

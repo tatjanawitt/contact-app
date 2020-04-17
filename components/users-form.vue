@@ -1,17 +1,22 @@
 <template>
   <span>
-    <v-btn v-if="userInfo.id" color="primary" small @click.stop="dialog = true">
+    <v-btn v-if="user.id" color="primary" small @click="openDialog">
       <v-icon v-text="'mdi-pencil'" />
     </v-btn>
-    <v-btn v-else class="primary" @click.stop="dialog = true">
+    <v-btn v-else class="primary" @click="openDialog">
       <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
     </v-btn>
+
     <v-dialog v-model="dialog" max-width="500px">
       <v-card class="pa-4">
-        <v-form v-model="valid">
-          <v-card-title class="headline" v-text="'User bearbeiten'" />
+        <v-form ref="form" v-model="valid">
+          <v-card-title class="headline" v-text="headerText" />
           <v-divider />
           <v-card-text>
+            <v-checkbox v-if="userInfo.id"
+                        v-model="userInfo.admin"
+                        label="Admin"
+            />
             <v-text-field v-model="userInfo.name" :label="$t('userInfo.name')"
                           :rules="[required(), minLength(3)]"
             />
@@ -25,14 +30,16 @@
                           :rules="[required(), minLength(8)]"
                           @click:append="showPassword = !showPassword"
             />
-            <v-checkbox v-model="userInfo.admin" label="Admin" />
           </v-card-text>
           <v-divider class="mx-2 mb-2" />
+
           <v-card-actions>
             <v-spacer />
-            <v-btn class="secondary" @click="dialog = false">Close</v-btn>
-            <v-btn :disabled="!valid" class="primary" @click="submitForm(userInfo)">
-              <v-icon left v-text="iconType" />{{ buttonText }}
+            <v-btn small class="secondary" @click="cancel">
+              <v-icon left v-text="'mdi-close-box'" />{{ $t('cForm.closeBtn') }}
+            </v-btn>
+            <v-btn :disabled="!valid" small class="primary" @click="save">
+              <v-icon left v-text="'mdi-content-save'" />{{ $t('cForm.saveBtn') }}
             </v-btn>
           </v-card-actions>
         </v-form>
@@ -42,20 +49,48 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import validations from '@/utils/validations'
 export default {
   props: {
-    submitForm: { type: Function, required: true },
-    buttonText: { type: String, required: true },
-    iconType: { type: String, required: true },
-    userInfo: { type: Object, required: true }
+    saveUser: { type: Function, required: true },
+    headerText: { type: String, required: true },
+    user: { type: Object, required: true }
   },
   data () {
     return {
       valid: false,
       showPassword: false,
       dialog: false,
+      userInfo: {},
       ...validations
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getUser: 'users/get'
+    })
+  },
+  methods: {
+    openDialog () {
+      this.dialog = true
+      this.userInfo = { ...this.getUser(this.user.id) }
+    },
+    cancel () {
+      this.$refs.form.reset()
+      this.dialog = false
+    },
+    save () {
+      this.saveUser({
+        name: '',
+        email: '',
+        password: '',
+        admin: false,
+        token: '',
+        ...this.userInfo
+      })
+      this.$refs.form.reset()
+      this.dialog = false
     }
   }
 }

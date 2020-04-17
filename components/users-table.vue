@@ -13,24 +13,22 @@
       sort-by="id"
       :sort-desc="true"
       :no-results-text="$t('noData')"
-      @click:row="goToContact"
     >
       <template #item.actions="{item}">
-        <td class="non-clickable" @click.stop>
-          <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
-            <v-icon v-text="'mdi-pencil'" />
-          </v-btn>
-          <span v-if="!item.admin">
-            <DialogConfirm
-              :item="item"
-              :content="`${$t('users.alertDel')} <b>${item.name}</b>?`"
-              :agree-action="deleteUser"
-              agree-img="mdi-delete"
-              :agree-btn="$t('cForm.delBtn')"
-              :header="$t('users.delHeader')"
-            />
-          </span>
-        </td>
+        <UsersForm :header-text="$t('users.editLabel')"
+                   :save-user="update"
+                   :user="item"
+        />
+        <span v-if="!item.admin">
+          <DialogConfirm
+            :item="item"
+            :content="`${$t('users.alertDel')} <b>${item.name}</b>?`"
+            :agree-action="deleteUser"
+            agree-img="mdi-delete"
+            :agree-btn="$t('cForm.delBtn')"
+            :header="$t('users.delHeader')"
+          />
+        </span>
       </template>
     </v-data-table>
   </div>
@@ -39,8 +37,9 @@
 <script>
 import SearchField from '@/components/search-field'
 import DialogConfirm from '@/components/dialog-confirm'
+import UsersForm from '@/components/users-form'
 export default {
-  components: { SearchField, DialogConfirm },
+  components: { SearchField, DialogConfirm, UsersForm },
   props: {
     users: { type: Array, required: true },
     headers: { type: Array, required: true }
@@ -50,12 +49,15 @@ export default {
   },
   computed: {
     mungedUsers () {
-      return [...this.users]
+      return this.users.map(u => ({ ...u }))
     }
   },
   methods: {
-    goToContact (contact) {
-      this.$router.push(`/contacts/detail/${contact.id}`)
+    async update (newUser) {
+      const user = await this.$store.dispatch('users/edit', newUser)
+      this.$store.dispatch('snackbar/create', {
+        text: this.$t('users.editSuccess') + user.name + '.'
+      })
     },
     async deleteUser (user) {
       console.log(user) // auch contacte löschen

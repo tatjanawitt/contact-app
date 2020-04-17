@@ -7,10 +7,9 @@
       </v-col>
       <v-col cols="12" sm="2">
         <div class="d-flex justify-end">
-          <UsersForm :button-text="$t('userInfo.register')"
-                     icon-type="mdi-account-box-outline"
-                     :submit-form="registerUser"
-                     :user-info="userData"
+          <UsersForm :header-text="$t('users.newLabel')"
+                     :save-user="create"
+                     :user="user"
           />
         </div>
       </v-col>
@@ -25,6 +24,9 @@ import UsersTable from '@/components/users-table'
 import UsersForm from '@/components/users-form'
 export default {
   components: { UsersTable, UsersForm },
+  data () {
+    return { user: {} }
+  },
   computed: {
     ...mapState({ users: state => state.users.users }),
     headers () {
@@ -35,28 +37,14 @@ export default {
         { text: this.$t('users.admin'), value: 'admin' },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '150px' }
       ]
-    },
-    userData () {
-      return { name: '', email: '', password: '', admin: false }
     }
   },
   methods: {
-    async registerUser (registrationInfo) {
-      try {
-        await this.$axios.post('/users', registrationInfo)
-        await this.$auth.loginWith('local', {
-          data: registrationInfo
-        })
-        this.$store.dispatch('snackbar/create', {
-          text: this.$t('userInfo.regSuccess') + this.$auth.user.name
-        })
-        this.$router.push('/')
-      } catch {
-        this.$store.dispatch('snackbar/create', {
-          color: 'error',
-          text: this.$t('userInfo.regError')
-        })
-      }
+    async create (newUser) {
+      const user = await this.$store.dispatch('users/create', newUser)
+      this.$store.dispatch('snackbar/create', {
+        text: this.$t('users.newSuccess') + user.name + '.'
+      })
     }
   }
 }

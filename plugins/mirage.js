@@ -90,6 +90,8 @@ new Server({
     this.post('/contact_tags/delete', () => new Response(200))
 
     this.get('/users')
+    this.post('/users')
+    this.put('/users/:id')
     this.delete('/users/:id')
 
     // Nuxt Auth endpoints
@@ -102,7 +104,7 @@ new Server({
         return new Response(401)
       }
     })
-    this.post('/users', function (schema, request) {
+    this.post('/register', function (schema, request) {
       const json = JSON.parse(request.requestBody)
       const token = Math.random().toString().slice(1)
       json.token = token

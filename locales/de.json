@@ -92,6 +92,10 @@
     "tabSearch": "Benutzer suchen",
     "alertDel": "Sie wollen den Benutzer wirklich löschen: ",
     "delHeader": "Benutzer löschen",
-    "delSuccess": "Der Benutzer wurde erfolgreich gelöscht: "
+    "delSuccess": "Der Benutzer wurde erfolgreich gelöscht: ",
+    "newLabel": "Neuer Benutzer",
+    "editLabel": "Benutzer ändern",
+    "newSuccess": "Ein neuer User wurde erfolgreich angelegt: ",
+    "editSuccess": "Der User wurde erfolgreich geändert: "
   }
 }

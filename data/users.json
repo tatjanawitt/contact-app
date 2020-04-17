@@ -5,6 +5,7 @@
       "email":"user@gmail.com",
       "admin": false,
       "token": "25%(&!$#tocuh",
+      "password": "aaaaaaaa",
       "contactIds": ["4"]
    },
    {
@@ -13,6 +14,7 @@
       "email":"user2@gmail.com",
       "admin": false,
       "token": "24%(&!$#tocuh",
+      "password": "aaaaaaaa",
       "contactIds": []
    },
    {
@@ -21,6 +23,7 @@
       "email":"admin@gmail.com",
       "admin": true,
       "token": "rcohus!$#21234ch",
+      "password": "aaaaaaaa",
       "contactIds": ["1", "3"],
       "s3Keys": {
          "id": "tnoheurcheou",
@@ -33,6 +36,7 @@
       "email":"notminetogiveaway@secret.com",
       "admin": false,
       "token": "55%(&!$#tocuh",
+      "password": "aaaaaaaa",
       "contactIds": []
    },
    {
@@ -41,6 +45,7 @@
       "email":"spike@bebop.bounty",
       "admin": false,
       "token": "45%(&!$#tocuh",
+      "password": "aaaaaaaa",
       "contactIds": []
    },
    {
@@ -49,6 +54,7 @@
       "email":"gon@hunter.gov",
       "admin": false,
       "token": "35%(&!$#tocuh",
+      "password": "aaaaaaaa",
       "contactIds": []
    }
 ]
