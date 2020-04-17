@@ -12,9 +12,6 @@
                      :submit-form="registerUser"
                      :user-info="userData"
           />
-          <!--v-btn class="primary" to="/admin/contacts/new">
-            <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
-          </v-btn-->
         </div>
       </v-col>
     </v-row>
