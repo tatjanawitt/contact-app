@@ -86,7 +86,7 @@ export default {
         email: '',
         password: '',
         admin: false,
-        token: '',
+        token: Math.random().toString().slice(1),
         ...this.userInfo
       })
       this.$refs.form.reset()
