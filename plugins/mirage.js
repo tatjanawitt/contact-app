@@ -1,6 +1,6 @@
 'use strict'
 
-import { Server, Model, JSONAPISerializer, hasMany } from 'miragejs'
+import { Server, Model, JSONAPISerializer, hasMany, belongsTo } from 'miragejs'
 import _ from 'lodash'
 import contactsJSON from '@/data/contacts.json'
 import tagsJSON from '@/data/tags.json'
@@ -20,7 +20,8 @@ new Server({
   },
   models: {
     contact: Model.extend({
-      tags: hasMany()
+      tags: hasMany(),
+      user: belongsTo()
     }),
     tag: Model.extend({
       contacts: hasMany()
@@ -89,6 +90,7 @@ new Server({
     this.post('/contact_tags/delete', () => new Response(200))
 
     this.get('/users')
+    this.delete('/users/:id')
 
     // Nuxt Auth endpoints
     this.post('/sessions', function (schema, request) {
@@ -105,6 +107,7 @@ new Server({
       const token = Math.random().toString().slice(1)
       json.token = token
       json.contactIds = []
+      json.admin = false
       schema.db.users.insert(json)
       return { token }
     })

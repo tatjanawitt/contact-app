@@ -88,6 +88,10 @@
     "name": "Name",
     "email": "Email",
     "admin": "Admin",
-    "header": "Benutzer Übersicht"
+    "header": "Benutzer Übersicht",
+    "tabSearch": "Benutzer suchen",
+    "alertDel": "Sie wollen den Benutzer wirklich löschen: ",
+    "delHeader": "Benutzer löschen",
+    "delSuccess": "Der Benutzer wurde erfolgreich gelöscht: "
   }
 }

@@ -88,6 +88,10 @@
     "name": "Name",
     "email": "Email",
     "admin": "Admin",
-    "header": "Users Overview"
+    "header": "Users Overview",
+    "tabSearch": "Search users",
+    "alertDel": "Are you sure you want to delete,  ",
+    "delHeader": "Delete User",
+    "delSuccess": "You have successfully deleted the user: "
   }
 }
