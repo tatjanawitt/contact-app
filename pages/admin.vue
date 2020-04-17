@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-toolbar color="rgba(255, 255, 255, 0.6)" tabs flat>
-      <v-tabs>
+      <v-tabs center-active
+              next-icon="mdi-arrow-right-bold-box-outline"
+              prev-icon="mdi-arrow-left-bold-box-outline"
+              show-arrows
+      >
         <v-tab to="/admin/contacts">
           <v-icon left v-text="'mdi-account-multiple'" />{{ $t('links.contacts') }}
         </v-tab>

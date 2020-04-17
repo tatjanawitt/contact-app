@@ -25,6 +25,7 @@
                           :rules="[required(), minLength(8)]"
                           @click:append="showPassword = !showPassword"
             />
+            <v-checkbox v-model="userInfo.admin" label="Admin" />
           </v-card-text>
           <v-divider class="mx-2 mb-2" />
           <v-card-actions>
