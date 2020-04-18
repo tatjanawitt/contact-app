@@ -14,7 +14,7 @@
           <v-divider />
           <v-card-text>
             <div v-if="userInfo.id">
-              <v-checkbox v-model="userInfo.admin"
+              <v-checkbox v-model="userInfo.admin" class="red--text"
                           :label="$t('userInfo.admin')"
               />
               <v-text-field v-model="userInfo.token"
@@ -99,3 +99,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.red--text /deep/ label {
+    color:#D32F2F;
+}
+</style>
