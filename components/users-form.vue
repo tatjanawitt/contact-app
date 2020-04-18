@@ -24,15 +24,14 @@
             <v-text-field v-model="userInfo.name"
                           :label="$t('userInfo.name')"
                           :rules="[required(), minLength(3)]"
-                          maxlength="30"
-                          counter="30"
+                          maxlength="30" counter="30"
             />
             <v-text-field v-model="userInfo.email"
                           :label="$t('userInfo.email')"
                           :rules="[required(), emailFormat()]"
-                          maxlength="50"
-                          counter="50"
+                          maxlength="50" counter="50"
             />
+            <!--input type="password" style="visibility: hidden"-->
             <v-text-field v-model="userInfo.password"
                           :label="$t('userInfo.password')"
                           :type="showPassword ? 'text' : 'password'"
@@ -40,6 +39,10 @@
                           counter="true"
                           :rules="[required(), minLength(8)]"
                           @click:append="showPassword = !showPassword"
+            />
+            <p v-if="userInfo.contact_ids && userInfo.contact_ids.length" v-text="$t('links.contacts')" />
+            <v-chip v-for="(contactId,i) in userInfo.contact_ids" :key="i"
+                    :to="`/admin/contacts/${contactId}`" small dark v-text="getName(contactId)"
             />
           </v-card-text>
           <v-divider class="mx-2 mb-2" />
@@ -79,7 +82,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getUser: 'users/get'
+      getUser: 'users/get',
+      getName: 'contacts/getFullName'
     })
   },
   methods: {

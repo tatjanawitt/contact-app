@@ -15,7 +15,7 @@
       "admin": false,
       "token": "24%(&!$#tocuh",
       "password": "aaaaaaaa",
-      "contactIds": []
+      "contactIds": ["14", "13", "12"]
    },
    {
       "id":"3",

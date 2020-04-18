@@ -15,7 +15,7 @@
       :no-results-text="$t('noData')"
     >
       <template #item.admin="{ item }">
-        <v-chip :color="getColor(item.admin)" small dark>
+        <v-chip :color="getColor(item.admin)" small outlined label dark>
           {{ item.admin ? $t('users.roleAdmin') : $t('users.roleUser') }}
         </v-chip>
       </template>
@@ -65,7 +65,9 @@ export default {
       })
     },
     async deleteUser (user) {
-      console.log(user) // auch contacte löschen
+      user.contact_ids.forEach((id) => {
+        this.$store.dispatch('contacts/delete', { id })
+      })
       const info = { text: this.$t('users.delSuccess') + user.name + '.' }
       const res = await this.$store.dispatch('users/delete', user)
       if (res.status !== 200 && res.status !== 204) {
@@ -84,14 +86,6 @@ export default {
 <style lang="scss" scoped>
 .v-data-table {
   background-color:rgba(255, 255, 255, 0.8);
-}
-::v-deep tbody tr {
-  cursor: pointer;
-}
-::v-deep tbody tr td.non-clickable {
-  cursor: auto;
-  border-bottom: none !important;
-  padding: 0 !important;
 }
 ::v-deep thead.v-data-table-header {
     background-color:rgba(121, 134, 203, 0.3);
