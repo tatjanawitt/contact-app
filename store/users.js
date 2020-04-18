@@ -1,6 +1,7 @@
 'use strict'
 
 import Vue from 'vue'
+import UIDGenerator from 'uid-generator'
 import { getData, deserializeUsers } from '@/utils/store-utils'
 
 export const state = () => ({
@@ -41,6 +42,8 @@ export const actions = {
     return response
   },
   async create ({ commit }, user) {
+    user.token = new UIDGenerator().generateSync() // dummi for login
+    user.admin = false
     const response = await this.$axios.post('/users', user)
     let savedUser = response.data.data
     savedUser = { id: savedUser.id, ...savedUser }

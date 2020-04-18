@@ -25,6 +25,8 @@
     "name": "Name*",
     "password": "Passwort*",
     "email": "Email*",
+    "admin": "Benutzer ist Administrator",
+    "token": "Authentifiziert",
     "regSuccess": "Deine Registrierung war erfolgreich, ",
     "regError": "Die Registrierung ging schief. Bitte versuche es nochmal.",
     "logSuccess": "Dein Anmeldung war erfolgreich, ",

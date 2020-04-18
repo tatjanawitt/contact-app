@@ -13,17 +13,28 @@
           <v-card-title class="headline" v-text="headerText" />
           <v-divider />
           <v-card-text>
-            <v-checkbox v-if="userInfo.id"
-                        v-model="userInfo.admin"
-                        label="Admin"
-            />
-            <v-text-field v-model="userInfo.name" :label="$t('userInfo.name')"
+            <div v-if="userInfo.id">
+              <v-checkbox v-model="userInfo.admin"
+                          :label="$t('userInfo.admin')"
+              />
+              <v-text-field v-model="userInfo.token"
+                            :label="$t('userInfo.token')"
+              />
+            </div>
+            <v-text-field v-model="userInfo.name"
+                          :label="$t('userInfo.name')"
                           :rules="[required(), minLength(3)]"
+                          maxlength="30"
+                          counter="30"
             />
-            <v-text-field v-model="userInfo.email" :label="$t('userInfo.email')"
+            <v-text-field v-model="userInfo.email"
+                          :label="$t('userInfo.email')"
                           :rules="[required(), emailFormat()]"
+                          maxlength="50"
+                          counter="50"
             />
-            <v-text-field v-model="userInfo.password" :label="$t('userInfo.password')"
+            <v-text-field v-model="userInfo.password"
+                          :label="$t('userInfo.password')"
                           :type="showPassword ? 'text' : 'password'"
                           :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                           counter="true"
@@ -81,14 +92,7 @@ export default {
       this.dialog = false
     },
     save () {
-      this.saveUser({
-        name: '',
-        email: '',
-        password: '',
-        admin: false,
-        token: Math.random().toString().slice(1),
-        ...this.userInfo
-      })
+      this.saveUser({ ...this.userInfo })
       this.$refs.form.reset()
       this.dialog = false
     }

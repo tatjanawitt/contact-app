@@ -25,6 +25,8 @@
     "name": "Name*",
     "password": "Password*",
     "email": "Email*",
+    "admin": "User is administrator",
+    "token": "Authenticated",
     "regSuccess": "Thanks for signing up, ",
     "regError": "There was an issue signing up. Please try again.",
     "logSuccess": "Thanks for signing in, ",

@@ -104,15 +104,6 @@ new Server({
         return new Response(401)
       }
     })
-    this.post('/register', function (schema, request) {
-      const json = JSON.parse(request.requestBody)
-      const token = Math.random().toString().slice(1)
-      json.token = token
-      json.contactIds = []
-      json.admin = false
-      schema.db.users.insert(json)
-      return { token }
-    })
     this.get('/sessions/user', function (schema, request) {
       const token = request.requestHeaders.Authorization
       const response = schema.users.findBy({ token })

@@ -6,9 +6,11 @@
         <div @keydown.enter="submitForm(userInfo)">
           <v-text-field v-if="hasName" v-model="userInfo.name" :label="$t('userInfo.name')"
                         :rules="[required(), minLength(3)]"
+                        maxlength="30" counter="30"
           />
           <v-text-field v-model="userInfo.email" :label="$t('userInfo.email')"
                         :rules="[required(), emailFormat()]"
+                        maxlength="50" counter="50"
           />
           <v-text-field v-model="userInfo.password" :label="$t('userInfo.password')"
                         :type="showPassword ? 'text' : 'password'"
