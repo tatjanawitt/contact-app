@@ -10,7 +10,8 @@
     "admin": "Admin",
     "login": "Login",
     "register": "Register",
-    "tags": "Tags"
+    "tags": "Tagginglist",
+    "users": "Users"
   },
   "home": {
     "title": "Welcome at our place!",
@@ -24,6 +25,8 @@
     "name": "Name*",
     "password": "Password*",
     "email": "Email*",
+    "admin": "User is administrator",
+    "token": "Authenticated",
     "regSuccess": "Thanks for signing up, ",
     "regError": "There was an issue signing up. Please try again.",
     "logSuccess": "Thanks for signing in, ",
@@ -82,5 +85,19 @@
     "editSuccess": "You have successfully edited your tag: ",
     "addedSuccess": "You have successfully managed your tagging by ",
     "delHeader": "Delete Tag"
+  },
+  "users": {
+    "name": "Name",
+    "email": "Email",
+    "admin": "Admin",
+    "header": "Users Overview",
+    "tabSearch": "Search users",
+    "alertDel": "Are you sure you want to delete,  ",
+    "delHeader": "Delete User",
+    "delSuccess": "You have successfully deleted the user: ",
+    "newLabel": "Create User",
+    "editLabel": "Edit User",
+    "newSuccess": "You have successfully created a new user: ",
+    "editSuccess": "You have successfully edited the user: "
   }
 }

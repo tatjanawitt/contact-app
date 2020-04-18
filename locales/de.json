@@ -10,7 +10,8 @@
     "admin": "Admin",
     "login": "Anmelden",
     "register": "Registrieren",
-    "tags": "Stichworte"
+    "tags": "Stichworte",
+    "users": "Benutzer"
   },
   "home": {
     "title": "Herzlich Willkommen!",
@@ -24,6 +25,8 @@
     "name": "Name*",
     "password": "Passwort*",
     "email": "Email*",
+    "admin": "Benutzer ist Administrator",
+    "token": "Authentifiziert",
     "regSuccess": "Deine Registrierung war erfolgreich, ",
     "regError": "Die Registrierung ging schief. Bitte versuche es nochmal.",
     "logSuccess": "Dein Anmeldung war erfolgreich, ",
@@ -82,5 +85,19 @@
     "editSuccess": "Das Stichwort wurde erfolgreich geändert: ",
     "addedSuccess": "Die Stichwort-Bearbeitung war erfolgreich bei ",
     "delHeader": "Stichwort löschen"
+  },
+  "users": {
+    "name": "Name",
+    "email": "Email",
+    "admin": "Admin",
+    "header": "Benutzer Übersicht",
+    "tabSearch": "Benutzer suchen",
+    "alertDel": "Sie wollen den Benutzer wirklich löschen: ",
+    "delHeader": "Benutzer löschen",
+    "delSuccess": "Der Benutzer wurde erfolgreich gelöscht: ",
+    "newLabel": "Neuer Benutzer",
+    "editLabel": "Benutzer ändern",
+    "newSuccess": "Ein neuer User wurde erfolgreich angelegt: ",
+    "editSuccess": "Der User wurde erfolgreich geändert: "
   }
 }

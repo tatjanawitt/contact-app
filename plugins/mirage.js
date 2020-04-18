@@ -1,6 +1,6 @@
 'use strict'
 
-import { Server, Model, JSONAPISerializer, hasMany } from 'miragejs'
+import { Server, Model, JSONAPISerializer, hasMany, belongsTo } from 'miragejs'
 import _ from 'lodash'
 import contactsJSON from '@/data/contacts.json'
 import tagsJSON from '@/data/tags.json'
@@ -20,12 +20,15 @@ new Server({
   },
   models: {
     contact: Model.extend({
-      tags: hasMany()
+      tags: hasMany(),
+      user: belongsTo()
     }),
     tag: Model.extend({
       contacts: hasMany()
     }),
-    user: Model
+    user: Model.extend({
+      contacts: hasMany()
+    })
   },
   serializers: {
     application: BaseSerializer,
@@ -52,9 +55,14 @@ new Server({
       }
     }),
     user: BaseSerializer.extend({
-      attrs: ['name', 'email', 'admin'],
-      keyForAttribute (attr) {
-        return attr
+      include: ['contacts'],
+      normalize (json) {
+        return {
+          data: {
+            type: 'user',
+            attributes: json
+          }
+        }
       }
     })
   },
@@ -81,6 +89,11 @@ new Server({
     this.post('/contact_tags', () => new Response(201))
     this.post('/contact_tags/delete', () => new Response(200))
 
+    this.get('/users')
+    this.post('/users')
+    this.put('/users/:id')
+    this.delete('/users/:id')
+
     // Nuxt Auth endpoints
     this.post('/sessions', function (schema, request) {
       const json = JSON.parse(request.requestBody)
@@ -90,14 +103,6 @@ new Server({
       } else {
         return new Response(401)
       }
-    })
-    this.post('/users', function (schema, request) {
-      const json = JSON.parse(request.requestBody)
-      const token = Math.random().toString().slice(1)
-      json.token = token
-      // json.playedVideoIds = []
-      schema.db.users.insert(json)
-      return { token }
     })
     this.get('/sessions/user', function (schema, request) {
       const token = request.requestHeaders.Authorization

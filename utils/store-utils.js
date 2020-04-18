@@ -8,6 +8,13 @@ export const getData = async (url, axios) => {
   }
 }
 
+export const deserializeUsers = (users) => {
+  users.forEach((u) => {
+    u.attributes.id = u.id
+    u.attributes.contact_ids = u.relationships.contacts.data.map(c => c.id)
+  })
+}
+
 export const deserializeContacts = (contacts) => {
   contacts.forEach((c) => {
     if (c.relationships) {
