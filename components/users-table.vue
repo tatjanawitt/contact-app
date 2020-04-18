@@ -14,6 +14,11 @@
       :sort-desc="true"
       :no-results-text="$t('noData')"
     >
+      <template #item.admin="{ item }">
+        <v-chip :color="getColor(item.admin)" small dark>
+          {{ item.admin ? $t('users.roleAdmin') : $t('users.roleUser') }}
+        </v-chip>
+      </template>
       <template #item.actions="{item}">
         <UsersForm :header-text="$t('users.editLabel')"
                    :save-user="update"
@@ -68,6 +73,9 @@ export default {
         info.color = 'error'
       }
       this.$store.dispatch('snackbar/create', { ...info })
+    },
+    getColor (admin) {
+      if (admin) { return 'error' } else { return 'secondary' }
     }
   }
 }

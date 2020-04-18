@@ -89,7 +89,9 @@
   "users": {
     "name": "Name",
     "email": "Email",
-    "admin": "Admin",
+    "role": "Role",
+    "roleAdmin": "admin",
+    "roleUser": "user",
     "header": "Users Overview",
     "tabSearch": "Search users",
     "alertDel": "Are you sure you want to delete,  ",

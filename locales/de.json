@@ -89,7 +89,9 @@
   "users": {
     "name": "Name",
     "email": "Email",
-    "admin": "Admin",
+    "role": "Rolle",
+    "roleAdmin": "Administrator",
+    "roleUser": "Benutzer",
     "header": "Benutzer Übersicht",
     "tabSearch": "Benutzer suchen",
     "alertDel": "Sie wollen den Benutzer wirklich löschen: ",

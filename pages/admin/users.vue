@@ -34,7 +34,7 @@ export default {
         { text: 'Id', value: 'id' },
         { text: this.$t('users.name'), value: 'name' },
         { text: this.$t('users.email'), value: 'email' },
-        { text: this.$t('users.admin'), value: 'admin' },
+        { text: this.$t('users.role'), value: 'admin' },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '150px' }
       ]
     }
