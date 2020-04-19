@@ -36,11 +36,16 @@ export const mutations = {
 
 export const actions = {
   async loadAll ({ commit, dispatch }) {
-    const { data: contacts } = await getData('/contacts', this.$axios)
-    deserializeContacts(contacts)
-    commit('SET', contacts.map(c => c.attributes))
+    if (this.$auth.login && this.$auth.user) {
+      let path = `/contacts/user/${this.$auth.user.id}`
+      if (this.$auth.user.admin) { path = '/contacts' }
+      const { data: contacts } = await getData(path, this.$axios)
+      deserializeContacts(contacts)
+      commit('SET', contacts.map(c => c.attributes))
+    }
   },
   async create ({ commit }, contact) {
+    contact.user_id = contact.user_id || this.$auth.user.id
     const response = await this.$axios.post('/contacts', contact)
     let savedContact = response.data.data
     savedContact = { id: savedContact.id, ...savedContact }

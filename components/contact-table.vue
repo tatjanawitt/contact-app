@@ -91,9 +91,13 @@ export default {
         RegExp(search, 'i').test(this.getTag(id).name))
       return inFirstname || inLastname || inPlace || inTags
     },
-    deleteContact (contact) {
+    async deleteContact (contact) {
       const fullName = this.getFullName(contact.id)
-      this.$store.dispatch('contacts/delete', contact)
+      await this.$store.dispatch('contacts/delete', contact)
+      await this.$store.dispatch('users/delContactFromUser', {
+        contactId: contact.id,
+        userId: contact.user_id
+      })
       this.$store.dispatch('snackbar/create', {
         text: this.$t('contacts.delSuccess') + fullName + '.'
       })

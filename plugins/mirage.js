@@ -44,7 +44,7 @@ new Server({
       }
     }),
     contact: BaseSerializer.extend({
-      include: ['tags'],
+      include: ['tags', 'user'],
       normalize (json) {
         return {
           data: {
@@ -77,8 +77,10 @@ new Server({
     this.post('/contacts')
     this.put('/contacts/:id')
     this.delete('/contacts/:id')
-    this.patch('/contacts/:id/rating', (schema, request) => {
-      return new Response(201)
+    this.patch('/contacts/:id/rating', () => new Response(201))
+    this.get('/contacts/user/:userId', (schema, request) => {
+      const userId = request.params.userId + ''
+      return schema.contacts.where({ userId })
     })
 
     this.get('/tags')
@@ -93,9 +95,10 @@ new Server({
     this.post('/users')
     this.put('/users/:id')
     this.delete('/users/:id')
+    this.patch('/users/:id/contacts', () => new Response(201))
 
     // Nuxt Auth endpoints
-    this.post('/sessions', function (schema, request) {
+    this.post('/sessions', (schema, request) => {
       const json = JSON.parse(request.requestBody)
       const response = schema.users.findBy({ email: json.email })
       if (json.password === 'aaaaaaaa') { // your actual backend should test the hashed password in the DB
@@ -107,7 +110,9 @@ new Server({
     this.get('/sessions/user', function (schema, request) {
       const token = request.requestHeaders.Authorization
       const response = schema.users.findBy({ token })
-      return this.serialize(response)
+      const user = this.serialize(response)
+      user.data.attributes.id = user.data.id
+      return user
     })
   }
 })

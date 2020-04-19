@@ -19,6 +19,7 @@ export const deserializeContacts = (contacts) => {
   contacts.forEach((c) => {
     if (c.relationships) {
       c.attributes.tag_ids = c.relationships.tags.data.map(t => t.id)
+      c.attributes.user_id = c.relationships.user.data.id
     }
     c.attributes.id = c.id
     if (c.attributes.born) {
