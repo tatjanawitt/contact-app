@@ -9,12 +9,8 @@ export const state = () => ({
 
 export const mutations = {
   SET (state, contacts) {
-    if (this.$auth.login && this.$auth.user) {
-      this.$auth.user.admin
-        ? state.contacts = contacts
-        : state.contacts = contacts.filter(c => c.user_id === this.$auth.user.id)
-      sortByRatingDesk(state.contacts)
-    }
+    state.contacts = contacts
+    sortByRatingDesk(state.contacts)
   },
   ADD (state, contact) {
     state.contacts.push(contact)
@@ -40,9 +36,13 @@ export const mutations = {
 
 export const actions = {
   async loadAll ({ commit, dispatch }) {
-    const { data: contacts } = await getData('/contacts', this.$axios)
-    deserializeContacts(contacts)
-    commit('SET', contacts.map(c => c.attributes))
+    if (this.$auth.login && this.$auth.user) {
+      let path = `/contacts/user/${this.$auth.user.id}`
+      if (this.$auth.user.admin) { path = '/contacts' }
+      const { data: contacts } = await getData(path, this.$axios)
+      deserializeContacts(contacts)
+      commit('SET', contacts.map(c => c.attributes))
+    }
   },
   async create ({ commit }, contact) {
     contact.user_id = this.$auth.user.id

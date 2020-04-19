@@ -80,6 +80,10 @@ new Server({
     this.patch('/contacts/:id/rating', (schema, request) => {
       return new Response(201)
     })
+    this.get('/contacts/user/:userId', (schema, request) => {
+      const userId = request.params.userId + ''
+      return schema.contacts.where({ userId })
+    })
 
     this.get('/tags')
     this.post('/tags')
@@ -95,7 +99,7 @@ new Server({
     this.delete('/users/:id')
 
     // Nuxt Auth endpoints
-    this.post('/sessions', function (schema, request) {
+    this.post('/sessions', (schema, request) => {
       const json = JSON.parse(request.requestBody)
       const response = schema.users.findBy({ email: json.email })
       if (json.password === 'aaaaaaaa') { // your actual backend should test the hashed password in the DB
