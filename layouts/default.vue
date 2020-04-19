@@ -30,7 +30,6 @@
 import { mapState } from 'vuex'
 import Navbar from '@/layouts/navbar'
 export default {
-  middleware: 'load-contacts',
   components: { Navbar },
   computed: {
     ...mapState({

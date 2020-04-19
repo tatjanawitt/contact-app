@@ -44,7 +44,7 @@ new Server({
       }
     }),
     contact: BaseSerializer.extend({
-      include: ['tags'],
+      include: ['tags', 'user'],
       normalize (json) {
         return {
           data: {
@@ -107,7 +107,9 @@ new Server({
     this.get('/sessions/user', function (schema, request) {
       const token = request.requestHeaders.Authorization
       const response = schema.users.findBy({ token })
-      return this.serialize(response)
+      const user = this.serialize(response)
+      user.data.attributes.id = user.data.id
+      return user
     })
   }
 })

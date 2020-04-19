@@ -9,8 +9,12 @@ export const state = () => ({
 
 export const mutations = {
   SET (state, contacts) {
-    state.contacts = contacts
-    sortByRatingDesk(state.contacts)
+    if (this.$auth.login && this.$auth.user) {
+      this.$auth.user.admin
+        ? state.contacts = contacts
+        : state.contacts = contacts.filter(c => c.user_id === this.$auth.user.id)
+      sortByRatingDesk(state.contacts)
+    }
   },
   ADD (state, contact) {
     state.contacts.push(contact)
@@ -41,6 +45,7 @@ export const actions = {
     commit('SET', contacts.map(c => c.attributes))
   },
   async create ({ commit }, contact) {
+    contact.user_id = this.$auth.user.id
     const response = await this.$axios.post('/contacts', contact)
     let savedContact = response.data.data
     savedContact = { id: savedContact.id, ...savedContact }
