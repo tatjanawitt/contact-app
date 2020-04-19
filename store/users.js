@@ -22,9 +22,11 @@ export const mutations = {
     const cIndex = state.users.findIndex(u => u.id === newUser.id)
     Vue.set(state.users, cIndex, newUser)
   },
-  ADD_CONTACT_TO_USER (state, { contactId, user }) {
-    const userContacts = user.contactIds.concat(contactId)
-    user.contactIds = userContacts
+  ADD_CONTACT_TO_USER (state, { contactId, userId }) {
+    const uIndex = state.users.findIndex(u => u.id === userId)
+    const uToUpdate = state.users[uIndex]
+    uToUpdate.contact_ids.push(contactId)
+    Vue.set(state.users, uIndex, uToUpdate)
   }
 }
 
@@ -58,23 +60,17 @@ export const actions = {
     commit('EDIT', newUser.attributes)
     return newUser.attributes
   },
-  addContactToUser ({ commit, rootState }, contactId) {
-    if (rootState.auth.loggedIn) {
-      commit('ADD_CONTACT_TO_USER', { contactId, user: rootState.auth.user })
-      this.$axios.post('/contacts', { contactId })
+  async addContactToUser ({ commit, rootState }, { contactId, userId }) {
+    const res = await this.$axios.patch(`/users/${userId}/contacts`, { contactId })
+    if (res.status === 200 || res.status === 201) {
+      commit('ADD_CONTACT_TO_USER', { contactId, userId })
     }
+    return res
   }
 }
 
 export const getters = {
   get: state => (id) => {
     return state.users.find(u => u.id === id) || {}
-  },
-  usersContacts: (state, getters, rootState, rootGetters) => {
-    const user = rootState.auth.user
-    return user ? user.contactIds : []
-  },
-  contactToUser: (state, getters) => (contactId) => {
-    return getters.usersContacts.includes(contactId)
   }
 }

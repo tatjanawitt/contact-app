@@ -97,6 +97,7 @@ new Server({
     this.post('/users')
     this.put('/users/:id')
     this.delete('/users/:id')
+    this.patch('/users/:id/contacts', () => new Response(201))
 
     // Nuxt Auth endpoints
     this.post('/sessions', (schema, request) => {

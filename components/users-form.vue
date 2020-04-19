@@ -42,7 +42,7 @@
             />
             <p v-if="userInfo.contact_ids && userInfo.contact_ids.length" v-text="$t('links.contacts')" />
             <v-chip v-for="(contactId,i) in userInfo.contact_ids" :key="i"
-                    :to="`/admin/contacts/${contactId}`" small dark v-text="getName(contactId)"
+                    :to="`/admin/contacts/${contactId}`" small dark class="mb-1" v-text="getName(contactId)"
             />
           </v-card-text>
           <v-divider class="mx-2 mb-2" />
