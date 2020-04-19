@@ -45,7 +45,7 @@ export const actions = {
     }
   },
   async create ({ commit }, contact) {
-    contact.user_id = this.$auth.user.id
+    contact.user_id = contact.user_id || this.$auth.user.id
     const response = await this.$axios.post('/contacts', contact)
     let savedContact = response.data.data
     savedContact = { id: savedContact.id, ...savedContact }

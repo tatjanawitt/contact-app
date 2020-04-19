@@ -5,6 +5,14 @@
       <v-form v-model="valid">
         <v-container>
           <v-row>
+            <v-col cols="12" sm="12">
+              <v-autocomplete
+                v-if="$auth.user.admin" v-model="contactData.user_id"
+                :items="users" item-text="name" item-value="id"
+                :label="$t('links.users')" prepend-icon="mdi-badge-account"
+                :rules="[v => !!v || 'required / Plichtfeld']"
+              />
+            </v-col>
             <v-col cols="12" sm="6">
               <ContactFormTextfield :obj="contactData" fieldname="fName" />
             </v-col>
@@ -65,6 +73,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import ContactFormTextfield from '@/components/contact-form-textfield'
 import Datepicker from '@/components/datepicker'
 export default {
@@ -83,6 +92,10 @@ export default {
       valid: false,
       contactData: { ...this.contact }
     }
+  },
+  computed: {
+    ...mapState({ users: state => state.users.users }),
+    ...mapGetters({ getUser: 'users/get' })
   },
   methods: {
     cancel () {
