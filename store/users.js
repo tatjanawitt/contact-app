@@ -22,10 +22,12 @@ export const mutations = {
     const cIndex = state.users.findIndex(u => u.id === newUser.id)
     Vue.set(state.users, cIndex, newUser)
   },
-  ADD_CONTACT_TO_USER (state, { contactId, userId }) {
+  CONTACT_TO_USER (state, { contactId, userId, del }) {
     const uIndex = state.users.findIndex(u => u.id === userId)
     const uToUpdate = state.users[uIndex]
-    uToUpdate.contact_ids.push(contactId)
+    del
+      ? uToUpdate.contact_ids = uToUpdate.contact_ids.filter(c => c !== contactId)
+      : uToUpdate.contact_ids.push(contactId)
     Vue.set(state.users, uIndex, uToUpdate)
   }
 }
@@ -63,7 +65,14 @@ export const actions = {
   async addContactToUser ({ commit, rootState }, { contactId, userId }) {
     const res = await this.$axios.patch(`/users/${userId}/contacts`, { contactId })
     if (res.status === 200 || res.status === 201) {
-      commit('ADD_CONTACT_TO_USER', { contactId, userId })
+      commit('CONTACT_TO_USER', { contactId, userId, del: false })
+    }
+    return res
+  },
+  async delContactFromUser ({ commit, rootState }, { contactId, userId }) {
+    const res = await this.$axios.patch(`/users/${userId}/contacts`, { contactId })
+    if (res.status === 200 || res.status === 201) {
+      commit('CONTACT_TO_USER', { contactId, userId, del: true })
     }
     return res
   }
