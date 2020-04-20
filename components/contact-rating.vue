@@ -15,7 +15,7 @@
 <script>
 export default {
   props: {
-    rating: { type: Number, required: true },
+    rating: { type: Number, required: true, default: 0 },
     readonly: { type: Boolean, required: true },
     large: { type: Boolean, required: true }
   },

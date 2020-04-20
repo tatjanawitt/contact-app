@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list v-if="contact">
     <ContactDetailItem icon="mdi-phone" :content="contact.fon" />
     <v-divider inset />
     <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
