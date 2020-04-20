@@ -31,15 +31,12 @@ export const mutations = {
       : uToUpdate.contact_ids.push(contactId)
     Vue.set(state.users, uIndex, uToUpdate)
   },
-  SET_USERS (state, users) {
-    state.users = users
-  },
   LOGOUT_USER (state) {
     state.currentUser = {}
     // window.localStorage.currentUser = JSON.stringify({})
   },
-  SET_CURRENT_USER (state, user) {
-    state.currentUser = user
+  SET_USER_CREDENTIALS (state, credentials) {
+    state.currentUser = credentials
     // window.localStorage.currentUser = JSON.stringify(user)
   }
 }
@@ -91,22 +88,9 @@ export const actions = {
   logout ({ commit }) {
     commit('LOGOUT_USER')
   },
-  async login ({ commit, dispatch }, loginInfo) {
-    try {
-      const response = await this.$axios.post('/sessions', loginInfo)
-      const user = response.data.data
-      user.attributes.id = user.id
-
-      commit('SET_CURRENT_USER', user.attributes)
-      dispatch('loadPlayedVideos', user.id)
-      return user.attributes
-    } catch {
-      return { error: 'Email/password combination was incorrect.  Please try again.' }
-    }
-  },
-  async register ({ commit, dispatch }, regInfo, user) {
-    await this.$auth.loginWith('local', { data: regInfo })
-    commit('SET_CURRENT_USER', user)
+  async login ({ commit, dispatch }, credentials) {
+    await this.$auth.loginWith('local', { data: credentials })
+    commit('SET_USER_CREDENTIALS', credentials)
   }
 }
 

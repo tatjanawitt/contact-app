@@ -32,7 +32,7 @@
         <v-btn class="hidden-sm-and-down" large text tile>
           <v-icon left v-text="'mdi-account'" />{{ $auth.user.name }}
         </v-btn>
-        <v-btn large text @click="$auth.logout()">
+        <v-btn large text @click="logout()">
           {{ $t('userInfo.logout') }}<v-icon right v-text="'mdi-logout-variant'" />
         </v-btn>
       </div>
@@ -82,7 +82,13 @@ export default {
     language () { return this.$i18n.locale }
   },
   methods: {
-    changeLang (lang) { this.$i18n.locale = lang }
+    changeLang (lang) { this.$i18n.locale = lang },
+    logout () {
+      this.$store.dispatch('users/logout')
+      this.$auth.logout()
+      this.$router.push('/')
+      // this.$store.commit('RELOAD')
+    }
   }
 }
 </script>

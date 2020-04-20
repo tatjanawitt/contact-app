@@ -14,9 +14,7 @@ export default {
   methods: {
     async loginUser (loginInfo) {
       try {
-        await this.$auth.loginWith('local', {
-          data: loginInfo
-        })
+        await this.$store.dispatch('users/login', loginInfo)
         this.$store.commit('RELOAD')
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.logSuccess') + this.$auth.user.name

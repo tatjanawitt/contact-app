@@ -15,8 +15,8 @@ export default {
   methods: {
     async registerUser (regInfo) {
       try {
-        const user = await this.$store.dispatch('users/create', regInfo)
-        await this.$store.dispatch('users/register', regInfo, user)
+        await this.$store.dispatch('users/create', regInfo)
+        await this.$store.dispatch('users/login', regInfo)
         this.$store.commit('RELOAD')
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.regSuccess') + this.$auth.user.name
