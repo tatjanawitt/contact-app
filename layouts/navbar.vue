@@ -46,7 +46,7 @@
       </div>
 
       <v-avatar
-        class="language mx-2" size="26px"
+        class="pointer mx-2" size="26px"
         @click="changeLang(language === 'de' ? 'en': 'de')"
       >
         <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
@@ -92,7 +92,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.language { cursor: pointer; }
-</style>

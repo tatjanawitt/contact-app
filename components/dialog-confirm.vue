@@ -3,7 +3,7 @@
     <v-btn v-if="!avatar" color="primary" small :disabled="disabled" @click.stop="dialog = true">
       <v-icon v-text="'mdi-delete-alert'" />
     </v-btn>
-    <v-avatar v-if="avatar" class="ma-4 float-right" fab dark size="40px" color="error" @click.stop="dialog = true">
+    <v-avatar v-if="avatar" class="ma-4 float-right pointer" fab dark size="40px" color="error" @click.stop="dialog = true">
       <v-icon dark v-text="'mdi-delete-alert'" />
     </v-avatar>
 

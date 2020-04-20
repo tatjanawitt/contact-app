@@ -67,4 +67,5 @@ main {
    background-color: transparent !important;
 }
 .center { text-align: center; }
+.pointer { cursor: pointer; }
 </style>
