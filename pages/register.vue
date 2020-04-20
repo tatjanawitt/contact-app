@@ -13,12 +13,11 @@ import UserAuthForm from '@/components/user-auth-form'
 export default {
   components: { UserAuthForm },
   methods: {
-    async registerUser (registrationInfo) {
+    async registerUser (regInfo) {
       try {
-        await this.$store.dispatch('users/create', registrationInfo)
-        await this.$auth.loginWith('local', {
-          data: registrationInfo
-        })
+        const user = await this.$store.dispatch('users/create', regInfo)
+        await this.$store.dispatch('users/register', regInfo, user)
+        this.$store.commit('RELOAD')
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.regSuccess') + this.$auth.user.name
         })

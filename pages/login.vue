@@ -21,7 +21,7 @@ export default {
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.logSuccess') + this.$auth.user.name
         })
-        this.$router.push('/contacts')
+        this.$router.push('/')
       } catch {
         this.$store.dispatch('snackbar/create', {
           color: 'error',
