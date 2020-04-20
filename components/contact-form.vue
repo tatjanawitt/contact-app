@@ -1,6 +1,8 @@
 <template>
   <v-row>
-    <v-sheet class="pa-4 my-2" color="rgba(255, 255, 255, 0.7)" width="100%" elevation="14">
+    <v-sheet class="pa-4 my-2" color="rgba(255, 255, 255, 0.7)"
+             width="100%" elevation="14"
+    >
       <div class="display-1 ma-4 d-flex justify-center" v-text="header" />
       <v-form v-model="valid">
         <v-container>
