@@ -4,6 +4,9 @@
       <div class="subtitle-1 white--text" v-html="$t('contacts.notice')" />
       <v-card class="cardColor">
         <v-card-title class="secondary">
+          <v-btn fab dark large color="primary">
+            <v-icon dark v-text="'mdi-pencil'" />
+          </v-btn>
           <v-badge :value="birthday" color="error" :content="age">
             <span class="headline white--text ml-3">
               {{ fullName }}

@@ -27,6 +27,7 @@ export default {
     async update (newContact) {
       const oldUser = this.contact.user_id
       const contact = await this.$store.dispatch('contacts/edit', newContact)
+
       if (this.$auth.user.admin && oldUser !== newContact.user_id) {
         await this.$store.dispatch('users/addContactToUser', {
           contactId: contact.id,
