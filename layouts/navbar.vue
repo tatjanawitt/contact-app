@@ -84,10 +84,10 @@ export default {
   methods: {
     changeLang (lang) { this.$i18n.locale = lang },
     logout () {
+      this.$router.push('/')
       this.$store.dispatch('users/logout')
       this.$auth.logout()
-      this.$router.push('/')
-      // this.$store.commit('RELOAD')
+      this.$store.commit('RELOAD')
     }
   }
 }

@@ -15,7 +15,7 @@ export default async ({ $auth, redirect, store }) => {
   } else {
     store.dispatch('snackbar/create', {
       color: 'error',
-      text: 'Für diesen Bereich werden Admin-Rechte benötigt.'
+      text: '!!! Administration Aeara !!! Du brauchst Admin-Rechte / You need admin rights !!!'
     })
     redirect('/')
   }

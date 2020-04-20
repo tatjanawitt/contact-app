@@ -1,19 +1,11 @@
 <template>
-  <v-container>
-    <div class="display-2 my-6 center" v-text="content.title" />
-    <div class="subtitle-1 my-4 d-flex justify-center" v-text="content.sub" />
-    <v-layout elevation-14>
-      <v-carousel cycle hide-delimiters>
-        <v-carousel-item v-for="(img,i) in content.images" :key="i" :src="img.src" />
-      </v-carousel>
-    </v-layout>
-  </v-container>
+  <ContactCarousel :photos="images" />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import ContactCarousel from '@/components/contact-carousel'
 export default {
-  middleware: ['load-contacts'],
+  components: { ContactCarousel },
   data () {
     return {
       images: [
@@ -30,27 +22,8 @@ export default {
       ]
     }
   },
-  computed: {
-    ...mapState({
-      contacts: state => state.contacts.contacts
-    }),
-    content () {
-      if (this.$auth.loggedIn) {
-        return {
-          title: `Hi ${this.$auth.user.name}!`,
-          sub: this.$t('home.subAuth'),
-          images: this.contacts.length && this.contacts.filter(c => c.img.length > 0).length
-            ? this.contacts.filter(c => c.img.length > 0).map(c => ({ src: c.img }))
-            : this.images
-        }
-      } else {
-        return {
-          title: this.$t('home.title'),
-          sub: this.$t('home.sub'),
-          images: this.images
-        }
-      }
-    }
+  async created () {
+    await this.$store.dispatch('contacts/loadAll')
   }
 }
 </script>
