@@ -17,28 +17,13 @@
               <v-checkbox v-model="userInfo.admin" class="red--text"
                           :label="$t('userInfo.admin')"
               />
-              <v-text-field v-model="userInfo.token"
+              <v-text-field v-model="userInfo.token" disabled
                             :label="$t('userInfo.token')"
               />
             </div>
-            <v-text-field v-model="userInfo.name"
-                          :label="$t('userInfo.name')"
-                          :rules="[required(), minLength(3)]"
-                          maxlength="30" counter="30"
-            />
-            <v-text-field v-model="userInfo.email"
-                          :label="$t('userInfo.email')"
-                          :rules="[required(), emailFormat()]"
-                          maxlength="50" counter="50"
-            />
-            <!--input type="password" style="visibility: hidden"-->
-            <v-text-field v-model="userInfo.password"
-                          :label="$t('userInfo.password')"
-                          :type="showPassword ? 'text' : 'password'"
-                          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                          counter="true"
-                          :rules="[required(), minLength(8)]"
-                          @click:append="showPassword = !showPassword"
+            <UserCredentialsFields
+              :user-info="userInfo"
+              :has-name="true"
             />
             <p v-if="userInfo.contact_ids && userInfo.contact_ids.length" v-text="$t('links.contacts')" />
             <v-chip v-for="(contactId,i) in userInfo.contact_ids" :key="i"
@@ -64,8 +49,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import validations from '@/utils/validations'
+import UserCredentialsFields from '@/components/user-credentials-fields'
 export default {
+  components: { UserCredentialsFields },
   props: {
     saveUser: { type: Function, required: true },
     headerText: { type: String, required: true },
@@ -74,10 +60,8 @@ export default {
   data () {
     return {
       valid: false,
-      showPassword: false,
       dialog: false,
-      userInfo: {},
-      ...validations
+      userInfo: {}
     }
   },
   computed: {
