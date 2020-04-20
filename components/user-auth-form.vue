@@ -1,6 +1,8 @@
 <template>
   <v-row justify="space-around">
-    <v-sheet class="pa-8 ma-2" color="rgba(255, 255, 255, 0.7)" elevation="14" width="500px">
+    <v-sheet class="pa-8 ma-2" color="rgba(255, 255, 255, 0.7)"
+             elevation="14" width="500px"
+    >
       <div class="display-2 ma-4 d-flex justify-center" v-text="buttonText" />
       <v-form v-model="valid">
         <div @keydown.enter="submitForm(userInfo)">

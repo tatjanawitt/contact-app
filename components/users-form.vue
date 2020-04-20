@@ -11,6 +11,7 @@
       <v-card class="pa-4">
         <v-form ref="form" v-model="valid">
           <v-card-title class="headline" v-text="headerText" />
+
           <v-divider />
           <v-card-text>
             <div v-if="userInfo.id">
@@ -25,9 +26,12 @@
               :user-info="userInfo"
               :has-name="true"
             />
-            <p v-if="userInfo.contact_ids && userInfo.contact_ids.length" v-text="$t('links.contacts')" />
+            <p v-if="userInfo.contact_ids && userInfo.contact_ids.length"
+               v-text="$t('links.contacts')"
+            />
             <v-chip v-for="(contactId,i) in userInfo.contact_ids" :key="i"
-                    :to="`/admin/contacts/${contactId}`" small dark class="mb-1" v-text="getName(contactId)"
+                    :to="`/admin/contacts/${contactId}`" small dark
+                    class="mb-1" v-text="getName(contactId)"
             />
           </v-card-text>
           <v-divider class="mx-2 mb-2" />
@@ -58,11 +62,7 @@ export default {
     user: { type: Object, required: true }
   },
   data () {
-    return {
-      valid: false,
-      dialog: false,
-      userInfo: {}
-    }
+    return { valid: false, dialog: false, userInfo: {} }
   },
   computed: {
     ...mapGetters({
