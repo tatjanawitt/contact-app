@@ -5,7 +5,7 @@
     >
       <v-icon v-text="'mdi-delete-alert'" />
     </v-btn>
-    <v-avatar v-if="avatar" class="ma-2 float-right pointer" fab dark
+    <v-avatar v-if="avatar" class="ma-3 float-right pointer" fab dark
               size="64px" color="error" @click.stop="dialog = true"
     >
       <v-icon dark v-text="'mdi-delete-alert'" />

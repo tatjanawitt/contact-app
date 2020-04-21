@@ -7,8 +7,8 @@
       </v-col>
       <v-col cols="12" sm="2">
         <div class="d-flex justify-end">
-          <v-btn fab dark large color="primary">
-            <v-icon dark @click="dialog = true" v-text="'mdi-account-plus'" />
+          <v-btn fab dark large color="primary" @click="dialog = true">
+            <v-icon dark v-text="'mdi-account-plus'" />
           </v-btn>
           <v-dialog v-model="dialog" max-width="900">
             <v-card class="pa-4">
