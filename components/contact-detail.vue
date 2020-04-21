@@ -20,16 +20,22 @@
             <v-list-item-title class="text-wrap">
               <TagsBar :contact="contact" />
             </v-list-item-title>
-            <v-btn small class="secondary" :to="`/contacts/detail/${contact.id}`">
+            <v-btn small class="secondary" @click="dialog=true">
               <v-icon v-text="'mdi-tag-plus'" />
             </v-btn>
+            <v-dialog v-model="dialog" max-width="900">
+              <v-card class="pa-4">
+                <div @click="dialog=false">hallo</div>
+                <TagsSelectRow :contact="contact" :full-name="fullName" />
+              </v-card>
+            </v-dialog>
           </div>
         </v-list-item-content>
       </v-list-item>
       <v-img :src="contact.img || imgPlaceholder" max-height="500px">
         <DialogConfirm
           :item="contact"
-          :content="`${$t('contacts.alertDel')} <b>${getFullName(contact.id)}</b>?`"
+          :content="`${$t('contacts.alertDel')} <b>${fullName}</b>?`"
           :agree-action="deleteContact"
           agree-img="mdi-delete"
           :agree-btn="$t('cForm.delBtn')"
@@ -46,15 +52,20 @@ import { mapGetters } from 'vuex'
 import ContactDetailItem from '@/components/contact-detail-item'
 import DialogConfirm from '@/components/dialog-confirm'
 import TagsBar from '@/components/tags-bar'
+import TagsSelectRow from '@/components/tags-select-row'
 export default {
   components: {
     ContactDetailItem,
     TagsBar,
-    DialogConfirm
+    DialogConfirm,
+    TagsSelectRow
   },
   props: {
     contact: { type: Object, required: true },
     showFooter: { type: Boolean, required: true }
+  },
+  data () {
+    return { dialog: false }
   },
   computed: {
     ...mapGetters({
@@ -73,6 +84,9 @@ export default {
     color () {
       return this.getBirthdayToday(this.contact.id) ? 'error' : 'grey'
     },
+    fullName () {
+      return this.getFullName(this.contact.id)
+    },
     imgPlaceholder () {
       return this.getImagePlaceholder()
     }
@@ -80,14 +94,14 @@ export default {
   methods: {
     async deleteContact (contact) {
       const forDeleteContact = { ...contact }
-      const fullName = this.getFullName(contact.id)
+      const name = this.getFullName(contact.id)
       await this.$store.dispatch('contacts/delete', forDeleteContact)
       await this.$store.dispatch('users/delContactFromUser', {
         contactId: contact.id,
         userId: contact.user_id
       })
       this.$store.dispatch('snackbar/create', {
-        text: this.$t('contacts.delSuccess') + fullName + '.'
+        text: this.$t('contacts.delSuccess') + name + '.'
       })
       this.$router.push('/contacts')
     }

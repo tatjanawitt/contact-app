@@ -1,35 +1,35 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12" sm="7" md="8">
-      <v-combobox
-        v-model="contactTags"
-        :items="tags"
-        item-text="name"
-        append-icon="mdi-tag-plus"
-        outlined
-        dark
-        background-color="rgba(232, 135, 0, 0.7)"
-        multiple
-        chips
-        deletable-chips
-        hide-selected
-        return-object
-      />
-    </v-col>
-    <v-col cols="12" sm="5" md="4">
-      <div class="mt-4 d-flex justify-end">
-        <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
-          <v-icon v-text="'mdi-card-account-details'" />
-        </v-btn>
-        <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
-          <v-icon v-text="'mdi-account-edit'" />
-        </v-btn>
-        <v-btn class="primary" :to="`/admin/contacts`">
-          <v-icon v-text="'mdi-table-eye'" />
-        </v-btn>
-      </div>
-    </v-col>
-  </v-row>
+  <div class="d-flex flex-wrap justify-end">
+    <v-combobox
+      v-model="contactTags"
+      :items="tags"
+      item-text="name"
+      append-icon="mdi-tag-plus"
+      outlined
+      dark
+      background-color="rgba(232, 135, 0, 0.7)"
+      style="min-width: 300px; max-width: 100%;"
+      multiple
+      chips
+      deletable-chips
+      hide-selected
+      return-object
+    />
+    <div v-if="$nuxt.$route.name.includes('admin') && $auth.user.admin" class="mt-4 ml-2">
+      <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
+        <v-icon v-text="'mdi-card-account-details'" />
+      </v-btn>
+      <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
+        <v-icon v-text="'mdi-account-edit'" />
+      </v-btn>
+      <v-btn class="primary" :to="`/admin/contacts`">
+        <v-icon v-text="'mdi-table-eye'" />
+      </v-btn>
+    </div>
+    <div v-else>
+      <v-btn v-text="'zu'" />
+    </div>
+  </div>
 </template>
 
 <script>
