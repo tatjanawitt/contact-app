@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="display-1 my-4 center" v-text="$t('tags.choice')" />
+    <div class="display-1 mt-5 mb-7 center" v-text="$t('tags.choice')" />
     <TagsSelectRow :contact="contact" :full-name="fullName" />
     <v-row justify="center">
       <v-col cols="12" sm="12">

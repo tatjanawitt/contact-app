@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-wrap justify-end">
+  <div class="d-flex justify-end" :class="dialog.status ? ' flex-nowrap' : ' flex-wrap-reverse'">
     <v-combobox
       v-model="contactTags"
       :items="tags"
@@ -13,9 +13,12 @@
       chips
       deletable-chips
       hide-selected
+      hide-details
       return-object
     />
-    <div v-if="$nuxt.$route.name.includes('admin') && $auth.user.admin" class="mt-4 ml-2">
+    <div v-if="$route.name.includes('admin') && $auth.user.admin"
+         class="d-flex align-center mb-2 ml-2"
+    >
       <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
         <v-icon v-text="'mdi-card-account-details'" />
       </v-btn>
@@ -27,7 +30,9 @@
       </v-btn>
     </div>
     <div v-else>
-      <v-btn v-text="'zu'" />
+      <v-btn class="mt-4" icon @click="dialog.status=false">
+        <v-icon v-text="'mdi-close-circle'" />
+      </v-btn>
     </div>
   </div>
 </template>
@@ -38,7 +43,14 @@ import _ from 'lodash'
 export default {
   props: {
     contact: { type: Object, required: true },
-    fullName: { type: String, required: true }
+    fullName: { type: String, required: true },
+    dialog: {
+      type: Object,
+      required: false,
+      default () {
+        return { status: false }
+      }
+    }
   },
   computed: {
     ...mapState({ tags: state => state.tags.tags }),

@@ -6,7 +6,7 @@
         <v-row>
           <v-col cols="12" sm="12">
             <v-autocomplete
-              v-if="$nuxt.$route.name.includes('admin') && $auth.user.admin"
+              v-if="$route.name.includes('admin') && $auth.user.admin"
               v-model="contactData.user_id"
               :items="users" item-text="name" item-value="id"
               :label="$t('links.users')" prepend-icon="mdi-badge-account"

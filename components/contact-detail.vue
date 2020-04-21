@@ -20,13 +20,12 @@
             <v-list-item-title class="text-wrap">
               <TagsBar :contact="contact" />
             </v-list-item-title>
-            <v-btn small class="secondary" @click="dialog=true">
+            <v-btn small class="secondary" @click="dialog.status=true">
               <v-icon v-text="'mdi-tag-plus'" />
             </v-btn>
-            <v-dialog v-model="dialog" max-width="900">
-              <v-card class="pa-4">
-                <div @click="dialog=false">hallo</div>
-                <TagsSelectRow :contact="contact" :full-name="fullName" />
+            <v-dialog v-model="dialog.status" max-width="900">
+              <v-card class="pa-1">
+                <TagsSelectRow :contact="contact" :full-name="fullName" :dialog="dialog" />
               </v-card>
             </v-dialog>
           </div>
@@ -65,7 +64,7 @@ export default {
     showFooter: { type: Boolean, required: true }
   },
   data () {
-    return { dialog: false }
+    return { dialog: { status: false } }
   },
   computed: {
     ...mapGetters({
