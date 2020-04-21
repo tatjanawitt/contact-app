@@ -26,7 +26,7 @@
           </div>
         </v-list-item-content>
       </v-list-item>
-      <v-img v-if="contact.img" :src="contact.img" max-height="500px">
+      <v-img :src="contact.img || imgPlaceholder" max-height="500px">
         <DialogConfirm
           :item="contact"
           :content="`${$t('contacts.alertDel')} <b>${getFullName(contact.id)}</b>?`"
@@ -61,7 +61,8 @@ export default {
       getAddress: 'contacts/getAddress',
       getDateFormat: 'contacts/getDateFormat',
       getBirthdayToday: 'contacts/getBirthdayToday',
-      getFullName: 'contacts/getFullName'
+      getFullName: 'contacts/getFullName',
+      getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
     address () {
       return this.getAddress(this.contact.id)
@@ -71,6 +72,9 @@ export default {
     },
     color () {
       return this.getBirthdayToday(this.contact.id) ? 'error' : 'grey'
+    },
+    imgPlaceholder () {
+      return this.getImagePlaceholder()
     }
   },
   methods: {

@@ -15,6 +15,7 @@ export default async ({ $auth, redirect, store }) => {
   } else if (user) {
     if (!store.state.isLoaded) {
       await RSVP.all([
+        store.dispatch('users/loadAll'),
         store.dispatch('contacts/loadAll'),
         store.dispatch('tags/loadAll')
       ])
