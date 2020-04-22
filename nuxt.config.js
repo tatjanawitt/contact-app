@@ -20,7 +20,8 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: '~/components/spinner.vue',
+  // loading: { color: '#fff' },
   /*
   ** Global CSS
   */

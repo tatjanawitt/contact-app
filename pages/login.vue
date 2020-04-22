@@ -14,13 +14,16 @@ export default {
   methods: {
     async loginUser (loginInfo) {
       try {
+        this.$nuxt.$loading.start()
         await this.$store.dispatch('users/login', loginInfo)
         this.$store.commit('RELOAD')
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.logSuccess') + this.$auth.user.name
         })
         this.$router.push('/')
+        this.$nuxt.$loading.finish()
       } catch {
+        this.$nuxt.$loading.finish()
         this.$store.dispatch('snackbar/create', {
           color: 'error',
           text: this.$t('userInfo.logError')

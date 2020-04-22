@@ -91,6 +91,7 @@ export default {
   },
   methods: {
     async deleteContact (contact) {
+      this.$nuxt.$loading.start()
       const forDeleteContact = { ...contact }
       const name = this.getFullName(contact.id)
       await this.$store.dispatch('contacts/delete', forDeleteContact)
@@ -102,6 +103,7 @@ export default {
         text: this.$t('contacts.delSuccess') + name + '.'
       })
       this.$router.push('/contacts')
+      this.$nuxt.$loading.finish()
     }
   }
 }
