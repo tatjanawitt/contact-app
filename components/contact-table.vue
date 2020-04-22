@@ -82,9 +82,10 @@ export default {
       const inFirstname = RegExp(search, 'i').test(item.fName)
       const inLastname = RegExp(search, 'i').test(item.lName)
       const inPlace = RegExp(search, 'i').test(item.place)
+      const inUser = RegExp(search, 'i').test(item.userName)
       const inTags = item.tag_ids.some(id =>
         RegExp(search, 'i').test(this.getTag(id).name))
-      return inFirstname || inLastname || inPlace || inTags
+      return inFirstname || inLastname || inPlace || inUser || inTags
     },
     async deleteContact (contact) {
       const fullName = this.getFullName(contact.id)

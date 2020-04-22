@@ -13,23 +13,28 @@
         </div>
       </v-col>
     </v-row>
-    <ContactTable :contacts="contacts" :headers="headers" />
+    <ContactTable :contacts="adjustContacts" :headers="headers" />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import ContactTable from '@/components/contact-table'
 export default {
   components: { ContactTable },
   computed: {
     ...mapState({ contacts: state => state.contacts.contacts }),
+    ...mapGetters({ getUser: 'users/get' }),
+    adjustContacts () {
+      return this.contacts.map(c => ({ ...c, userName: this.getUser(c.user_id).name }))
+    },
     headers () {
       return [
         { text: 'Id', value: 'id' },
         { text: this.$t('cForm.fName').slice(0, -1), value: 'fName' },
         { text: this.$t('cForm.lName').slice(0, -1), value: 'lName' },
         { text: this.$t('cForm.place'), value: 'place' },
+        { text: this.$t('links.users'), value: 'userName' },
         { text: this.$t('links.tags'), value: 'tags', sortable: false },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '225px' }
       ]
