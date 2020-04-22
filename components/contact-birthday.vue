@@ -1,9 +1,8 @@
 <template>
   <div>
-    <SearchField
-      :label="$t('birthdays.search')"
-      icon="mdi-account-search"
-      :search="search"
+    <SearchField :label="$t('birthdays.search')"
+                 icon="mdi-account-search"
+                 :search="search"
     />
     <v-expansion-panels v-if="list && list.length" v-model="panel" focusable>
       <v-expansion-panel v-for="(item,i) in list" :key="i">
@@ -14,9 +13,8 @@
             {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
           </span>
         </v-expansion-panel-header>
-        <v-expansion-panel-content
-          v-for="contact in item.contacts"
-          :key="contact.id + contact.zip"
+        <v-expansion-panel-content v-for="contact in item.contacts"
+                                   :key="contact.id + contact.zip"
         >
           <ContactBirthdayItem :contact="contact" />
         </v-expansion-panel-content>

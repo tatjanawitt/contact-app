@@ -1,9 +1,8 @@
 <template>
   <div>
-    <SearchField
-      :label="$t('contacts.search')"
-      icon="mdi-account-search"
-      :search="search"
+    <SearchField :label="$t('contacts.search')"
+                 icon="mdi-account-search"
+                 :search="search"
     />
     <v-sheet v-if="contactList && contactList.length" class="mx-auto" elevation="8">
       <v-slide-group v-model="model" center-active show-arrows

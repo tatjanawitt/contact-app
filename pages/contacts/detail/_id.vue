@@ -65,7 +65,6 @@ export default {
     }
   },
   methods: {
-    cancel () { this.dialog = false },
     async update (newContact) {
       const oldUser = this.contact.user_id
       const contact = await this.$store.dispatch('contacts/edit', newContact)
@@ -84,7 +83,8 @@ export default {
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.editSuccess') + this.fullName + '.'
       })
-    }
+    },
+    cancel () { this.dialog = false }
   }
 }
 </script>

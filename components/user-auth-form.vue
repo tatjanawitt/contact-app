@@ -6,10 +6,7 @@
       <div class="display-2 ma-4 d-flex justify-center" v-text="buttonText" />
       <v-form v-model="valid">
         <div @keydown.enter="submitForm(userInfo)">
-          <UsersCredentialsFields
-            :user-info="userInfo"
-            :has-name="hasName"
-          />
+          <UsersCredentialsFields :user-info="userInfo" :has-name="hasName" />
           <v-row class="d-flex justify-end mt-4 mr-1">
             <v-btn :disabled="!valid" class="primary" @click="submitForm(userInfo)">
               <v-icon left v-text="iconType" />{{ buttonText }}

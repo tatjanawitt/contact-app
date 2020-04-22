@@ -32,14 +32,13 @@
         </v-list-item-content>
       </v-list-item>
       <v-img :src="contact.img || imgPlaceholder" max-height="500px">
-        <DialogConfirm
-          :item="contact"
-          :content="`${$t('contacts.alertDel')} <b>${fullName}</b>?`"
-          :agree-action="deleteContact"
-          agree-img="mdi-delete"
-          :agree-btn="$t('cForm.delBtn')"
-          :header="$t('contacts.delHeader')"
-          :avatar="true"
+        <DialogConfirm :item="contact"
+                       :content="`${$t('contacts.alertDel')} <b>${fullName}</b>?`"
+                       :agree-action="deleteContact"
+                       agree-img="mdi-delete"
+                       :agree-btn="$t('cForm.delBtn')"
+                       :header="$t('contacts.delHeader')"
+                       :avatar="true"
         />
       </v-img>
     </span>

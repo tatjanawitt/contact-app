@@ -22,10 +22,7 @@
                             :label="$t('userInfo.token')"
               />
             </div>
-            <UserCredentialsFields
-              :user-info="userInfo"
-              :has-name="true"
-            />
+            <UserCredentialsFields :user-info="userInfo" :has-name="true" />
             <p v-if="userInfo.contact_ids && userInfo.contact_ids.length"
                v-text="$t('links.contacts')"
             />

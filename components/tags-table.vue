@@ -1,9 +1,8 @@
 <template>
   <div>
-    <SearchField
-      :label="$t('tags.tabSearch')"
-      icon="mdi-magnify"
-      :search="search"
+    <SearchField :label="$t('tags.tabSearch')"
+                 icon="mdi-magnify"
+                 :search="search"
     />
     <v-data-table :items="tags" :headers="headers" :search="search.item"
                   sort-by="id" :sort-desc="true" :items-per-page="5"
@@ -21,21 +20,18 @@
           </td>
         </tr>
       </template>
-
       <template #item.name="{item}">
         <div v-if="updateTag.id == item.id">
-          <v-text-field
-            v-model="updateTag.name" label="Edit"
-            autofocus single-line counter
-            @blur="updateTagName(item)"
-            @keydown.enter="updateTagName(item)"
+          <v-text-field v-model="updateTag.name" label="Edit"
+                        autofocus single-line counter
+                        @blur="updateTagName(item)"
+                        @keydown.enter="updateTagName(item)"
           />
         </div>
         <div v-else @click="setToEditing(item)">
           {{ item.name }}
         </div>
       </template>
-
       <template #item.contact_ids.length="{item}">
         <v-chip v-if="item.contact_ids.length"
                 :to="`/contacts/tags/${item.id}`"
@@ -46,19 +42,17 @@
           {{ item.contact_ids.length }} - {{ item.name }}
         </v-chip>
       </template>
-
       <template #item.actions="{ item }">
         <v-btn small class="primary" @click="setToEditing(item)">
           <v-icon v-text="'mdi-pencil'" />
         </v-btn>
-        <DialogConfirm
-          :item="item"
-          :content="`${$t('tags.alertDel')} <b>${item.name}</b>?`"
-          :agree-action="deleteTag"
-          agree-img="mdi-delete"
-          :agree-btn="$t('cForm.delBtn')"
-          :header="$t('tags.delHeader')"
-          :disabled="item.contact_ids.length > 0"
+        <DialogConfirm :item="item"
+                       :content="`${$t('tags.alertDel')} <b>${item.name}</b>?`"
+                       :agree-action="deleteTag"
+                       agree-img="mdi-delete"
+                       :agree-btn="$t('cForm.delBtn')"
+                       :header="$t('tags.delHeader')"
+                       :disabled="item.contact_ids.length > 0"
         />
       </template>
     </v-data-table>

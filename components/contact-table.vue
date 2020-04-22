@@ -1,22 +1,20 @@
 <template>
   <div>
-    <SearchField
-      :label="$t('contacts.tabSearch')"
-      icon="mdi-magnify"
-      :search="search"
+    <SearchField :label="$t('contacts.tabSearch')"
+                 icon="mdi-magnify"
+                 :search="search"
     />
-    <v-data-table
-      :items="mungedContacts"
-      :headers="headers"
-      :search="search.item"
-      :custom-filter="filter"
-      :items-per-page="5"
-      :mobile-breakpoint="780"
-      show-expand
-      sort-by="id"
-      :sort-desc="true"
-      :no-results-text="$t('noData')"
-      @click:row="goToContact"
+    <v-data-table :items="mungedContacts"
+                  :headers="headers"
+                  :search="search.item"
+                  :custom-filter="filter"
+                  :items-per-page="5"
+                  :mobile-breakpoint="780"
+                  show-expand
+                  sort-by="id"
+                  :sort-desc="true"
+                  :no-results-text="$t('noData')"
+                  @click:row="goToContact"
     >
       <template #item.tags="{item}">
         <td class="non-clickable" @click.stop>
@@ -31,13 +29,12 @@
           <v-btn small class="primary" :to="`/admin/contacts/${item.id}/edit`">
             <v-icon v-text="'mdi-pencil'" />
           </v-btn>
-          <DialogConfirm
-            :item="item"
-            :content="`${$t('contacts.alertDel')} <b>${getFullName(item.id)}</b>?`"
-            :agree-action="deleteContact"
-            agree-img="mdi-delete"
-            :agree-btn="$t('cForm.delBtn')"
-            :header="$t('contacts.delHeader')"
+          <DialogConfirm :item="item"
+                         :content="`${$t('contacts.alertDel')} <b>${getFullName(item.id)}</b>?`"
+                         :agree-action="deleteContact"
+                         agree-img="mdi-delete"
+                         :agree-btn="$t('cForm.delBtn')"
+                         :header="$t('contacts.delHeader')"
           />
         </td>
       </template>
@@ -75,9 +72,7 @@ export default {
       getTag: 'tags/get',
       getFullName: 'contacts/getFullName'
     }),
-    mungedContacts () {
-      return [...this.contacts]
-    }
+    mungedContacts () { return [...this.contacts] }
   },
   methods: {
     goToContact (contact) {
