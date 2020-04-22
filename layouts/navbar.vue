@@ -68,8 +68,8 @@ export default {
     },
     items () {
       return [
-        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' },
-        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' }
+        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' },
+        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' }
       ]
     },
     admin () { return { text: this.$t('links.admin'), icon: 'mdi-database-edit', route: '/admin/contacts' } },

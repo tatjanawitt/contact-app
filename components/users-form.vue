@@ -4,7 +4,7 @@
       <v-icon v-text="'mdi-pencil'" />
     </v-btn>
     <v-btn v-else class="primary" @click="openDialog">
-      <v-icon left v-text="'mdi-account-plus'" />{{ $t('new') }}
+      <v-icon left v-text="'mdi-lock-plus'" />{{ $t('new') }}
     </v-btn>
 
     <v-dialog v-model="dialog" max-width="500px">

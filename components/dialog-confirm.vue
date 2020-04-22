@@ -2,13 +2,11 @@
   <span>
     <v-btn v-if="!avatar" color="primary" small
            :disabled="disabled" @click.stop="dialog = true"
-    >
-      <v-icon v-text="'mdi-delete-alert'" />
+    ><v-icon v-text="'mdi-delete-alert'" />
     </v-btn>
     <v-avatar v-if="avatar" class="ma-3 float-right pointer" fab dark
               size="64px" color="error" @click.stop="dialog = true"
-    >
-      <v-icon dark v-text="'mdi-delete-alert'" />
+    ><v-icon dark v-text="'mdi-account-remove'" />
     </v-avatar>
 
     <v-dialog v-model="dialog" max-width="500">

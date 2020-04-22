@@ -5,7 +5,7 @@
       <v-card class="cardColor">
         <v-card-title class="secondary">
           <v-btn fab dark large color="primary" @click="dialog = true">
-            <v-icon dark v-text="'mdi-pencil'" />
+            <v-icon dark v-text="'mdi-account-edit'" />
           </v-btn>
           <v-dialog v-model="dialog" max-width="900">
             <v-card class="pa-4">

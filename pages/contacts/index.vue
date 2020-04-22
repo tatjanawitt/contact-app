@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-row class="mt-2">
+    <v-row v-if="contacts.length" class="mt-2">
       <v-col cols="12" sm="2" class="hidden-xs-only" />
       <v-col cols="12" sm="8">
-        <div class="display-2 center" v-text="$t('contacts.title')" />
+        <div class="display-2 center" v-text="$t('contacts.title') + contacts.length" />
       </v-col>
       <v-col cols="12" sm="2">
         <div class="d-flex justify-end">
