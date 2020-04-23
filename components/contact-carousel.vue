@@ -12,6 +12,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import _ from 'lodash'
 export default {
   props: {
     photos: { type: Array, required: true }
@@ -41,6 +42,7 @@ export default {
       let cImages = this.contacts.filter(c => c.img.length > 0)
       if (this.contacts.length && cImages.length) {
         cImages = cImages.map(c => ({ src: c.img }))
+        cImages = _.sampleSize(cImages, cImages.length < 10 ? cImages.length : 10)
         cImages.unshift(this.photos[0])
       } else {
         cImages = this.photos
