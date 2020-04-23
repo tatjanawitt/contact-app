@@ -14,8 +14,8 @@
       </v-card-title>
     </v-img>
     <v-card-subtitle>
-      <ContactDetailItem icon="mdi-cellphone-wireless" :content="contact.mobil" />
-      <ContactDetailItem icon="mdi-email" :content="contact.email" />
+      <ContactDetailItem icon="mdi-cellphone-wireless" :content="phoneLink" />
+      <ContactDetailItem icon="mdi-email" :content="emailLink" />
     </v-card-subtitle>
     <v-divider class="mx-4" />
     <v-card-text class="py-0">
@@ -37,7 +37,6 @@ import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetailItem from '@/components/contact-detail-item'
 import TagsBar from '@/components/tags-bar'
-
 export default {
   components: {
     ContactRating,
@@ -54,6 +53,12 @@ export default {
       getBirthdayToday: 'contacts/getBirthdayToday',
       getImagePlaceholder: 'contacts/getImgagePlaceholder'
     }),
+    phoneLink () {
+      return `<a style="text-decoration-style:dotted" href="tel:${this.contact.mobil}">${this.contact.mobil} </a>`
+    },
+    emailLink () {
+      return `<a style="text-decoration-style:dotted" href="mailto:${this.contact.email}">${this.contact.email}</a>`
+    },
     fullName () {
       return this.getFullName(this.contact.id)
     },

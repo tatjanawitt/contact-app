@@ -79,7 +79,7 @@ export default {
         light: {
           primary: colors.orange.darken3,
           secondary: colors.indigo.lighten2,
-          anchor: colors.orange.darken3,
+          anchor: colors.grey.darken3,
           accent: colors.orange.darken3,
           success: colors.teal.darken1,
           error: colors.red.darken2
