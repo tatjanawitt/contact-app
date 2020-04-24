@@ -21,9 +21,6 @@ export default {
         { src: 'https://cdn.pixabay.com/photo/2020/03/04/13/04/network-4901588_960_720.jpg' }
       ]
     }
-  },
-  async created () {
-    await this.$store.dispatch('contacts/loadAll')
   }
 }
 </script>
