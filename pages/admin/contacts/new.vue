@@ -1,10 +1,16 @@
 <template>
   <v-container>
-    <ContactForm :contact="contact"
-                 :save-contact="create"
-                 :cancel-action="cancel"
-                 :header="$t('cForm.newLabel')"
-    />
+    <v-row>
+      <v-sheet class="pa-4" color="rgba(255, 255, 255, 0.7)"
+               width="100%" elevation="14"
+      >
+        <ContactForm :contact="contact"
+                     :save-contact="create"
+                     :cancel-action="cancel"
+                     :header="$t('cForm.newLabel')"
+        />
+      </v-sheet>
+    </v-row>
   </v-container>
 </template>
 

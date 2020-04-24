@@ -1,10 +1,16 @@
 <template>
   <v-container>
-    <ContactForm :contact="contact"
-                 :save-contact="update"
-                 :cancel-action="cancel"
-                 :header="$t('cForm.editLabel')"
-    />
+    <v-row>
+      <v-sheet class="pa-4" color="rgba(255, 255, 255, 0.7)"
+               width="100%" elevation="14"
+      >
+        <ContactForm :contact="contact"
+                     :save-contact="update"
+                     :cancel-action="cancel"
+                     :header="$t('cForm.editLabel')"
+        />
+      </v-sheet>
+    </v-row>
   </v-container>
 </template>
 
@@ -27,6 +33,7 @@ export default {
     async update (newContact) {
       const oldUser = this.contact.user_id
       const contact = await this.$store.dispatch('contacts/edit', newContact)
+
       if (this.$auth.user.admin && oldUser !== newContact.user_id) {
         await this.$store.dispatch('users/addContactToUser', {
           contactId: contact.id,

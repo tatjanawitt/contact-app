@@ -48,6 +48,20 @@ export default {
 </script>
 
 <style lang="scss">
+/*
+@viewport {
+  min-width: 300px;
+  max-width: 1280px;
+}
+@viewport {
+  zoom: 0.75;
+  min-zoom: 0.5;
+  max-zoom: 0.9;
+}
+@viewport {
+  orientation: landscape;
+}
+*/
 body {
   background-image: url("/event.jpg");
   background-position: center center;
@@ -67,4 +81,5 @@ main {
    background-color: transparent !important;
 }
 .center { text-align: center; }
+.pointer { cursor: pointer; }
 </style>

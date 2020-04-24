@@ -1,8 +1,13 @@
 <template>
   <span>
-    <v-btn color="primary" small :disabled="disabled" @click.stop="dialog = true">
-      <v-icon v-text="'mdi-delete-alert'" />
+    <v-btn v-if="!avatar" color="primary" small
+           :disabled="disabled" @click.stop="dialog = true"
+    ><v-icon v-text="'mdi-delete-alert'" />
     </v-btn>
+    <v-avatar v-if="avatar" class="ma-3 float-right pointer" fab dark
+              size="64px" color="error" @click.stop="dialog = true"
+    ><v-icon dark v-text="'mdi-account-remove'" />
+    </v-avatar>
 
     <v-dialog v-model="dialog" max-width="500">
       <v-card>
@@ -35,7 +40,8 @@ export default {
     agreeImg: { type: String, required: false, default: 'mdi-check-bold' },
     agreeBtn: { type: String, required: false, default: 'OK' },
     header: { type: String, required: false, default: 'Confirm' },
-    disabled: { type: Boolean, required: false, default: false }
+    disabled: { type: Boolean, required: false, default: false },
+    avatar: { type: Boolean, required: false, default: false }
   },
   data () {
     return { dialog: false }

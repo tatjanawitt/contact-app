@@ -46,7 +46,7 @@
       </div>
 
       <v-avatar
-        class="language mx-2" size="26px"
+        class="pointer mx-2" size="26px"
         @click="changeLang(language === 'de' ? 'en': 'de')"
       >
         <v-img :src="language === 'de' ? '/en.svg' : '/de.svg'" />
@@ -68,8 +68,8 @@ export default {
     },
     items () {
       return [
-        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' },
-        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' }
+        { text: this.$t('links.contacts'), icon: 'mdi-account-group', route: '/contacts' },
+        { text: this.$t('links.birthdays'), icon: 'mdi-cake-variant', route: '/birthdays' }
       ]
     },
     admin () { return { text: this.$t('links.admin'), icon: 'mdi-database-edit', route: '/admin/contacts' } },
@@ -92,7 +92,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.language { cursor: pointer; }
-</style>

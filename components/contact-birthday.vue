@@ -1,9 +1,8 @@
 <template>
   <div>
-    <SearchField
-      :label="$t('birthdays.search')"
-      icon="mdi-account-search"
-      :search="search"
+    <SearchField :label="$t('birthdays.search')"
+                 icon="mdi-account-search"
+                 :search="search"
     />
     <v-expansion-panels v-if="list && list.length" v-model="panel" focusable>
       <v-expansion-panel v-for="(item,i) in list" :key="i">
@@ -14,9 +13,8 @@
             {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
           </span>
         </v-expansion-panel-header>
-        <v-expansion-panel-content
-          v-for="contact in item.contacts"
-          :key="contact.id + contact.zip"
+        <v-expansion-panel-content v-for="contact in item.contacts"
+                                   :key="contact.id + contact.zip"
         >
           <ContactBirthdayItem :contact="contact" />
         </v-expansion-panel-content>
@@ -31,8 +29,13 @@ import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contact-birthday-item'
 import AlertNoData from '@/components/alert-no-data'
 import SearchField from '@/components/search-field'
+import birthdayList from '@/utils/birthday-list'
 export default {
-  components: { ContactBirthdayItem, AlertNoData, SearchField },
+  components: {
+    ContactBirthdayItem,
+    AlertNoData,
+    SearchField
+  },
   data () {
     return {
       panel: 0,
@@ -44,8 +47,9 @@ export default {
       contacts: state => state.contacts.contacts
     }),
     list () {
+      const allContacts = birthdayList.get(this.contacts, this.lang)
       if (this.search.item) {
-        const searchlist = [...this.currentMonthFirst]
+        const searchlist = [...allContacts]
         const result = searchlist.map((item) => {
           const contacts = item.contacts.filter(c =>
             c.lName.toLowerCase().includes(this.search.item.toLowerCase()) ||
@@ -55,31 +59,8 @@ export default {
         })
         return result.filter(el => el.contacts.length > 0)
       } else {
-        return this.currentMonthFirst
+        return allContacts
       }
-    },
-    currentMonthFirst () {
-      const contacts = this.addContactsToBirthMonth
-      const removed = contacts.splice(new Date().getMonth())
-      return removed.concat(contacts).filter(el => el.contacts.length > 0)
-    },
-    addContactsToBirthMonth () {
-      const yearNow = new Date().getFullYear()
-      return this.monthList.map(item => ({
-        month: item,
-        contacts: this.contacts.filter(c =>
-          item === new Date(c.born).toLocaleString(this.lang, { month: 'long' })
-        ).sort((a, b) => {
-          const aBorn = new Date(yearNow, a.born.getMonth(), a.born.getDate())
-          const bBorn = new Date(yearNow, b.born.getMonth(), b.born.getDate())
-          return aBorn - bBorn
-        })
-      }))
-    },
-    monthList () {
-      return Array.from(Array(12), (e, i) =>
-        new Date(25e8 * ++i).toLocaleString(this.lang, { month: 'long' })
-      )
     },
     lang () { return this.$i18n.locale === 'de' ? 'de-DE' : 'en-EN' }
   }

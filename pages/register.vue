@@ -15,6 +15,7 @@ export default {
   methods: {
     async registerUser (regInfo) {
       try {
+        this.$nuxt.$loading.start()
         await this.$store.dispatch('users/create', regInfo)
         await this.$store.dispatch('users/login', regInfo)
         this.$store.commit('RELOAD')
@@ -22,7 +23,9 @@ export default {
           text: this.$t('userInfo.regSuccess') + this.$auth.user.name
         })
         this.$router.push('/')
+        this.$nuxt.$loading.finish()
       } catch {
+        this.$nuxt.$loading.finish()
         this.$store.dispatch('snackbar/create', {
           color: 'error',
           text: this.$t('userInfo.regError')

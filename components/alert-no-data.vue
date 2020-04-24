@@ -1,9 +1,8 @@
 <template>
-  <v-alert
-    class="secondary"
-    dark border="top"
-    icon="mdi-database-search"
-    transition="scale-transition"
+  <v-alert class="secondary"
+           dark border="top"
+           icon="mdi-database-search"
+           transition="scale-transition"
   >
     {{ hintText }}
   </v-alert>

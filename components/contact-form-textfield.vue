@@ -1,14 +1,13 @@
 <template>
-  <v-text-field
-    v-model="fieldItem"
-    :label="label"
-    :maxlength="maxlength"
-    :counter="maxlength"
-    :prepend-icon="icon"
-    clearable
-    :hint="defaultHint"
-    :rules="rules"
-    @change="changeValue"
+  <v-text-field v-model="fieldItem"
+                :label="label"
+                :maxlength="maxlength"
+                :counter="maxlength"
+                :prepend-icon="icon"
+                clearable
+                :hint="defaultHint"
+                :rules="rules"
+                @change="changeValue"
   />
 </template>
 

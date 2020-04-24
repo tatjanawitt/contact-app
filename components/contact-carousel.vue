@@ -12,9 +12,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import _ from 'lodash'
 export default {
   props: {
     photos: { type: Array, required: true }
+  },
+  data () {
+    return { maxImg: 10 }
   },
   computed: {
     ...mapState({
@@ -25,7 +29,9 @@ export default {
         return {
           title: `Hi ${this.$auth.user.name}!`,
           sub: this.$t('home.subAuth'),
-          images: this.updateImages()
+          images: this.contacts.length && this.$auth.user.id === this.contacts[0].user_id
+            ? this.updateImages()
+            : this.photos
         }
       } else {
         return {
@@ -38,14 +44,15 @@ export default {
   },
   methods: {
     updateImages () {
-      let cImages = this.contacts.filter(c => c.img.length > 0)
-      if (this.contacts.length && cImages.length) {
-        cImages = cImages.map(c => ({ src: c.img }))
-        cImages.unshift(this.photos[0])
+      let cImg = this.contacts.filter(c => c.img.length > 0)
+      if (cImg.length) {
+        cImg = cImg.map(c => ({ src: c.img }))
+        cImg = _.sampleSize(cImg, cImg.length <= this.maxImg ? cImg.length : this.maxImg)
+        cImg.unshift(this.photos[0])
       } else {
-        cImages = this.photos
+        cImg = this.photos
       }
-      return cImages
+      return cImg
     }
   }
 }

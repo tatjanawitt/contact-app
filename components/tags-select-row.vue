@@ -1,35 +1,40 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12" sm="7" md="8">
-      <v-combobox
-        v-model="contactTags"
-        :items="tags"
-        item-text="name"
-        append-icon="mdi-tag-plus"
-        outlined
-        dark
-        background-color="rgba(232, 135, 0, 0.7)"
-        multiple
-        chips
-        deletable-chips
-        hide-selected
-        return-object
-      />
-    </v-col>
-    <v-col cols="12" sm="5" md="4">
-      <div class="mt-4 d-flex justify-end">
-        <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
-          <v-icon v-text="'mdi-card-account-details'" />
-        </v-btn>
-        <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
-          <v-icon v-text="'mdi-account-edit'" />
-        </v-btn>
-        <v-btn class="primary" :to="`/admin/contacts`">
-          <v-icon v-text="'mdi-table-eye'" />
-        </v-btn>
-      </div>
-    </v-col>
-  </v-row>
+  <div class="d-flex justify-end" :class="dialog.status ? ' flex-nowrap' : ' flex-wrap-reverse'">
+    <v-combobox
+      v-model="contactTags"
+      :items="tags"
+      item-text="name"
+      append-icon="mdi-tag-plus"
+      outlined
+      dark
+      background-color="rgba(232, 135, 0, 0.7)"
+      style="min-width: 300px; max-width: 100%;"
+      multiple
+      chips
+      deletable-chips
+      hide-selected
+      hide-details
+      return-object
+    />
+    <div v-if="$route.name.includes('admin') && $auth.user.admin"
+         class="d-flex align-center mb-2 ml-2"
+    >
+      <v-btn class="primary mr-2" :to="`/contacts/detail/${contact.id}`">
+        <v-icon v-text="'mdi-card-account-details'" />
+      </v-btn>
+      <v-btn class="primary mr-2" :to="`/admin/contacts/${contact.id}/edit`">
+        <v-icon v-text="'mdi-account-edit'" />
+      </v-btn>
+      <v-btn class="primary" :to="`/admin/contacts`">
+        <v-icon v-text="'mdi-table-eye'" />
+      </v-btn>
+    </div>
+    <div v-else>
+      <v-btn class="mt-4" icon @click="dialog.status=false">
+        <v-icon v-text="'mdi-close-circle'" />
+      </v-btn>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,7 +43,14 @@ import _ from 'lodash'
 export default {
   props: {
     contact: { type: Object, required: true },
-    fullName: { type: String, required: true }
+    fullName: { type: String, required: true },
+    dialog: {
+      type: Object,
+      required: false,
+      default () {
+        return { status: false }
+      }
+    }
   },
   computed: {
     ...mapState({ tags: state => state.tags.tags }),
