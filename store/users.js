@@ -43,9 +43,15 @@ export const mutations = {
 
 export const actions = {
   async loadAll ({ commit, dispatch }) {
-    const { data: users } = await getData('/users', this.$axios)
-    deserializeUsers(users)
-    commit('SET', users.map(u => u.attributes))
+    if (this.$auth.login && this.$auth.user) {
+      let path = `/users/${this.$auth.user.id}`
+      if (this.$auth.user.admin) { path = '/users' }
+      const res = await getData(path, this.$axios)
+      let users = []
+      Array.isArray(res.data) ? users = res.data : users.push(res.data)
+      deserializeUsers(users)
+      commit('SET', users.map(u => u.attributes))
+    }
   },
   async delete ({ commit }, user) {
     const response = await this.$axios.delete(`/users/${user.id}`)

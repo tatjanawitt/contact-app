@@ -92,6 +92,7 @@ new Server({
     this.post('/contact_tags/delete', () => new Response(200))
 
     this.get('/users')
+    this.get('/users/:id')
     this.post('/users')
     this.put('/users/:id')
     this.delete('/users/:id')
