@@ -32,6 +32,9 @@ export const mutations = {
 }
 
 export const actions = {
+  reset ({ commit }) {
+    commit('SET', [])
+  },
   async loadAll ({ commit, dispatch }) {
     const { data: tags } = await getData('/tags', this.$axios)
     deserializeTags(tags)

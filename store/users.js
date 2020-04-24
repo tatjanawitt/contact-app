@@ -42,6 +42,9 @@ export const mutations = {
 }
 
 export const actions = {
+  reset ({ commit }) {
+    commit('SET', [])
+  },
   async loadAll ({ commit, dispatch }) {
     if (this.$auth.login && this.$auth.user) {
       let path = `/users/${this.$auth.user.id}`
@@ -91,7 +94,8 @@ export const actions = {
     }
     return res
   },
-  logout ({ commit }) {
+  logout ({ commit, rootState }) {
+    // console.log(rootState.contacts.contacts)
     commit('LOGOUT_USER')
   },
   async login ({ commit, dispatch }, credentials) {

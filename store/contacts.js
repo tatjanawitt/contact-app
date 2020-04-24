@@ -35,6 +35,9 @@ export const mutations = {
 }
 
 export const actions = {
+  reset ({ commit }) {
+    commit('SET', [])
+  },
   async loadAll ({ commit, dispatch }) {
     if (this.$auth.login && this.$auth.user) {
       let path = `/contacts/user/${this.$auth.user.id}`
