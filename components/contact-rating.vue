@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     rating: { type: Number, required: true, default: 0 },
@@ -20,13 +21,15 @@ export default {
     large: { type: Boolean, required: true }
   },
   computed: {
+    ...mapGetters({ getContact: 'contacts/get' }),
     newRating: {
       get () { return this.rating },
       set (newValue) {
-        this.$store.dispatch('contacts/patchNewRating', {
-          id: this.$route.params.id,
+        const contact = {
+          ...this.getContact(this.$route.params.id),
           rating: newValue
-        })
+        }
+        this.$store.dispatch('contacts/edit', contact)
         this.$store.dispatch('snackbar/create', {
           text: this.$t('contacts.ratingSuccess') + newValue + '.'
         })

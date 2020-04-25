@@ -77,7 +77,6 @@ new Server({
     this.post('/contacts')
     this.put('/contacts/:id')
     this.delete('/contacts/:id')
-    this.patch('/contacts/:id/rating', () => new Response(201))
     this.get('/contacts/user/:userId', (schema, request) => {
       const userId = request.params.userId + ''
       return schema.contacts.where({ userId })
