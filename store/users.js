@@ -80,14 +80,14 @@ export const actions = {
     commit('EDIT', newUser.attributes)
     return newUser.attributes
   },
-  async addContactToUser ({ commit, rootState }, { contactId, userId }) {
+  async addContactToUser ({ commit }, { contactId, userId }) {
     const res = await this.$axios.patch(`/users/${userId}/contacts`, { contactId })
     if (res.status === 200 || res.status === 201) {
       commit('CONTACT_TO_USER', { contactId, userId, del: false })
     }
     return res
   },
-  async delContactFromUser ({ commit, rootState }, { contactId, userId }) {
+  async delContactFromUser ({ commit }, { contactId, userId }) {
     const res = await this.$axios.patch(`/users/${userId}/contacts`, { contactId })
     if (res.status === 200 || res.status === 201) {
       commit('CONTACT_TO_USER', { contactId, userId, del: true })
