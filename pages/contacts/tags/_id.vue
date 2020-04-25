@@ -24,7 +24,7 @@ export default {
       return this.tags.find(t => t.id === this.$route.params.id)
     },
     tagName () {
-      return `${this.contactsOnTag.length} ${this.tag.name}`
+      return this.tag ? `${this.contactsOnTag.length} ${this.tag.name}` : ''
     }
   }
 }

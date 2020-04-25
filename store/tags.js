@@ -41,12 +41,18 @@ export const actions = {
     commit('SET', tags.map(t => t.attributes))
   },
   async connectToContact ({ commit }, { contact, tag }) {
-    await this.$axios.post('/contact_tags', { contact, tag })
-    commit('CONNECT_TO_CONTACT', { contact, tag })
+    const res = await this.$axios.post('/contact_tags', { contact, tag })
+    if (res.status === 200 || res.status === 201) {
+      commit('CONNECT_TO_CONTACT', { contact, tag })
+    }
+    return res
   },
   async disconnectFromContact ({ commit }, { contact, tag }) {
-    await this.$axios.post('contact_tags/delete', { contact, tag })
-    commit('DISCONNECT_FROM_CONTACT', { contact, tag })
+    const res = await this.$axios.post('contact_tags/delete', { contact, tag })
+    if (res.status === 200 || res.status === 201) {
+      commit('DISCONNECT_FROM_CONTACT', { contact, tag })
+    }
+    return res
   },
   async create ({ commit }, { name }) {
     const response = await this.$axios.post('/tags', { name })
