@@ -11,6 +11,10 @@ const BaseSerializer = JSONAPISerializer.extend({
     return _.camelCase(attr)
   }
 })
+const renameObjKey = (obj, oldKey, newKey) => {
+  obj[newKey] = obj[oldKey]
+  delete obj[oldKey]
+}
 /* eslint-disable no-new */
 new Server({
   fixtures: {
@@ -87,8 +91,33 @@ new Server({
     this.put('/tags/:id')
     this.delete('/tags/:id')
 
-    this.post('/contact_tags', () => new Response(201))
-    this.post('/contact_tags/delete', () => new Response(200))
+    this.post('/contact_tags', (schema, request) => {
+      const { contact, tag } = JSON.parse(request.requestBody)
+
+      contact.tag_ids.push(tag.id)
+      renameObjKey(contact, 'tag_ids', 'tagIds')
+      renameObjKey(contact, 'user_id', 'userId')
+      schema.db.contacts.update(contact.id, contact)
+
+      tag.contact_ids.push(contact.id)
+      renameObjKey(tag, 'contact_ids', 'contactIds')
+      schema.db.tags.update(tag.id, tag)
+      return new Response(201)
+    })
+
+    this.post('/contact_tags/delete', (schema, request) => {
+      const { contact, tag } = JSON.parse(request.requestBody)
+
+      contact.tagIds = contact.tag_ids.filter(tId => tId !== tag.id)
+      delete contact.tag_ids
+      renameObjKey(contact, 'user_id', 'userId')
+      schema.db.contacts.update(contact.id, contact)
+
+      tag.contactIds = tag.contact_ids.filter(cId => cId !== contact.id)
+      delete tag.contact_ids
+      schema.db.tags.update(tag.id, tag)
+      return new Response(201)
+    })
 
     this.get('/users')
     this.get('/users/:id')
