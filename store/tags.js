@@ -40,19 +40,19 @@ export const actions = {
     deserializeTags(tags)
     commit('SET', tags.map(t => t.attributes))
   },
-  connectToContact ({ commit }, { contact, tag }) {
-    this.$axios.post('/contact_tags', {
-      contact_id: contact.id,
-      tag_id: tag.id
-    })
-    commit('CONNECT_TO_CONTACT', { contact, tag })
+  async connectToContact ({ commit }, { contact, tag }) {
+    const res = await this.$axios.post('/contact_tags', { contact, tag })
+    if (res.status === 200 || res.status === 201) {
+      commit('CONNECT_TO_CONTACT', { contact, tag })
+    }
+    return res
   },
-  disconnectFromContact ({ commit }, { contact, tag }) {
-    this.$axios.post('contact_tags/delete', {
-      contact_id: contact.id,
-      tag_id: tag.id
-    })
-    commit('DISCONNECT_FROM_CONTACT', { contact, tag })
+  async disconnectFromContact ({ commit }, { contact, tag }) {
+    const res = await this.$axios.post('contact_tags/delete', { contact, tag })
+    if (res.status === 200 || res.status === 201) {
+      commit('DISCONNECT_FROM_CONTACT', { contact, tag })
+    }
+    return res
   },
   async create ({ commit }, { name }) {
     const response = await this.$axios.post('/tags', { name })

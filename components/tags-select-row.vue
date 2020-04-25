@@ -68,7 +68,7 @@ export default {
           createdTag = await this.$store.dispatch('tags/create', {
             name: createdTag
           })
-          this.$store.dispatch('tags/connectToContact', {
+          await this.$store.dispatch('tags/connectToContact', {
             tag: createdTag, contact: this.contact
           })
         } else {
@@ -76,12 +76,12 @@ export default {
           const removedTags = _.differenceBy(this.contactTags, newTags, 'id')
 
           if (addedTags.length > 0) {
-            this.$store.dispatch('tags/connectToContact', {
+            await this.$store.dispatch('tags/connectToContact', {
               tag: addedTags[0], contact: this.contact
             })
           }
           if (removedTags.length > 0) {
-            this.$store.dispatch('tags/disconnectFromContact', {
+            await this.$store.dispatch('tags/disconnectFromContact', {
               tag: removedTags[0], contact: this.contact
             })
           }
