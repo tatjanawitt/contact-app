@@ -43,10 +43,6 @@ export default {
     cancel () { this.dialog = false },
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
-      await this.$store.dispatch('users/addContactToUser', {
-        contactId: contact.id,
-        userId: contact.user_id
-      })
       this.dialog = false
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'

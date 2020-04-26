@@ -40,13 +40,18 @@ export const actions = {
       commit('SET', contacts.map(c => c.attributes))
     }
   },
-  async create ({ commit }, contact) {
+
+  async create ({ commit, dispatch }, contact) {
     contact.user_id = contact.user_id || this.$auth.user.id
     const response = await this.$axios.post('/contacts', contact)
     let savedContact = response.data.data
     savedContact = { id: savedContact.id, ...savedContact }
     deserializeContacts([savedContact])
     commit('ADD', savedContact.attributes)
+    await dispatch('users/addContactToUser', {
+      contactId: savedContact.attributes.id,
+      userId: savedContact.attributes.user_id
+    }, { root: true })
     return savedContact.attributes
   },
 
