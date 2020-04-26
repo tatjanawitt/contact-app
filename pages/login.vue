@@ -19,7 +19,7 @@ export default {
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.logSuccess') + this.$auth.user.name
         })
-        this.$router.push('/contacts')
+        this.$router.push('/')
         this.$nuxt.$loading.finish()
       } catch {
         this.$nuxt.$loading.finish()
