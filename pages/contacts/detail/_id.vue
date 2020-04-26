@@ -66,19 +66,7 @@ export default {
   },
   methods: {
     async update (newContact) {
-      const oldUser = this.contact.user_id
-      const contact = await this.$store.dispatch('contacts/edit', newContact)
-
-      if (this.$auth.user.admin && oldUser !== newContact.user_id) {
-        await this.$store.dispatch('users/addContactToUser', {
-          contactId: contact.id,
-          userId: newContact.user_id
-        })
-        await this.$store.dispatch('users/delContactFromUser', {
-          contactId: contact.id,
-          userId: oldUser
-        })
-      }
+      await this.$store.dispatch('contacts/edit', newContact)
       this.dialog = false
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.editSuccess') + this.fullName + '.'
