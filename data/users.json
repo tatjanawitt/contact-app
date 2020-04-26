@@ -1,30 +1,30 @@
 [
    {
       "id":"1",
-      "name":"Nicole R.",
-      "email":"user@gmail.com",
+      "name":"Nicole",
+      "email":"nic@gmail.com",
       "admin": false,
       "token": "25%(&!$#tocuh",
       "password": "aaaaaaaa",
-      "contactIds": ["4", "5", "6", "7"]
+      "contactIds": ["4", "5", "6", "7", "8", "10"]
    },
    {
       "id":"2",
-      "name":"Holger Tail",
-      "email":"holger@gmail.com",
+      "name":"Max",
+      "email":"user@gmail.com",
       "admin": false,
       "token": "24%(&!$#tocuh",
       "password": "aaaaaaaa",
-      "contactIds": ["14", "13", "12", "11"]
+      "contactIds": ["14", "13", "12", "11", "1", "2","3"]
    },
    {
       "id":"3",
-      "name":"Nadja",
+      "name":"Jana",
       "email":"admin@gmail.com",
       "admin": true,
       "token": "rcohus!$#21234ch",
       "password": "aaaaaaaa",
-      "contactIds": ["1", "2","3"],
+      "contactIds": [],
       "s3Keys": {
          "id": "tnoheurcheou",
          "secret": "wvjktoenueouwvm"
@@ -37,21 +37,12 @@
       "admin": false,
       "token": "55%(&!$#tocuh",
       "password": "aaaaaaaa",
-      "contactIds": ["8", "9"]
+      "contactIds": ["9"]
    },
    {
       "id":"5",
-      "name":"Simon",
-      "email":"simon@gmail.com",
-      "admin": false,
-      "token": "45%(&!$#tocuh",
-      "password": "aaaaaaaa",
-      "contactIds": ["10"]
-   },
-   {
-      "id":"6",
-      "name":"Lucky Luk",
-      "email":"luk@gmail.com",
+      "name":"Moritz",
+      "email":"moritz@gmail.com",
       "admin": false,
       "token": "35%(&!$#tocuh",
       "password": "aaaaaaaa",
