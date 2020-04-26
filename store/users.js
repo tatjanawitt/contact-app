@@ -36,7 +36,6 @@ export const mutations = {
     // window.localStorage.currentUser = JSON.stringify({})
   },
   SET_LOGGIN_USER (state, user) {
-    console.log(user)
     state.currentUser = user
     // window.localStorage.currentUser = JSON.stringify(user)
   }
