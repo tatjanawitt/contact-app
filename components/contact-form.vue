@@ -83,10 +83,7 @@ export default {
     header: { type: String, required: true }
   },
   data () {
-    return {
-      valid: false,
-      contactData: { ...this.contact }
-    }
+    return { valid: false, contactData: { ...this.contact } }
   },
   computed: {
     ...mapState({ users: state => state.users.users }),

@@ -23,9 +23,7 @@ import TagsTable from '@/components/tags-table'
 export default {
   components: { TagsTable },
   data () {
-    return {
-      startNew: { tag: false }
-    }
+    return { startNew: { tag: false } }
   },
   computed: {
     ...mapState({ tags: state => state.tags.tags }),

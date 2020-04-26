@@ -19,10 +19,7 @@ import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetail from '@/components/contact-detail'
 export default {
-  components: {
-    ContactRating,
-    ContactDetail
-  },
+  components: { ContactRating, ContactDetail },
   props: {
     contact: { type: Object, required: true }
   },

@@ -31,10 +31,7 @@ export default {
     hasName: Boolean
   },
   data () {
-    return {
-      showPassword: false,
-      ...validations
-    }
+    return { showPassword: false, ...validations }
   }
 }
 </script>
