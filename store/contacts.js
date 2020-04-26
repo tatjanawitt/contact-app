@@ -56,7 +56,7 @@ export const actions = {
   },
 
   async delete ({ commit, dispatch, rootGetters }, contact) {
-    if (contact.tag_ids.length) {
+    if (contact.tag_ids && contact.tag_ids.length) {
       const getTag = rootGetters['tags/get']
       contact.tag_ids.forEach(async (tId) => {
         await dispatch('tags/disconnectFromContact',

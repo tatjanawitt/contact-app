@@ -56,13 +56,20 @@ export const actions = {
       commit('SET', users.map(u => u.attributes))
     }
   },
-  async delete ({ commit }, user) {
+  async delete ({ commit, dispatch, rootGetters }, user) {
+    if (user.contact_ids && user.contact_ids.length) {
+      const getContact = rootGetters['contacts/get']
+      user.contact_ids.forEach(async (cId) => {
+        await dispatch('contacts/delete', getContact(cId), { root: true })
+      })
+    }
     const response = await this.$axios.delete(`/users/${user.id}`)
     if (response.status === 200 || response.status === 204) {
       commit('DELETE', user.id)
     }
     return response
   },
+
   async create ({ commit }, user) {
     user.token = new UIDGenerator().generateSync() // dummi for login
     user.admin = false

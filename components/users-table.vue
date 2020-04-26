@@ -65,9 +65,6 @@ export default {
       })
     },
     async deleteUser (user) {
-      user.contact_ids.forEach((id) => {
-        this.$store.dispatch('contacts/delete', { id })
-      })
       const info = { text: this.$t('users.delSuccess') + user.name + '.' }
       const res = await this.$store.dispatch('users/delete', user)
       if (res.status !== 200 && res.status !== 204) {
