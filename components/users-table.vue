@@ -14,6 +14,11 @@
       :sort-desc="true"
       :no-results-text="$t('noData')"
     >
+      <template #item.contact_ids.length="{ item }">
+        <v-chip v-if="item.contact_ids.length" color="secondary" small dark label>
+          <v-icon left v-text="'mdi-account-multiple'" />{{ item.contact_ids.length }}
+        </v-chip>
+      </template>
       <template #item.admin="{ item }">
         <v-chip :color="getColor(item.admin)" small outlined label dark>
           {{ item.admin ? $t('users.roleAdmin') : $t('users.roleUser') }}

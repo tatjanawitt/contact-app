@@ -69,7 +69,6 @@ export const actions = {
     }
     return response
   },
-
   async create ({ commit }, user) {
     user.token = new UIDGenerator().generateSync() // dummi for login
     user.admin = false
