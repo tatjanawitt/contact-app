@@ -16,7 +16,7 @@
   "home": {
     "title": "Herzlich Willkommen!",
     "sub": "Bitte melde Dich an, um deinen persönlichen Freundes-, Verwandten- und Bekanntenkreis zu verwalten.",
-    "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten."
+    "subAuth": "Herzlich Willkommen in deinem persönlichen Netzwerk von Freunden, Verwandten und Bekannten.<br> Auf der Seite KONTAKTE können Daten angelegt, verändert und gelöscht werden."
   },
   "userInfo": {
     "login": "Anmelden",
