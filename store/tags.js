@@ -35,7 +35,7 @@ export const actions = {
   reset ({ commit }) {
     commit('SET', [])
   },
-  async loadAll ({ commit, dispatch }) {
+  async loadAll ({ commit }) {
     const { data: tags } = await getData('/tags', this.$axios)
     deserializeTags(tags)
     commit('SET', tags.map(t => t.attributes))

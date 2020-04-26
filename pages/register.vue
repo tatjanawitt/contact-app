@@ -18,7 +18,6 @@ export default {
         this.$nuxt.$loading.start()
         await this.$store.dispatch('users/create', regInfo)
         await this.$store.dispatch('users/login', regInfo)
-        this.$store.commit('RELOAD')
         this.$store.dispatch('snackbar/create', {
           text: this.$t('userInfo.regSuccess') + this.$auth.user.name
         })

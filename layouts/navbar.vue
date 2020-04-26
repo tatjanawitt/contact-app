@@ -84,12 +84,7 @@ export default {
   methods: {
     changeLang (lang) { this.$i18n.locale = lang },
     async logout () {
-      await this.$auth.logout()
-      this.$store.dispatch('contacts/reset')
-      this.$store.dispatch('tags/reset')
-      this.$store.dispatch('users/reset')
-      this.$store.dispatch('users/logout')
-      this.$store.commit('RELOAD')
+      await this.$store.dispatch('users/logout')
       this.$router.push('/')
     }
   }

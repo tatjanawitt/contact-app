@@ -35,8 +35,9 @@ export const mutations = {
     state.currentUser = {}
     // window.localStorage.currentUser = JSON.stringify({})
   },
-  SET_USER_CREDENTIALS (state, credentials) {
-    state.currentUser = credentials
+  SET_LOGGIN_USER (state, user) {
+    console.log(user)
+    state.currentUser = user
     // window.localStorage.currentUser = JSON.stringify(user)
   }
 }
@@ -45,7 +46,7 @@ export const actions = {
   reset ({ commit }) {
     commit('SET', [])
   },
-  async loadAll ({ commit, dispatch }) {
+  async loadAll ({ commit }) {
     if (this.$auth.login && this.$auth.user) {
       let path = `/users/${this.$auth.user.id}`
       if (this.$auth.user.admin) { path = '/users' }
@@ -94,13 +95,18 @@ export const actions = {
     }
     return res
   },
-  logout ({ commit, rootState }) {
-    // console.log(rootState.contacts.contacts)
+  async logout ({ commit, dispatch }) {
+    dispatch('contacts/reset', null, { root: true })
+    dispatch('tags/reset', null, { root: true })
+    commit('RELOAD', null, { root: true })
+    commit('SET', [])
     commit('LOGOUT_USER')
+    await this.$auth.logout()
   },
-  async login ({ commit, dispatch }, credentials) {
+  async login ({ commit }, credentials) {
     await this.$auth.loginWith('local', { data: credentials })
-    commit('SET_USER_CREDENTIALS', credentials)
+    commit('SET_LOGGIN_USER', this.$auth.user)
+    commit('RELOAD', null, { root: true })
   }
 }
 

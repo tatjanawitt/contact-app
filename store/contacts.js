@@ -31,7 +31,7 @@ export const actions = {
   reset ({ commit }) {
     commit('SET', [])
   },
-  async loadAll ({ commit, dispatch }) {
+  async loadAll ({ commit }) {
     if (this.$auth.login && this.$auth.user) {
       let path = `/contacts/user/${this.$auth.user.id}`
       if (this.$auth.user.admin) { path = '/contacts' }
