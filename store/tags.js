@@ -70,9 +70,12 @@ export const actions = {
     return updatedTag.attributes
   },
   async delete ({ commit }, { tag }) {
-    const response = await this.$axios.delete(`/tags/${tag.id}`)
-    if (response.status === 200 || response.status === 204) {
-      commit('DELETE', { tag })
+    let response = { status: 405 }
+    if (!tag.contact_ids.length) {
+      response = await this.$axios.delete(`/tags/${tag.id}`)
+      if (response.status === 200 || response.status === 204) {
+        commit('DELETE', { tag })
+      }
     }
     return response
   }

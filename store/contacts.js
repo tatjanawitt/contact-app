@@ -49,12 +49,27 @@ export const actions = {
     commit('ADD', savedContact.attributes)
     return savedContact.attributes
   },
-  async delete ({ commit }, contact) {
+
+  async delete ({ commit, dispatch, rootGetters }, contact) {
+    if (contact.tag_ids.length) {
+      const getTag = rootGetters['tags/get']
+      contact.tag_ids.forEach(async (tId) => {
+        await dispatch('tags/disconnectFromContact',
+          { contact, tag: getTag(tId) }, { root: true })
+      })
+    }
+    if (contact.user_id) {
+      await dispatch('users/delContactFromUser', {
+        contactId: contact.id,
+        userId: contact.user_id
+      }, { root: true })
+    }
     const response = await this.$axios.delete(`/contacts/${contact.id}`)
     if (response.status === 200 || response.status === 204) {
       commit('DELETE', contact.id)
     }
   },
+
   async edit ({ commit }, contact) {
     const response = await this.$axios.put(`/contacts/${contact.id}`, contact)
     const newContact = response.data.data
