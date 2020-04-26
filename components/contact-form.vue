@@ -49,10 +49,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12" sm="2">
-            <ContactFormTextfield :obj="contactData" fieldname="rating" />
-          </v-col>
-          <v-col cols="12" sm="10">
+          <v-col cols="12" sm="12">
             <ContactFormTextfield :obj="contactData" fieldname="img" />
           </v-col>
         </v-row>
@@ -93,7 +90,7 @@ export default {
   },
   computed: {
     ...mapState({ users: state => state.users.users }),
-    ...mapGetters({ getUser: 'users/get' })
+    ...mapGetters({ getContact: 'contacts/get' })
   },
   methods: {
     cancel () {
@@ -109,7 +106,7 @@ export default {
         mobil: '',
         img: '',
         ...this.contactData,
-        rating: parseInt(this.contactData.rating) || 0
+        rating: parseInt(this.getContact(this.contact.id).rating) || 0
       })
     }
   }
