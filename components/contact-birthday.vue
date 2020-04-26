@@ -13,10 +13,8 @@
             {{ item.contacts.length > 1 ? $t('birthdays.title') : $t('birthdays.label') }}
           </span>
         </v-expansion-panel-header>
-        <v-expansion-panel-content v-for="contact in item.contacts"
-                                   :key="contact.id + contact.zip"
-        >
-          <ContactBirthdayItem :contact="contact" />
+        <v-expansion-panel-content v-for="c in item.contacts" :key="c.id + c.zip">
+          <ContactBirthdayItem :contact="c" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -37,10 +35,7 @@ export default {
     SearchField
   },
   data () {
-    return {
-      panel: 0,
-      search: { item: null }
-    }
+    return { panel: 0, search: { item: null } }
   },
   computed: {
     ...mapState({

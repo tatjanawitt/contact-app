@@ -25,10 +25,7 @@ import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import TagsBar from '@/components/tags-bar'
 export default {
-  components: {
-    ContactRating,
-    TagsBar
-  },
+  components: { ContactRating, TagsBar },
   props: {
     contact: { type: Object, required: true }
   },

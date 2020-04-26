@@ -17,9 +17,7 @@
             </v-card>
           </v-dialog>
           <v-badge :value="birthday" color="error" :content="age">
-            <span class="headline white--text ml-3">
-              {{ fullName }}
-            </span>
+            <span class="headline white--text ml-3">{{ fullName }}</span>
           </v-badge>
           <v-spacer />
           <ContactRating :rating="contact.rating" :readonly="false" :large="true" />

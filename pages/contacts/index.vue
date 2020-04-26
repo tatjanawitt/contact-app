@@ -40,14 +40,14 @@ export default {
     ...mapGetters({ fullName: 'contacts/getFullName' })
   },
   methods: {
-    cancel () { this.dialog = false },
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
       this.dialog = false
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'
       })
-    }
+    },
+    cancel () { this.dialog = false }
   }
 }
 </script>
