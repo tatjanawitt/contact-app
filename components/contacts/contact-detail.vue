@@ -50,7 +50,7 @@ import { mapGetters } from 'vuex'
 import ContactDetailItem from '@/components/contact-detail-item'
 import DialogConfirm from '@/components/dialog-confirm'
 import TagsBar from '@/components/tags-bar'
-import TagsSelectRow from '@/components/tags-select-row'
+import TagsSelectRow from '@/components/forms/tags-select-row'
 export default {
   components: {
     ContactDetailItem,

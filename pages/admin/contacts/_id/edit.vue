@@ -16,7 +16,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ContactForm from '@/components/contact-form'
+import ContactForm from '@/components/forms/contact-form'
 export default {
   components: { ContactForm },
   computed: {

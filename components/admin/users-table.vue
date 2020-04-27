@@ -47,7 +47,7 @@
 <script>
 import SearchField from '@/components/search-field'
 import DialogConfirm from '@/components/dialog-confirm'
-import UsersForm from '@/components/users-form'
+import UsersForm from '@/components/forms/users-form'
 export default {
   components: { SearchField, DialogConfirm, UsersForm },
   props: {

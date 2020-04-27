@@ -32,7 +32,7 @@
 import { mapGetters } from 'vuex'
 import ContactDetail from '@/components/contacts/contact-detail'
 import ContactRating from '@/components/contact-rating'
-import ContactForm from '@/components/contact-form'
+import ContactForm from '@/components/forms/contact-form'
 export default {
   components: {
     ContactDetail,

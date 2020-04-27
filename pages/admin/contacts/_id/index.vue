@@ -25,7 +25,7 @@
 import { mapGetters } from 'vuex'
 import ContactDetail from '@/components/contacts/contact-detail'
 import ContactRating from '@/components/contact-rating'
-import TagsSelectRow from '@/components/tags-select-row'
+import TagsSelectRow from '@/components/forms/tags-select-row'
 export default {
   components: {
     ContactDetail,

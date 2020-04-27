@@ -50,7 +50,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import TagsBar from '@/components/tags-bar'
-import ContactTableExpandItem from '@/components/contact-table-expand-item'
+import ContactTableExpandItem from '@/components/admin/contact-table-expand-item'
 import DialogConfirm from '@/components/dialog-confirm'
 import SearchField from '@/components/search-field'
 export default {

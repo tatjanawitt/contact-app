@@ -11,7 +11,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ContactTable from '@/components/contact-table'
+import ContactTable from '@/components/admin/contact-table'
 import HeaderLayout from '@/components/header-layout'
 export default {
   components: { ContactTable, HeaderLayout },
