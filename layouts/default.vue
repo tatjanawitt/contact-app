@@ -32,36 +32,17 @@ import Navbar from '@/layouts/nav/navbar'
 export default {
   components: { Navbar },
   computed: {
-    ...mapState({
-      snackbars: state => state.snackbar.snackbars
-    })
+    ...mapState({ snackbars: state => state.snackbar.snackbars })
   },
   methods: {
     removeSnackbar (snackbar) {
       this.$store.dispatch('snackbar/remove', snackbar)
-    },
-    height () {
-      return window.innerHeight + 'px'
     }
   }
 }
 </script>
 
 <style lang="scss">
-/*
-@viewport {
-  min-width: 300px;
-  max-width: 1280px;
-}
-@viewport {
-  zoom: 0.75;
-  min-zoom: 0.5;
-  max-zoom: 0.9;
-}
-@viewport {
-  orientation: landscape;
-}
-*/
 body {
   background-image: url("/event.jpg");
   background-position: center center;
