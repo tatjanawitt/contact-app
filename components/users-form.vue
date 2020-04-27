@@ -3,11 +3,8 @@
     <v-btn v-if="user.id" color="primary" small @click="openDialog">
       <v-icon v-text="'mdi-pencil'" />
     </v-btn>
-    <v-btn v-else class="primary" @click="openDialog">
-      <v-icon left v-text="'mdi-lock-plus'" />{{ $t('new') }}
-    </v-btn>
 
-    <v-dialog v-model="dialog" max-width="500px">
+    <v-dialog v-model="dialog.show" max-width="500px">
       <v-card class="pa-4">
         <v-form ref="form" v-model="valid">
           <v-card-title class="headline" v-text="headerText" />
@@ -56,10 +53,11 @@ export default {
   props: {
     saveUser: { type: Function, required: true },
     headerText: { type: String, required: true },
-    user: { type: Object, required: true }
+    user: { type: Object, required: true },
+    dialog: { type: Object, required: false, default () { return { show: false } } }
   },
   data () {
-    return { valid: false, dialog: false, userInfo: {} }
+    return { valid: false, userInfo: {} }
   },
   computed: {
     ...mapGetters({
@@ -69,17 +67,17 @@ export default {
   },
   methods: {
     openDialog () {
-      this.dialog = true
+      this.dialog.show = true
       this.userInfo = { ...this.getUser(this.user.id) }
     },
     cancel () {
       this.$refs.form.reset()
-      this.dialog = false
+      this.dialog.show = false
     },
     save () {
       this.saveUser({ ...this.userInfo })
       this.$refs.form.reset()
-      this.dialog = false
+      this.dialog.show = false
     }
   }
 }

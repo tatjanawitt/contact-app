@@ -1,19 +1,15 @@
 <template>
   <div>
-    <v-row class="my-2">
-      <v-col cols="12" sm="2" class="hidden-xs-only" />
-      <v-col cols="12" sm="8">
-        <div class="display-1 center" v-text="$t('users.header')" />
-      </v-col>
-      <v-col cols="12" sm="2">
-        <div class="d-flex justify-end">
-          <UsersForm :header-text="$t('users.newLabel')"
-                     :save-user="create"
-                     :user="user"
-          />
-        </div>
-      </v-col>
-    </v-row>
+    <HeaderLayout :header-text="$t('users.header')"
+                  :btn-action="openDialog"
+                  btn-icon="mdi-lock-plus"
+                  :btn-text="$t('new')"
+    />
+    <UsersForm :header-text="$t('users.newLabel')"
+               :save-user="create"
+               :user="user"
+               :dialog="dialog"
+    />
     <UsersTable :users="users" :headers="headers" />
   </div>
 </template>
@@ -22,10 +18,11 @@
 import { mapState } from 'vuex'
 import UsersTable from '@/components/users-table'
 import UsersForm from '@/components/users-form'
+import HeaderLayout from '@/components/header-layout'
 export default {
-  components: { UsersTable, UsersForm },
+  components: { UsersTable, UsersForm, HeaderLayout },
   data () {
-    return { user: {} }
+    return { user: {}, dialog: { show: false } }
   },
   computed: {
     ...mapState({ users: state => state.users.users }),
@@ -41,6 +38,9 @@ export default {
     }
   },
   methods: {
+    openDialog () {
+      this.dialog.show = true
+    },
     async create (newUser) {
       const user = await this.$store.dispatch('users/create', newUser)
       this.$store.dispatch('snackbar/create', {

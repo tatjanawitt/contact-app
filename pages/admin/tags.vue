@@ -1,18 +1,10 @@
 <template>
   <div>
-    <v-row class="my-2">
-      <v-col cols="12" sm="2" class="hidden-xs-only" />
-      <v-col cols="12" sm="8">
-        <div class="display-1 center" v-text="$t('tags.header')" />
-      </v-col>
-      <v-col cols="12" sm="2">
-        <div class="d-flex justify-end">
-          <v-btn class="primary" @click="startNew.tag=!startNew.tag">
-            <v-icon left v-text="'mdi-tag-plus'" />{{ $t('new') }}
-          </v-btn>
-        </div>
-      </v-col>
-    </v-row>
+    <HeaderLayout :header-text="$t('tags.header')"
+                  :btn-action="newBtnAction"
+                  btn-icon="mdi-tag-plus"
+                  :btn-text="$t('new')"
+    />
     <TagsTable :start-new="startNew" :tags="tags" :headers="headers" />
   </div>
 </template>
@@ -20,8 +12,9 @@
 <script>
 import { mapState } from 'vuex'
 import TagsTable from '@/components/tags-table'
+import HeaderLayout from '@/components/header-layout'
 export default {
-  components: { TagsTable },
+  components: { TagsTable, HeaderLayout },
   data () {
     return { startNew: { tag: false } }
   },
@@ -34,6 +27,11 @@ export default {
         { text: this.$t('tags.numContacts'), value: 'contact_ids.length' },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '150px' }
       ]
+    }
+  },
+  methods: {
+    newBtnAction () {
+      this.startNew.tag = !this.startNew.tag
     }
   }
 }
