@@ -28,7 +28,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import Navbar from '@/layouts/navbar'
+import Navbar from '@/layouts/nav/navbar'
 export default {
   components: { Navbar },
   computed: {
