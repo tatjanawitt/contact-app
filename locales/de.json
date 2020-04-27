@@ -3,6 +3,13 @@
   "action": "Aktion",
   "noData": "Keine Daten vorhanden",
   "errorMsg": "Fehler! ... Etwas ging schief.",
+  "errorSite": {
+    "notFound": "Whoops, 404!",
+    "title": "Sorry, ein Fehler!",
+    "notFoundMsg": "Die gesuchte Seite existiert nicht oder nicht mehr.",
+    "msg": "Leider ging etwas schief. Bitte kontaktiere uns.",
+    "btnText": "Gehe zur Start Seite!"
+  },
   "links": {
     "home": "Start",
     "birthdays": "Geburtstage",
