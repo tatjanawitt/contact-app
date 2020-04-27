@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ContactListItem from '@/components/contact-list-item'
+import ContactListItem from '@/components/contacts/contact-list-item'
 import AlertNoData from '@/components/alert-no-data'
 import SearchField from '@/components/search-field'
 export default {

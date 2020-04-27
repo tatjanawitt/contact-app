@@ -17,7 +17,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
-import ContactDetail from '@/components/contact-detail'
+import ContactDetail from '@/components/contacts/contact-detail'
 export default {
   components: { ContactRating, ContactDetail },
   props: {

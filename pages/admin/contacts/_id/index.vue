@@ -23,7 +23,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ContactDetail from '@/components/contact-detail'
+import ContactDetail from '@/components/contacts/contact-detail'
 import ContactRating from '@/components/contact-rating'
 import TagsSelectRow from '@/components/tags-select-row'
 export default {

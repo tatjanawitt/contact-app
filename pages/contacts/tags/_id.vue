@@ -7,7 +7,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import ContactList from '@/components/contact-list'
+import ContactList from '@/components/contacts/contact-list'
 export default {
   components: { ContactList },
   computed: {

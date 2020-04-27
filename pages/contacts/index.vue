@@ -28,7 +28,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ContactList from '@/components/contact-list'
+import ContactList from '@/components/contacts/contact-list'
 import ContactForm from '@/components/contact-form'
 export default {
   components: { ContactList, ContactForm },
