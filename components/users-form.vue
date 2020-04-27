@@ -1,8 +1,8 @@
 <template>
   <span>
-    <v-btn v-if="user.id" color="primary" small @click="openDialog">
-      <v-icon v-text="'mdi-pencil'" />
-    </v-btn>
+    <v-btn v-if="$route.name.includes('admin') && $auth.user.admin && user.id"
+           color="primary" small @click="openDialog"
+    ><v-icon v-text="'mdi-pencil'" /></v-btn>
 
     <v-dialog v-model="dialog.show" max-width="500px">
       <v-card class="pa-4">
@@ -11,7 +11,7 @@
 
           <v-divider />
           <v-card-text>
-            <div v-if="userInfo.id">
+            <div v-if="$route.name.includes('admin') && $auth.user.admin && userInfo.id">
               <v-checkbox v-model="userInfo.admin" class="red--text"
                           :label="$t('userInfo.admin')"
               />
