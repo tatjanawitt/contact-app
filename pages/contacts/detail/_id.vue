@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center">
+  <v-row v-show="contact.id" justify="center">
     <v-col cols="12" sm="8">
       <div class="subtitle-1 white--text" v-html="$t('contacts.notice')" />
       <v-card class="cardColor">

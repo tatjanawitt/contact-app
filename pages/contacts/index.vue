@@ -46,6 +46,7 @@ export default {
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'
       })
+      this.$router.push(`/contacts/detail/${contact.id}`)
     },
     cancel () { this.dialog = false }
   }
