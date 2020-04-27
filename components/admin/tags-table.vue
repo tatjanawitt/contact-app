@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import DialogConfirm from '@/components/dialog-confirm'
-import SearchField from '@/components/search-field'
+import DialogConfirm from '@/components/shared/dialog-confirm'
+import SearchField from '@/components/shared/search-field'
 export default {
   components: { DialogConfirm, SearchField },
   props: {

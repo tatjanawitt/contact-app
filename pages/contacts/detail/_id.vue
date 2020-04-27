@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center">
+  <v-row v-show="contact.id" justify="center">
     <v-col cols="12" sm="8">
       <div class="subtitle-1 white--text" v-html="$t('contacts.notice')" />
       <v-card class="cardColor">
@@ -30,9 +30,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ContactDetail from '@/components/contact-detail'
-import ContactRating from '@/components/contact-rating'
-import ContactForm from '@/components/contact-form'
+import ContactDetail from '@/components/contacts/contact-detail'
+import ContactRating from '@/components/shared/contact-rating'
+import ContactForm from '@/components/forms/contact-form'
 export default {
   components: {
     ContactDetail,

@@ -22,8 +22,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ContactRating from '@/components/contact-rating'
-import TagsBar from '@/components/tags-bar'
+import ContactRating from '@/components/shared/contact-rating'
+import TagsBar from '@/components/shared/tags-bar'
 export default {
   components: { ContactRating, TagsBar },
   props: {

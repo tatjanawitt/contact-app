@@ -69,8 +69,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ContactFormTextfield from '@/components/contact-form-textfield'
-import Datepicker from '@/components/datepicker'
+import ContactFormTextfield from '@/components/forms/contact-form-textfield'
+import Datepicker from '@/components/forms/datepicker'
 export default {
   components: {
     ContactFormTextfield,

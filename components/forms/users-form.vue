@@ -47,7 +47,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import UserCredentialsFields from '@/components/user-credentials-fields'
+import UserCredentialsFields from '@/components/forms/user-credentials-fields'
 export default {
   components: { UserCredentialsFields },
   props: {

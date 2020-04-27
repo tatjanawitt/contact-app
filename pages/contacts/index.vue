@@ -28,8 +28,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import ContactList from '@/components/contact-list'
-import ContactForm from '@/components/contact-form'
+import ContactList from '@/components/contacts/contact-list'
+import ContactForm from '@/components/forms/contact-form'
 export default {
   components: { ContactList, ContactForm },
   data () {
@@ -46,6 +46,7 @@ export default {
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'
       })
+      this.$router.push(`/contacts/detail/${contact.id}`)
     },
     cancel () { this.dialog = false }
   }

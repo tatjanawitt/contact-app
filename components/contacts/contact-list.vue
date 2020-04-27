@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import ContactListItem from '@/components/contact-list-item'
-import AlertNoData from '@/components/alert-no-data'
-import SearchField from '@/components/search-field'
+import ContactListItem from '@/components/contacts/contact-list-item'
+import AlertNoData from '@/components/shared/alert-no-data'
+import SearchField from '@/components/shared/search-field'
 export default {
   components: { ContactListItem, AlertNoData, SearchField },
   props: {

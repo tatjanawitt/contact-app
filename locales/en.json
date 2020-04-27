@@ -3,6 +3,13 @@
   "action": "Actions",
   "noData": "No data available",
   "errorMsg": "Error! ... Something goes wrong.",
+  "errorSite": {
+    "notFound": "Whoops, 404!",
+    "title": "Error occurred!",
+    "notFoundMsg": "The page you were looking for does not exist.",
+    "msg": "Sorry, something goes wrong. Please contact us.",
+    "btnText": "Go to the dashbord!"
+  },
   "links": {
     "home": "Dashbord",
     "birthdays": "Birthdays",

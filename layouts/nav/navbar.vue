@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import NavbarMobile from '@/layouts/navbar-mobile'
+import NavbarMobile from '@/layouts/nav/navbar-mobile'
 export default {
   components: { NavbarMobile },
   data () {

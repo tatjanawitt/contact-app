@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import UserAuthForm from '@/components/user-auth-form'
+import UserAuthForm from '@/components/forms/user-auth-form'
 export default {
   components: { UserAuthForm },
   methods: {

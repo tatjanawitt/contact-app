@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ContactBirthday from '@/components/contact-birthday'
+import ContactBirthday from '@/components/contacts/contact-birthday'
 export default {
   middleware: ['auth-user'],
   components: { ContactBirthday },

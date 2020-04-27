@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ContactCarousel from '@/components/contact-carousel'
+import ContactCarousel from '@/components/contacts/contact-carousel'
 export default {
   components: { ContactCarousel },
   data () {

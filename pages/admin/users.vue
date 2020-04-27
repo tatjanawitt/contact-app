@@ -16,9 +16,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import UsersTable from '@/components/users-table'
-import UsersForm from '@/components/users-form'
-import HeaderLayout from '@/components/header-layout'
+import UsersTable from '@/components/admin/users-table'
+import UsersForm from '@/components/forms/users-form'
+import HeaderLayout from '@/components/shared/header-layout'
 export default {
   components: { UsersTable, UsersForm, HeaderLayout },
   data () {

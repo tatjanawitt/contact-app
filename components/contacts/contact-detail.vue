@@ -47,10 +47,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ContactDetailItem from '@/components/contact-detail-item'
-import DialogConfirm from '@/components/dialog-confirm'
-import TagsBar from '@/components/tags-bar'
-import TagsSelectRow from '@/components/tags-select-row'
+import ContactDetailItem from '@/components/contacts/contact-detail-item'
+import DialogConfirm from '@/components/shared/dialog-confirm'
+import TagsBar from '@/components/shared/tags-bar'
+import TagsSelectRow from '@/components/shared/tags-select-row'
 export default {
   components: {
     ContactDetailItem,

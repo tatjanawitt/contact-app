@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import UsersCredentialsFields from '@/components/user-credentials-fields'
+import UsersCredentialsFields from '@/components/forms/user-credentials-fields'
 export default {
   components: { UsersCredentialsFields },
   props: {
