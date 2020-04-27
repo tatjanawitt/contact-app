@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import SearchField from '@/components/search-field'
-import DialogConfirm from '@/components/dialog-confirm'
+import SearchField from '@/components/shared/search-field'
+import DialogConfirm from '@/components/shared/dialog-confirm'
 import UsersForm from '@/components/forms/users-form'
 export default {
   components: { SearchField, DialogConfirm, UsersForm },

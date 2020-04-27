@@ -51,8 +51,8 @@
 import { mapGetters } from 'vuex'
 import TagsBar from '@/components/shared/tags-bar'
 import ContactTableExpandItem from '@/components/admin/contact-table-expand-item'
-import DialogConfirm from '@/components/dialog-confirm'
-import SearchField from '@/components/search-field'
+import DialogConfirm from '@/components/shared/dialog-confirm'
+import SearchField from '@/components/shared/search-field'
 export default {
   components: {
     ContactTableExpandItem,
