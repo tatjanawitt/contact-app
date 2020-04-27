@@ -25,7 +25,7 @@
 <script>
 import { mapState } from 'vuex'
 import ContactBirthdayItem from '@/components/contacts/contact-birthday-item'
-import AlertNoData from '@/components/alert-no-data'
+import AlertNoData from '@/components/shared/alert-no-data'
 import SearchField from '@/components/search-field'
 import birthdayList from '@/utils/birthday-list'
 export default {

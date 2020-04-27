@@ -12,7 +12,7 @@
 <script>
 import { mapState } from 'vuex'
 import TagsTable from '@/components/admin/tags-table'
-import HeaderLayout from '@/components/header-layout'
+import HeaderLayout from '@/components/shared/header-layout'
 export default {
   components: { TagsTable, HeaderLayout },
   data () {

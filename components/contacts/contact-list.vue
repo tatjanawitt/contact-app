@@ -22,7 +22,7 @@
 
 <script>
 import ContactListItem from '@/components/contacts/contact-list-item'
-import AlertNoData from '@/components/alert-no-data'
+import AlertNoData from '@/components/shared/alert-no-data'
 import SearchField from '@/components/search-field'
 export default {
   components: { ContactListItem, AlertNoData, SearchField },

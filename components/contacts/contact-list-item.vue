@@ -36,7 +36,7 @@
 import { mapGetters } from 'vuex'
 import ContactRating from '@/components/contact-rating'
 import ContactDetailItem from '@/components/contact-detail-item'
-import TagsBar from '@/components/tags-bar'
+import TagsBar from '@/components/shared/tags-bar'
 export default {
   components: {
     ContactRating,
