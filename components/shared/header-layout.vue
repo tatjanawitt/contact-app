@@ -6,8 +6,8 @@
     </v-col>
     <v-col cols="12" sm="2">
       <div class="d-flex justify-end">
-        <v-btn class="primary" @click="btnAction">
-          <v-icon left v-text="btnIcon" />{{ btnText }}
+        <v-btn :fab="fab" :large="large" class="primary" @click="btnAction">
+          <v-icon :left="btnText?true:false" v-text="btnIcon" />{{ btnText }}
         </v-btn>
       </div>
     </v-col>
@@ -20,7 +20,9 @@ export default {
     headerText: { type: String, required: true },
     btnAction: { type: Function, required: true },
     btnIcon: { type: String, required: true },
-    btnText: { type: String, required: true }
+    btnText: { type: String, required: false, default: null },
+    fab: { type: Boolean, required: false, default: false },
+    large: { type: Boolean, required: false, default: false }
   }
 }
 </script>

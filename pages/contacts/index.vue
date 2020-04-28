@@ -1,27 +1,19 @@
 <template>
   <div>
-    <v-row class="mt-2">
-      <v-col cols="12" sm="2" class="hidden-xs-only" />
-      <v-col cols="12" sm="8">
-        <div class="display-2 center" v-text="$t('contacts.title') + contacts.length" />
-      </v-col>
-      <v-col cols="12" sm="2">
-        <div class="d-flex justify-end">
-          <v-btn fab dark large color="primary" @click="dialog = true">
-            <v-icon dark v-text="'mdi-account-plus'" />
-          </v-btn>
-          <v-dialog v-model="dialog" max-width="900">
-            <v-card class="pa-4">
-              <ContactForm :contact="contact"
-                           :save-contact="create"
-                           :cancel-action="cancel"
-                           :header="$t('cForm.newLabel')"
-              />
-            </v-card>
-          </v-dialog>
-        </div>
-      </v-col>
-    </v-row>
+    <HeaderLayout :header-text="$t('contacts.title') + contacts.length"
+                  :btn-action="openDialog"
+                  btn-icon="mdi-account-plus"
+                  :fab="true" :large="true"
+    />
+    <v-dialog v-model="dialog.show" max-width="900">
+      <v-card class="pa-4">
+        <ContactForm :contact="contact"
+                     :save-contact="create"
+                     :cancel-action="cancel"
+                     :header="$t('cForm.newLabel')"
+        />
+      </v-card>
+    </v-dialog>
     <ContactList :contacts="contacts" />
   </div>
 </template>
@@ -30,25 +22,29 @@
 import { mapState, mapGetters } from 'vuex'
 import ContactList from '@/components/contacts/contact-list'
 import ContactForm from '@/components/forms/contact-form'
+import HeaderLayout from '@/components/shared/header-layout'
 export default {
-  components: { ContactList, ContactForm },
+  components: { ContactList, ContactForm, HeaderLayout },
   data () {
-    return { contact: {}, dialog: false }
+    return { contact: {}, dialog: { show: false } }
   },
   computed: {
     ...mapState({ contacts: state => state.contacts.contacts }),
     ...mapGetters({ fullName: 'contacts/getFullName' })
   },
   methods: {
+    openDialog () {
+      this.dialog.show = true
+    },
     async create (newContact) {
       const contact = await this.$store.dispatch('contacts/create', newContact)
-      this.dialog = false
+      this.dialog.show = false
       this.$store.dispatch('snackbar/create', {
         text: this.$t('cForm.newSuccess') + this.fullName(contact.id) + '.'
       })
       this.$router.push(`/contacts/detail/${contact.id}`)
     },
-    cancel () { this.dialog = false }
+    cancel () { this.dialog.show = false }
   }
 }
 </script>
