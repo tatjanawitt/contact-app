@@ -22,7 +22,7 @@ export default {
     ...mapState({ tags: state => state.tags.tags }),
     headers () {
       return [
-        { text: 'Id', value: 'id' },
+        { text: this.$t('id'), value: 'id' },
         { text: this.$t('tags.name'), value: 'name' },
         { text: this.$t('tags.numContacts'), value: 'contact_ids.length' },
         { text: this.$t('action'), value: 'actions', sortable: false, width: '150px' }

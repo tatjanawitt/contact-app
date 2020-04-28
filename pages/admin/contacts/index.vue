@@ -23,7 +23,7 @@ export default {
     },
     headers () {
       return [
-        { text: 'Id', value: 'id' },
+        { text: this.$t('id'), value: 'id' },
         { text: this.$t('cForm.fName').slice(0, -1), value: 'fName' },
         { text: this.$t('cForm.lName').slice(0, -1), value: 'lName' },
         { text: this.$t('cForm.place'), value: 'place' },

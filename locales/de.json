@@ -1,5 +1,6 @@
 {
   "new": "Neu",
+  "id": "Nr.",
   "action": "Aktion",
   "noData": "Keine Daten vorhanden",
   "errorMsg": "Fehler! ... Etwas ging schief.",

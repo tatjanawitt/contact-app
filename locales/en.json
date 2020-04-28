@@ -1,5 +1,6 @@
 {
   "new": "New",
+  "id": "No.",
   "action": "Actions",
   "noData": "No data available",
   "errorMsg": "Error! ... Something goes wrong.",

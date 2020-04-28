@@ -28,7 +28,7 @@ export default {
     ...mapState({ users: state => state.users.users }),
     headers () {
       return [
-        { text: 'Id', value: 'id' },
+        { text: this.$t('id'), value: 'id' },
         { text: this.$t('users.name'), value: 'name' },
         { text: this.$t('users.email'), value: 'email' },
         { text: this.$t('tags.numContacts'), value: 'contact_ids.length' },
